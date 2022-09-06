@@ -24,7 +24,7 @@ const NoticeForm = () => {
     }
     
   return (
-    <div>
+    <div className="container">
        <div className='row'>
        <div class="card  text-bg-white shadow-lg mb-3 mt-5 text-center" style={{maxWidth:900, marginLeft:180}}>  
             <div class="card-body">

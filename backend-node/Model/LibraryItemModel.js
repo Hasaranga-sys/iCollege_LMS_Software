@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
-const ResourceSchema = new Schema({
+const LibraryItemSchema = new Schema({
     faculty:{
         type: String,        
     },
@@ -24,4 +23,4 @@ const ResourceSchema = new Schema({
 });
 
 //exporting this model to mongo db
-module.exports= mongoose.model("PDF", ResourceSchema);
+module.exports= mongoose.model("LibraryItems", LibraryItemSchema);

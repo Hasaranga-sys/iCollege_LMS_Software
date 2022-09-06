@@ -4,7 +4,7 @@ const cloudinary = require('../utils/cloudinary')
 const multer  = require('multer')
 const uuid=require('uuid').v4;
 const path = require('path');
-const PDF = require('../Model/Resource')
+const PDF = require('../Model/LibraryItemModel')
 //const sa= require('../uploads')
 
 const files=[]

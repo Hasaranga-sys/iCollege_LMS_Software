@@ -12,7 +12,7 @@ import ViewNotice from "./Components/Student/ViewNotice";
 
 function App() {
   return(
-    <div>
+    <div className="App">
       <React.Fragment>
         <header>
           <NavBar/>
