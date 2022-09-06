@@ -12,6 +12,16 @@ const AdminHome = () => {
             <button className="btn btn-primary" variant="contained">notice form</button>
         </Link>
 
+        <br></br>
+        <Link to="/AdminHome/LibararyItemform">
+            <button className="btn btn-primary" variant="contained">library form</button>
+        </Link>
+
+        <br></br>
+        <Link to="/AdminHome/ViewLibararyItems">
+            <button className="btn btn-primary" variant="contained">library list</button>
+        </Link>
+
     </div>
   )
 }

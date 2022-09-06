@@ -5,7 +5,7 @@ const multer  = require('multer')
 const uuid=require('uuid').v4;
 const path = require('path');
 const PDF = require('../Model/Resource')
-const sa= require('../uploads')
+//const sa= require('../uploads')
 
 const files=[]
 const fileInArray=[]

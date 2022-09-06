@@ -10,7 +10,7 @@ app.use(cors());
 app.use("/notice",router);
 app.use("/resource",resour )
 
-mongoose.connect("mongodb://localhost:27017")
+mongoose.connect("mongodb+srv://udula:udula@cluster0.nldc9av.mongodb.net/?retryWrites=true&w=majority")
             .then(()=>console.log("Connected to database"))
              .then(()=>{
                 app.listen(5000);}).catch((err)=>console.log(err));
