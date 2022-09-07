@@ -69,7 +69,7 @@ const updateUser = async(req,res,next)=>{
             lastName,initials,email,mobileNumber, faculty,
             regNumber, password, role
         })
-        user1 = await user.save();
+        user = await user.save();
     } catch(error){
         console.log(error);
     } if(!user){
@@ -77,8 +77,28 @@ const updateUser = async(req,res,next)=>{
     }
     return res.status(200).json(user)
 }
+const login = async( req,res,next)=>{
+    const {regNumber, password} = req.body;
+    try{
+        user = await UserModel.findOne({regNumber: regNumber})
+    }catch(error){
+        console.log(error)
+    }
+    if(!user){
+        return res.status(404).json({message: "Not Found"})
+    }
+    if (user.password == password){
+        return res.status(200).json({
+            "userID" : user.id,
+            "role" : user.role
+        })
+    }else{
+        return res.status(401).json({message: "Password missmatch"})
+    }
+}
 exports.addUser = addUser;
 exports.getAllusers= getAllusers;
 exports.getUserById = getUserById;
 exports.deleteUserById=deleteUserById;
 exports.updateUser=updateUser;
+exports.login=login;
