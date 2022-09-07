@@ -13,9 +13,48 @@ const getAllusers = async (req,res, next) =>{
 }
 
 const addUser = async(req,res,next)=>{
-    const {lastName,initials,email,mobileNumber, faculty,
+    let {lastName,initials,email,mobileNumber, faculty,
         regNumber, password, role} = req.body;
     let user;
+
+    try{
+        user = await UserModel.findOne({regNumber: regNumber})
+    }catch(error){
+        console.log(error)
+    }
+    if(!user){
+        let finalrole
+        let result = regNumber.toLowerCase();
+        result = result.substring(3, 0);
+        // console.log(result)
+        if (result == "adm"){
+            role= "admin"
+        }else if(result == "lec"){
+            role = "lecture"
+        }else{
+            role ="student"
+        }
+        // console.log(result)
+        try{
+            user = new UserModel({
+                lastName,initials,email,mobileNumber, faculty,
+                regNumber, password, role
+            });
+            await user.save();
+        } catch(error){
+            console.log(error);
+        } if(!user){
+            return res.status(500).json({message: "unable to add"})
+        }
+        return res.status(201).json(user)
+
+
+
+    }else{
+        return res.status(400).json({message: "user already regirted"})
+    }
+
+
     try{
         user = new UserModel({
             lastName,initials,email,mobileNumber, faculty,
