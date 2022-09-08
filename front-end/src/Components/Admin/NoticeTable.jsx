@@ -30,16 +30,20 @@ const NoticeTable = () => {
 
   return (
     <div>
-      <div className='shadow mx-auto card w-75 text-center p-3 mt-5 mb-5'>
-    <h1> </h1>
+      <div  className='shadow card w-75 text-center p-3 mt-5 mb-5'
+      style={{marginLeft:80,borderRadius: 30}}>
+        
+    <h1>Announcements</h1>
 
     <div>
      
-      <div className='container p-2 mt-4 mb-4'>
+      <div className='container p-1 mt-4 mb-4'>
+        
         <div className='row'>
         <div className='shadow card mx-auto w-75'>
+      <button>ds</button>
 
-              <table class="table table-striped">
+              <table class="table table-striped mt-3">
                   <thead className='table-primary'>
                     <tr>
                       <th scope="col">Faculty</th>
@@ -47,6 +51,7 @@ const NoticeTable = () => {
                       <th scope="col">Topic</th>
                       <th scope="col">Notice</th>
                       <th scope="col">Action</th>
+                      <th></th>
                                            
                     </tr>
                     </thead>
