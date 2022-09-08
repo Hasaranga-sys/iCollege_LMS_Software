@@ -22,10 +22,21 @@ const LoginForm =(params)=>{
             res=>{
                 // setstudent(res.data)
                 console.log(res.data);
+                if (res.data.role == "student"){
+                    console.log("true:student");
+                    nav("/StudentHome")
+                }else if (res.data.role == "admin"){
+                    console.log("true:admin");
+                    nav("/AdminHome")
+                }
             }
-        )
+        ).catch(err => {
+            console.log("failed");
+        })
         // nav("/students")
+        
         console.log(loginTemplate);
+        
         
     }
     return(

@@ -46,7 +46,22 @@ const UserForm =(params)=>{
                 password,
                 role
             }
-            UserServices.createUser(newuser)
+            UserServices.createUser(newuser).then(
+                res=>{
+                    // setstudent(res.data)
+                    console.log(res.data);
+                    // if (res.data.role == "student"){
+                    //     console.log("true:student");
+                    //     // nav("/StudentHome")
+                    // }else if (res.data.role == "admin"){
+                    //     console.log("true:admin");
+                    //     nav("/AdminHome")
+                    // }
+                    nav("/login")
+                }
+            ).catch(err => {
+                console.log("failed");
+            })
             // nav("/users")
             console.log(newuser);
         }else{
@@ -61,7 +76,7 @@ const UserForm =(params)=>{
                 role
             }
             UserServices.updateUser(id, newuser)
-            // nav("/users")
+            nav("/users")
             console.log(newuser);
         }
         
