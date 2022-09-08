@@ -46,35 +46,24 @@ function App() {
               exact
             />
 
-            <Route
-              path="/AdminHome/addLibararyItemForm"
-              element={<LibararyItemForm />}
-              exact
-            />
-            <Route
-              path="/AdminHome/ViewLibararyItems"
-              element={<ViewLibraryItems />}
-              exact
-            />
-
-            <Route path="/StudentHome" element={<StudentHome />} exact />
-            <Route
-              path="/StudenHome/noticeView"
-              element={<ViewNotice />}
-              exact
-            />
-            {/* user management */}
-            <Route path="/user/:id" element={<UserForm />} exact />
-            <Route path="/login" element={<LoginForm />} exact />
-            <Route path="/users" element={<UserList />} exact />
-
-            <Route path="/LectureHome" element={<LectureHome />} exact />
+          <Route path="/AdminHome/addLibararyItemForm" element={<LibararyItemForm/>} exact/>
+          <Route path="/AdminHome/addLibararyItemForm/:id" element={<LibararyItemForm/>} exact/>
+          <Route path="/AdminHome/ViewLibararyItems" element={<ViewLibraryItems/>} exact/>
+          
+          <Route path="/StudentHome" element={<StudentHome/>} exact/>
+          <Route path="/StudenHome/noticeView" element={<ViewNotice/>} exact/>
+          {/* user management */}
+          <Route path="/user/:id" element={<UserForm/>} exact/>
+          <Route path="/login" element={<LoginForm/>} exact/>
+          <Route path="/users" element={<UserList/>} exact/>
+          <Route path="/LectureHome" element={<LectureHome />} exact />
             <Route
               path="/LectureHome/AddLecture"
               element={<AddLecture />}
               exact
             />
-          </Routes>
+          
+        </Routes>
         </main>
       </React.Fragment>
     </div>

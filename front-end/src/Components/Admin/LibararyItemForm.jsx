@@ -19,7 +19,7 @@ const LibararyItemForm = () => {
     if (id) {
       return <h1>Update </h1>;
     } else {
-      return <h1>Add </h1>;
+      return <h1>Add Library Resources </h1>;
     }
   };
 
@@ -46,11 +46,8 @@ const LibararyItemForm = () => {
         setsubject("");
         setPdf(null);
 
-        
-        history("/");
+        history("/AdminHome/ViewLibararyItems");
       }
-
-
     } catch (error) {
       console.log(error);
     }
@@ -58,34 +55,33 @@ const LibararyItemForm = () => {
 
 
   return (
-    <div>
+    <div >
       <div className="container">
       <br />
       <br />
       <br />
       <br />
-      <div className="card col-md-6 offset-md-3 offset-md-3">
+      <div className="shadow card col-md-6 offset-md-3 offset-md-3">
         <div className="card-body">
-          <div>{title()}</div>
+          <div><center>{title()}</center></div>
           <br />
           <br />
           <form onSubmit={clickSubmit} encType="multipart/form-data">
             <div className="row">
               <div className="col">
                 <div className="form-group">
-                  <label>faculty</label>
-                  <input
+                  <label>Faculty</label>
+
+                  {/* <input
                   type="text"
                   placeholder="Group ID"
                   value={faculty}
                   required
                   onChange={(e) => setFaculty(e.target.value)}
                   className="form-control"
-                />
+                /> */}
 
-
-
-                  {/* <select
+                  <select
                     className="form-control"
                     id="exampleFormControlSelect1"
                     // onChange={selectCategory}
@@ -94,9 +90,9 @@ const LibararyItemForm = () => {
                     required="required"
                   >
                     <option selected>Choose...</option>
-                    <option value="normal">fac1</option>
-                    <option value="luxury">fac2</option>
-                  </select> */}
+                    <option value="fac1">fac1</option>
+                    <option value="fac2">fac2</option>
+                  </select>
                 </div>
               </div>
               <br />
@@ -105,21 +101,18 @@ const LibararyItemForm = () => {
               <br />
               <div className="col">
                 <div className="form-group">
-                  <label>year</label>
+                  <label>Year</label>
 
-
-
-                  <input
+                  {/* <input
                   type="text"
                   placeholder="Group ID"
                   required
                   onChange={(e) => setYear(e.target.value)}
                   value={year}
                   className="form-control"
-                />
+                /> */}
 
-
-                  {/* <select
+                  <select
                     className="form-control"
                     id="exampleFormControlSelect1"
                     onChange={(e) => setYear(e.target.value)}
@@ -127,28 +120,26 @@ const LibararyItemForm = () => {
                     required="required"
                   >
                     <option selected>Choose...</option>
-                    <option value="2-person">1</option>
-                    <option value="5-person">2</option>
-                  </select> */}
+                    <option value="1">1</option>
+                    <option value="1">2</option>
+                  </select>
 
                 </div>
               </div>
               <div className="col">
                 <div className="form-group">
-                  <label>subject</label>
-                  <input
+                  <label>Subject</label>
+
+                  {/* <input
                   type="text"
                   placeholder="Group ID"
                   required
                   onChange={(e) => setsubject(e.target.value)}
                   value={subject}
                   className="form-control"
-                />
+                /> */}
 
-
-
-
-                  {/* <select
+                  <select
                     className="form-control"
                     id="exampleFormControlSelect1"
                     onChange={(e) => setsubject(e.target.value)}
@@ -156,16 +147,16 @@ const LibararyItemForm = () => {
                     required="required"
                   >
                     <option selected>Choose...</option>
-                    <option value="2-person">sub1</option>
-                    <option value="5-person">sub2</option>
-                  </select> */}
+                    <option value="11">sub1</option>
+                    <option value="22">sub2</option>
+                  </select>
                 </div>
               </div>
             </div>
 
 
             <div className="form-group">
-              <label>file</label>
+              <label>File</label>
               <div className="form-group">
                 <input
                   type="file"
