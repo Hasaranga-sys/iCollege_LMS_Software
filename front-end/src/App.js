@@ -10,6 +10,9 @@ import Home from "./Components/Home";
 import NavBar from "./Components/NavBar";
 import StudentHome from "./Components/Student/StudentHome";
 import ViewNotice from "./Components/Student/ViewNotice";
+import UserForm from "./Components/UserManagement/UserForm";
+import LoginForm from "./Components/UserManagement/UserLogin";
+import UserList from "./Components/UserManagement/UserList";
 
 function App() {
   return(
@@ -33,6 +36,10 @@ function App() {
           
           <Route path="/StudentHome" element={<StudentHome/>} exact/>
           <Route path="/StudenHome/noticeView" element={<ViewNotice/>} exact/>
+          {/* user management */}
+          <Route path="/user/:id" element={<UserForm/>} exact/>
+          <Route path="/login" element={<LoginForm/>} exact/>
+          <Route path="/users" element={<UserList/>} exact/>
         </Routes>
         </main>
         
