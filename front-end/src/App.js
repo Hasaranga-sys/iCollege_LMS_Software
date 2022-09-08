@@ -1,7 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import AddLibararyItem from "./Components/Admin/AddLibararyItem";
 import AdminHome from "./Components/Admin/AdminHome";
-import LibararyItemForm from "./Components/Admin/LibararyItemForm";
+
 import NoticeForm from "./Components/Admin/NoticeForm";
 import NoticeTable from "./Components/Admin/NoticeTable";
 import ViewLibraryItems from "./Components/Admin/ViewLibraryItems";
@@ -25,8 +26,9 @@ function App() {
           <Route path="/AdminHome" element={<AdminHome/>} exact/>
           <Route path="/AdminHome/NoticeTable" element={<NoticeTable/>} exact/>
           <Route path="/AdminHome/NoticeTable/NoticeForm" element={<NoticeForm/>} exact/>
+          <Route path="/AdminHome/NoticeTable/NoticeForm/:_id" element={<NoticeForm/>} exact/>
 
-          <Route path="/AdminHome/LibararyItemform" element={<LibararyItemForm/>} exact/>
+          <Route path="/AdminHome/addLibararyItem" element={<AddLibararyItem/>} exact/>
           <Route path="/AdminHome/ViewLibararyItems" element={<ViewLibraryItems/>} exact/>
           
           <Route path="/StudentHome" element={<StudentHome/>} exact/>

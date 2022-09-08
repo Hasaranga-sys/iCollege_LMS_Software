@@ -62,7 +62,7 @@ const updateNotice = async(req,res,next)=>{
         notices = await NoticeModel.findByIdAndUpdate(id,{
             faculty,module,topic,notice
         })    
-        notices = await NoticeModel.save()
+        notices = await notices.save()
     } catch (error) {
         console.log(error);
     }if(!notices){

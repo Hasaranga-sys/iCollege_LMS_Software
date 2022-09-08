@@ -16,15 +16,21 @@ const NoticeForm = () => {
         e.preventDefault();
         const notices = {faculty,module,topic,notice}
 
-        NoticeService.createNotice(notices).then((response)=>{
-            navigate("/")
-        }).catch(error =>{
-            console.log(error);
-        })
+        if (_id) {
+            NoticeService.updateNotice(_id,notices).then((response)=>{
+                navigate("/AdminHome/NoticeTable")
+            })                      
+        }else{
+            NoticeService.createNotice(notices).then((response)=>{
+                navigate("/AdminHome/NoticeTable")
+            }).catch(error =>{
+                console.log(error);
+            })
+        }
     }
     
   return (
-    <div className="container">
+    <div>
        <div className='row'>
        <div class="card  text-bg-white shadow-lg mb-3 mt-5 text-center" style={{maxWidth:900, marginLeft:180}}>  
             <div class="card-body">
@@ -37,8 +43,10 @@ const NoticeForm = () => {
                             <select class="form-select w-75"
                                     aria-label="Default select example"
                                     value={faculty.value}
+                                    required
+                                    placeholder='SelectFaculty..'
                                     onChange={(e) => {setFaculty(e.target.value);}}>
-                                    {/* <option selected>Open this select faculty</option> */}
+                                    <option value="">select Faculty</option>
                                     <option value="Faculty of Computing">Faculty of Computing</option>
                                     <option value="Faculty of Business">Faculty of Business</option>
                                     <option value="Faculty of Engineering">Faculty of Engineering</option>
@@ -50,8 +58,10 @@ const NoticeForm = () => {
                             <select class="form-select w-75" 
                                     aria-label="Default select example"
                                     value={module.value}
+                                    required
+                                    placeholder='SelectModule..'
                                     onChange={(e) => {setModule(e.target.value);}}>
-                                    {/* <option >Open this select Module</option> */}
+                                    <option value="">select Module</option>
                                     <option value="SE3050-User Experiance Engineering">SE3050-User Experiance Engineering</option>
                                     <option value="SE3060-Application Framework">SE3060-Application Framework</option>
                                     <option value="SE3090-Softwre Architecture">SE3090-Softwre Architecture</option>
@@ -63,7 +73,7 @@ const NoticeForm = () => {
                             <input name="topic" 
                                 className="form-control w-75"
                                 placeholder="Add Topic..."
-                                type="text"
+                                type="date"
                                 value={topic}
                                 onChange={(e) => {setTopic(e.target.value);}}
                                 required

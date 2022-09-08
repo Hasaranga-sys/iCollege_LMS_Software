@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const AdminHome = () => {
   return (
-    <div className="container" >AdminHome
+    <div className="card w-100" >AdminHome
         <Link to="/AdminHome/NoticeTable">
             <button className="btn btn-primary" variant="contained">notice table</button>
         </Link>

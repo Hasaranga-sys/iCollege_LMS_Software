@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,Link } from 'react-router-dom'
 import NoticeService from '../Service/NoticeService'
 
 const NoticeTable = () => {
@@ -57,6 +57,7 @@ const NoticeTable = () => {
                         <td>{note.module}</td>
                         <td>{note.topic}</td>
                         <td>{note.notice}</td>
+                        <td><Link className='btn btn-info' to={`/AdminHome/NoticeTable/NoticeForm/${note._id}`}>Update</Link></td>
                         <td><button type="button" onClick={()=>deleteNotice(note._id)} class="btn btn-danger">Delete</button></td>                                     
 
                         
