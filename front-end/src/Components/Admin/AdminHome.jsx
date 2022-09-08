@@ -22,6 +22,16 @@ const AdminHome = () => {
             <button className="btn btn-primary" variant="contained">library list</button>
         </Link>
 
+        <br></br>
+        <Link to="/AdminHome/addLibararyItemForm">
+            <button className="btn btn-primary" variant="contained">library form</button>
+        </Link>
+
+        <br></br>
+        <Link to="/AdminHome/ViewLibararyItems">
+            <button className="btn btn-primary" variant="contained">library View</button>
+        </Link>
+
     </div>
   )
 }

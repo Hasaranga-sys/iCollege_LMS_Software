@@ -7,7 +7,7 @@ const LibararyItemForm = () => {
   const [subject, setsubject] = useState("");
   const [pdf, setPdf] = useState("");
   const { id } = useParams();
-  const navigate = useNavigate();
+  const history = useNavigate();
 
 
   useEffect(() => {
@@ -23,25 +23,36 @@ const LibararyItemForm = () => {
     }
   };
 
-  const clickSubmit = (e) => {
-    e.preventDefault();
-    console.log("test");
+  const clickSubmit = async (e) => {
 
-    const submitRoom = { faculty, year, subject, pdf };
-    console.log(submitRoom);
-
-    const data = new FormData();
-      // data.append("name", name);
-      // data.append("type", type);
+    try {
+      e.preventDefault();
+      const data = new FormData();
+      data.append("faculty", faculty);
+      data.append("year", year);
+      data.append("subject",subject);
 
       for (var x = 0; x < pdf.length; x++) {
         data.append("uploaded_Image", pdf[x]);
       }
+      
+      const res = await fetch(`http://localhost:5000/pdf`, {
+        method: "POST",
+        body: data,
+      });
+      if (res.ok) {
+        setFaculty("");
+        setYear("");
+        setsubject("");
+        setPdf(null);
 
-    if (id) {
-      console.log("if");
-    } else {
-      console.log("else");
+        
+        history("/");
+      }
+
+
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -63,7 +74,18 @@ const LibararyItemForm = () => {
               <div className="col">
                 <div className="form-group">
                   <label>faculty</label>
-                  <select
+                  <input
+                  type="text"
+                  placeholder="Group ID"
+                  value={faculty}
+                  required
+                  onChange={(e) => setFaculty(e.target.value)}
+                  className="form-control"
+                />
+
+
+
+                  {/* <select
                     className="form-control"
                     id="exampleFormControlSelect1"
                     // onChange={selectCategory}
@@ -74,7 +96,7 @@ const LibararyItemForm = () => {
                     <option selected>Choose...</option>
                     <option value="normal">fac1</option>
                     <option value="luxury">fac2</option>
-                  </select>
+                  </select> */}
                 </div>
               </div>
               <br />
@@ -84,7 +106,20 @@ const LibararyItemForm = () => {
               <div className="col">
                 <div className="form-group">
                   <label>year</label>
-                  <select
+
+
+
+                  <input
+                  type="text"
+                  placeholder="Group ID"
+                  required
+                  onChange={(e) => setYear(e.target.value)}
+                  value={year}
+                  className="form-control"
+                />
+
+
+                  {/* <select
                     className="form-control"
                     id="exampleFormControlSelect1"
                     onChange={(e) => setYear(e.target.value)}
@@ -94,13 +129,26 @@ const LibararyItemForm = () => {
                     <option selected>Choose...</option>
                     <option value="2-person">1</option>
                     <option value="5-person">2</option>
-                  </select>
+                  </select> */}
+
                 </div>
               </div>
               <div className="col">
                 <div className="form-group">
                   <label>subject</label>
-                  <select
+                  <input
+                  type="text"
+                  placeholder="Group ID"
+                  required
+                  onChange={(e) => setsubject(e.target.value)}
+                  value={subject}
+                  className="form-control"
+                />
+
+
+
+
+                  {/* <select
                     className="form-control"
                     id="exampleFormControlSelect1"
                     onChange={(e) => setsubject(e.target.value)}
@@ -110,7 +158,7 @@ const LibararyItemForm = () => {
                     <option selected>Choose...</option>
                     <option value="2-person">sub1</option>
                     <option value="5-person">sub2</option>
-                  </select>
+                  </select> */}
                 </div>
               </div>
             </div>
@@ -125,10 +173,8 @@ const LibararyItemForm = () => {
                   required
                   filename="uploaded_Image"
                   className="form-control"
-                  value={pdf}
-                  onChange={(e) => {
-                    setPdf(e.target.files);
-                  }}
+                  
+                  onChange={(e) =>{setPdf(e.target.files);}}
                 />
               </div>
             </div>

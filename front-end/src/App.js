@@ -13,6 +13,7 @@ import ViewNotice from "./Components/Student/ViewNotice";
 import UserForm from "./Components/UserManagement/UserForm";
 import LoginForm from "./Components/UserManagement/UserLogin";
 import UserList from "./Components/UserManagement/UserList";
+import LibararyItemForm from "./Components/Admin/LibararyItemForm";
 
 function App() {
   return(
@@ -31,7 +32,7 @@ function App() {
           <Route path="/AdminHome/NoticeTable/NoticeForm" element={<NoticeForm/>} exact/>
           <Route path="/AdminHome/NoticeTable/NoticeForm/:_id" element={<NoticeForm/>} exact/>
 
-          <Route path="/AdminHome/addLibararyItem" element={<AddLibararyItem/>} exact/>
+          <Route path="/AdminHome/addLibararyItemForm" element={<LibararyItemForm/>} exact/>
           <Route path="/AdminHome/ViewLibararyItems" element={<ViewLibraryItems/>} exact/>
           
           <Route path="/StudentHome" element={<StudentHome/>} exact/>
