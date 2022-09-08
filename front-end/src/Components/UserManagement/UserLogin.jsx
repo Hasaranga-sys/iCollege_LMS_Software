@@ -31,6 +31,7 @@ const LoginForm =(params)=>{
                 }
             }
         ).catch(err => {
+            alert("Login Failed : User Name OR Password In correct");
             console.log("failed");
         })
         // nav("/students")

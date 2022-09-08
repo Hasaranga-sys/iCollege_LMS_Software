@@ -61,6 +61,7 @@ const UserForm =(params)=>{
                 }
             ).catch(err => {
                 console.log("failed");
+                alert("Registeration faild : Enterd Registeration Number Already there");
             })
             // nav("/users")
             console.log(newuser);
