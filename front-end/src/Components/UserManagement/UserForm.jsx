@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import UserServices from "../Service/UserServices.js";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UserForm = (params) => {
   const [status, setstatus] = useState("");
@@ -73,6 +74,7 @@ const UserForm = (params) => {
           //     console.log("true:admin");
           //     nav("/AdminHome")
           // }
+          Swal.fire(" succesfull.");
           nav("/login");
         })
         .catch((err) => {
@@ -95,6 +97,7 @@ const UserForm = (params) => {
         role,
       };
       UserServices.updateUser(id, newuser);
+      Swal.fire(" succesfull.");
       nav("/users");
       console.log(newuser);
     }
@@ -106,10 +109,10 @@ const UserForm = (params) => {
       <br />
       <br />
       <br />
-      <div className="card col-md-8 offset-md-2 offset-md-2">
+      <div className="shadow card col-md-8 offset-md-2 offset-md-2">
         <div className="card-body">
           <div>
-            <h1>{status} User</h1>
+            <center><h1>{status} User</h1></center>
           </div>
           <form onSubmit={submitClicked}>
             <br></br>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const LibararyItemForm = () => {
   const [faculty, setFaculty] = useState("");
@@ -46,6 +47,7 @@ const LibararyItemForm = () => {
         setsubject("");
         setPdf(null);
 
+        Swal.fire(" succesfull.");
         history("/AdminHome/ViewLibararyItems");
       }
     } catch (error) {

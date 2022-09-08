@@ -2,6 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react'
 import LibraryService from '../Service/LibraryService';
 import LibararyItemForm from './LibararyItemForm';
+import Swal from "sweetalert2";
 
 function ViewLibraryItems() {
   const [pdfs, setPdfs] = useState()
@@ -23,7 +24,7 @@ function ViewLibraryItems() {
   // };
 
   const deleteClicked = (id) => {
-    alert(id);
+    Swal.fire(" succesfully deleted");
     LibraryService.deleteItem(id).then((res)=>{
       setPdfs(pdfs.filter((pdfs) => pdfs._id !== id))
     });

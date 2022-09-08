@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import UserServices from "../Service/UserServices";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const LoginForm = (params) => {
   const [regNumber, setregNumber] = useState("");
@@ -31,7 +32,12 @@ const LoginForm = (params) => {
         }
       })
       .catch((err) => {
-        alert("Login Failed : User Name OR Password In correct");
+        Swal.fire({
+          icon: 'error',
+          title: 'Login Failed',
+          text: 'User Name OR Password In correct!',
+          
+        })
         console.log("failed");
       });
     // nav("/students")
@@ -44,10 +50,10 @@ const LoginForm = (params) => {
       <br />
       <br />
       <br />
-      <div className="card col-md-6 offset-md-3 offset-md-3">
+      <div className="shadow card col-md-6 offset-md-3 offset-md-3">
         <div className="card-body">
           <div>
-            <h2>Login</h2>
+            <center><h1>Login</h1></center>
           </div>
 
           <form onSubmit={submitClicked}>
