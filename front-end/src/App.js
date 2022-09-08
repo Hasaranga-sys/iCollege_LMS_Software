@@ -1,7 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import AddLibararyItem from "./Components/Admin/AddLibararyItem";
 import AdminHome from "./Components/Admin/AdminHome";
-import LibararyItemForm from "./Components/Admin/LibararyItemForm";
+
 import NoticeForm from "./Components/Admin/NoticeForm";
 import NoticeTable from "./Components/Admin/NoticeTable";
 import ViewLibraryItems from "./Components/Admin/ViewLibraryItems";
@@ -9,7 +10,10 @@ import Home from "./Components/Home";
 import NavBar from "./Components/NavBar";
 import StudentHome from "./Components/Student/StudentHome";
 import ViewNotice from "./Components/Student/ViewNotice";
-
+import UserForm from "./Components/UserManagement/UserForm";
+import LoginForm from "./Components/UserManagement/UserLogin";
+import UserList from "./Components/UserManagement/UserList";
+import LibararyItemForm from "./Components/Admin/LibararyItemForm";
 import AddLecture from "./Components/Lecture/AddLecture";
 import LectureHome from "./Components/Lecture/LectureHome";
 
@@ -36,9 +40,14 @@ function App() {
               element={<NoticeForm />}
               exact
             />
+            <Route
+              path="/AdminHome/NoticeTable/NoticeForm/:_id"
+              element={<NoticeForm />}
+              exact
+            />
 
             <Route
-              path="/AdminHome/LibararyItemform"
+              path="/AdminHome/addLibararyItemForm"
               element={<LibararyItemForm />}
               exact
             />
@@ -54,8 +63,11 @@ function App() {
               element={<ViewNotice />}
               exact
             />
+            {/* user management */}
+            <Route path="/user/:id" element={<UserForm />} exact />
+            <Route path="/login" element={<LoginForm />} exact />
+            <Route path="/users" element={<UserList />} exact />
 
-            {/* lecture */}
             <Route path="/LectureHome" element={<LectureHome />} exact />
             <Route
               path="/LectureHome/AddLecture"

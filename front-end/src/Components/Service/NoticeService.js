@@ -13,7 +13,7 @@ class NoticeService{
         return axios.delete(URL + '/' + noticeId)
     }
     updateNotice(noticeId, notice){
-        return axios.put(URL + '/' + noticeId);
+        return axios.put(URL + '/' + noticeId,notice);
     }
     getNoticeById(_id){
         return axios.get(URL + '/' + _id).then((res)=>res.data)

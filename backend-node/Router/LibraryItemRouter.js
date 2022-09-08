@@ -1,11 +1,23 @@
+const { Router } = require("express");
 const express = require("express");
 const router = express.Router();
+const LibraryItemController = require("../Controller/LibraryItemController")
+
 const cloudinary = require('../utils/cloudinary')
 const multer  = require('multer')
 const uuid=require('uuid').v4;
 const path = require('path');
 const PDF = require('../Model/LibraryItemModel')
-//const sa= require('../uploads')
+
+
+
+// router.get("/", LibraryItemController.getAllItem);
+// router.get("/:id", LibraryItemController.getItemById);
+// router.post("/add", LibraryItemController.addItem);
+// router.delete("/:id", LibraryItemController.deleteItem);
+
+
+
 
 const files=[]
 const fileInArray=[]
@@ -43,6 +55,7 @@ const upload=multer({
     storage:storage,
 })
 
+
 router.post("/", upload.array('uploaded_Image', 10), async(req,res)=>{
     try{
         console.log(req.files.length)
@@ -62,9 +75,9 @@ router.post("/", upload.array('uploaded_Image', 10), async(req,res)=>{
           
     }
     let pdf = new PDF({
-        faculty          :req.body.faculty,
-        year :req.body.year,
-        subject       :req.body.subject,
+        faculty  :req.body.faculty,
+        year     :req.body.year,
+        subject  :req.body.subject,
         // avatar:img.secure_url,
         pdf : pdff.secure_url,
         // cloudinary_id_img: img.public_id,
@@ -100,4 +113,6 @@ router.delete("/:id",async(req,res)=>{
       }
       return res.status(200).json({ message: `topic ${id} deleted` });
 })
+
+module.exports = router;
 
