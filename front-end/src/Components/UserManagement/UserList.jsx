@@ -29,22 +29,25 @@ const UserList =()=>{
         console.log(id)
     }
     return(
-        <div>
-            <button onClick={AddStudent}>Add student</button>
+        <div className="container">
+             <br />
+      <br />
+      <div className="card-body">
+            {/* <button onClick={AddStudent}>Add student</button> */}
             <h1>User list</h1><br/>
-
-            <table>
+            <br />
+            <table class="table table-hover">
                 <thead>
                     <tr>
-                    <th> Reg Number</th>
-                        <th>Last Name</th>
-                        <th>Initials</th>
-                        <th>Mobile Number</th>
-                        <th>Email</th>
-                        <th> Faculty</th>
-                        <th> Role</th>
-                        <th>Update</th>
-                        <th>Remove</th>
+                    <th scope="col"> Reg Number</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Initials</th>
+                        <th scope="col">Mobile Number</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Department</th>
+                        <th scope="col"> Role</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Remove</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,14 +63,18 @@ const UserList =()=>{
                                     <td>{user.faculty}</td>
                                     <td>{user.role}</td>
                                     
-                                <td><button onClick={()=>updteClicked(user._id)}>Update</button></td>
-                                <td><button onClick={()=>dleteClicked(user._id)}>Delete</button></td>
+                                <td><button className="btn btn-warning" onClick={()=>updteClicked(user._id)}>Update</button></td>
+                                <td><button  className="btn btn-success" onClick={()=>dleteClicked(user._id)}>Delete</button></td>
                             </tr>
                         )
                     }
                 </tbody>
-            </table>
 
+            </table>
+            <div id="myDIV">
+             <button  className="btn btn-primary" onClick={AddStudent}>Add User</button>
+             </div>
+        </div>
         </div>
     )
 }
