@@ -38,8 +38,8 @@ function ViewLibraryItems() {
     <h1>Library Resources</h1>
 
     
-    <Link className="btn btn-primary w-25 mt-3"
-               to={"/AdminHome/addLibararyItemForm"}>Add Announcement</Link>
+    <Link style={{marginLeft:148}} className="btn btn-primary w-25 mt-3"
+               to={"/AdminHome/addLibararyItemForm"}>Add Libraray </Link>
                
 
     <div>
