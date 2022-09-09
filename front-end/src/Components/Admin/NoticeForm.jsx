@@ -1,7 +1,7 @@
-import React from 'react'
-import { useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import NoticeService from '../Service/NoticeService'
+import React from "react";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import NoticeService from "../Service/NoticeService";
 
 const NoticeForm = () => {
     const [faculty, setFaculty] = useState("")
@@ -16,19 +16,25 @@ const NoticeForm = () => {
         e.preventDefault();
         const notices = {faculty,date,topic,notice}
 
-        if (_id) {
-            NoticeService.updateNotice(_id,notices).then((response)=>{
-                navigate("/AdminHome/NoticeTable")
-            })                      
-        }else{
-            NoticeService.createNotice(notices).then((response)=>{
-                navigate("/AdminHome/NoticeTable")
-            }).catch(error =>{
-                console.log(error);
-            })
-        }
+  const submitNotice = (e) => {
+    e.preventDefault();
+    const notices = { faculty, module, topic, notice };
+
+    if (_id) {
+      NoticeService.updateNotice(_id, notices).then((response) => {
+        navigate("/AdminHome/NoticeTable");
+      });
+    } else {
+      NoticeService.createNotice(notices)
+        .then((response) => {
+          navigate("/AdminHome/NoticeTable");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-    
+  };
+
   return (
     <div>
        <div className='row'>
@@ -114,20 +120,42 @@ const NoticeForm = () => {
                             />
                             </div>
 
-                        
+                <div className="row w-50  mx-auto mt-3">
+                  <label className="col-sm-3  col-form-label">Notice</label>
 
+                  <textarea
+                    name="notice"
+                    className="form-control w-75"
+                    placeholder="Add notice...."
+                    type="text"
+                    value={notice}
+                    onChange={(e) => {
+                      setNotice(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
 
-                        
-                    </div>
-                </form>
-            </div>
-            </div> 
-            <div class="card  text-bg-white shadow-lg mb-3 mt-5 text-center" style={{maxWidth:350, marginLeft:50}}>
-                dsa</div> 
-            </div>
-                       
+                <div className="row w-50 mx-auto mt-3 mb-4">
+                  <input
+                    className="btn btn-primary mt-4 mx-auto"
+                    type="submit"
+                    value="Save"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div
+          class="card  text-bg-white shadow-lg mb-3 mt-5 text-center"
+          style={{ maxWidth: 350, marginLeft: 50 }}
+        >
+          dsa
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default NoticeForm
+export default NoticeForm;

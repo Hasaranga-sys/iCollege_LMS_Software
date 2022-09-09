@@ -1,5 +1,8 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
+import LibraryService from '../Service/LibraryService';
+import LibararyItemForm from './LibararyItemForm';
+import Swal from "sweetalert2";
 
 function ViewLibraryItems() {
   const [pdfs, setPdfs] = useState()
@@ -13,11 +16,25 @@ function ViewLibraryItems() {
     fetchFilers();
   },[])
 
- 
+  console.log(pdfs);
 
+  // const updateClicked = (id) => {
+  //   console.log(id);
+    
+  // };
+
+  const deleteClicked = (id) => {
+    Swal.fire(" succesfully deleted");
+    LibraryService.deleteItem(id).then((res)=>{
+      setPdfs(pdfs.filter((pdfs) => pdfs._id !== id))
+    });
+   
+  };
+
+  
   return (
     <div className='shadow card w-75 mx-auto text-center p-3 mt-5 bg-light'>
-    <h1>View Libarary item</h1>
+    <h1>Library Resources</h1>
 
     <div>
       <div className="container">
@@ -31,10 +48,11 @@ function ViewLibraryItems() {
               <table class="table table-striped">
                   <thead className='table-primary'>
                     <tr>
-                      <th scope="col">faculty</th>
-                      <th scope="col">year</th>
-                      <th scope="col">subject</th>
+                      <th scope="col">Faculty</th>
+                      <th scope="col">Year</th>
+                      <th scope="col">Subject</th>
                       <th scope="col">Document</th>
+                      <th scope="col">Actions</th>
 
                     </tr>
                     </thead>
@@ -45,11 +63,12 @@ function ViewLibraryItems() {
                         <td>{pdf.year}</td>
                         <td>{pdf.subject}</td>
                         <td>{ <a href={pdf.pdf} download>{pdf.subject}</a>}</td>
-                        
+                        <td>
+                             <button className="btn btn-danger"onClick={() => {deleteClicked(pdf._id);}}>delete</button>
+                        </td>
                       </tr>
-
                       )
-                        
+                     
                       }
                     </tbody>           
               </table>

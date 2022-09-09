@@ -1,22 +1,21 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react'
-import NoticeService from '../Service/NoticeService'
-import Moment from 'react-moment'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import { useEffect } from "react";
+import NoticeService from "../Service/NoticeService";
+import Moment from "react-moment";
+import { Link } from "react-router-dom";
 
 const ViewNotice = () => {
-  
-  const [notices, setNotices] = useState([])
+  const [notices, setNotices] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     getAllNotices();
-  },[])
+  }, []);
 
-  const getAllNotices = ()=>{
-    NoticeService.getAllNotices().then((data)=>{
-      setNotices(data.notices)
-    })
-  }
+  const getAllNotices = () => {
+    NoticeService.getAllNotices().then((data) => {
+      setNotices(data.notices);
+    });
+  };
   return (
     <div>
     
@@ -54,8 +53,7 @@ const ViewNotice = () => {
 </div>
       </div> 
     </div>
-   
-  )
-}
+  );
+};
 
-export default ViewNotice
+export default ViewNotice;
