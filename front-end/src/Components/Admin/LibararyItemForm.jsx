@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import SubjectService from "../Service/SubjectService";
 
 const LibararyItemForm = () => {
   const [faculty, setFaculty] = useState("");
@@ -10,11 +11,25 @@ const LibararyItemForm = () => {
   const { id } = useParams();
   const history = useNavigate();
 
+  //const [subjectList, setSubjectList] = useState([]);
+
 
   useEffect(() => {
     console.log("hiii");
+
+    // SubjectService.getAllSubject().then((res)=>{
+    //   setSubjectList(res.data);
+    // })
+
+    
+    // selectFaculty();
+    // console.log("fac",faculty);
+
     
   }, [])
+
+  
+  //console.log(subjectList);
 
   const title = () => {
     if (id) {
@@ -23,6 +38,25 @@ const LibararyItemForm = () => {
       return <h1>Add Library Resources </h1>;
     }
   };
+
+  // const selectFaculty = (e) => {
+   
+  //   console.log("fac",faculty);
+  //   console.log("e",e.target.value);
+
+  //   setFaculty(e.target.value)
+
+  //   // if(faculty.length > 0){
+  //   //   console.log("fac",faculty);
+
+  //   // }
+  //   subjectList.forEach((p) => {
+  //     if (p.faculty == e.target.value)
+  //       console.log("vvv", p.subject);
+  //       setSubjectList(...p, p)
+  //   })
+  // }
+
 
   const clickSubmit = async (e) => {
 
@@ -64,6 +98,7 @@ const LibararyItemForm = () => {
       <br />
       <br />
       <div className="shadow card col-md-6 offset-md-3 offset-md-3">
+      
         <div className="card-body">
           <div><center>{title()}</center></div>
           <br />
@@ -83,17 +118,26 @@ const LibararyItemForm = () => {
                   className="form-control"
                 /> */}
 
-                  <select
+                <select
+                    className="form-control"
+                    id="exampleFormControlSelect1"
+                     onChange={(e) => setFaculty(e.target.value)}
+                    //onChange={(e) => setFaculty(e.target.value)}
+                    value={faculty}
+                    required="required"
+                  > 
+
+                  {/* <select
                     className="form-control"
                     id="exampleFormControlSelect1"
                     // onChange={selectCategory}
                     onChange={(e) => setFaculty(e.target.value)}
                     value={faculty}
                     required="required"
-                  >
+                  > */}
                     <option selected>Choose...</option>
-                    <option value="fac1">fac1</option>
-                    <option value="fac2">fac2</option>
+                    <option value="se">se</option>
+                    <option value="it">it</option>
                   </select>
                 </div>
               </div>
@@ -123,7 +167,9 @@ const LibararyItemForm = () => {
                   >
                     <option selected>Choose...</option>
                     <option value="1">1</option>
-                    <option value="1">2</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
                   </select>
 
                 </div>
@@ -145,12 +191,16 @@ const LibararyItemForm = () => {
                     className="form-control"
                     id="exampleFormControlSelect1"
                     onChange={(e) => setsubject(e.target.value)}
-                    value={subject}
+                    // value={subject}
                     required="required"
                   >
                     <option selected>Choose...</option>
                     <option value="11">sub1</option>
                     <option value="22">sub2</option>
+
+                    {/* {subjectList.map((t)=>(
+                      <option key={t._id} value={t.subject}>{t.subject}</option>
+                    ))} */}
                   </select>
                 </div>
               </div>

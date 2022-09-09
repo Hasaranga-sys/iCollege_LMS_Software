@@ -29,7 +29,7 @@ const AdminHome = () => {
           <div class="card-block">
           <img style={{height: 130, width: 130}} class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/2641/2641310.png" alt="Card image cap"/>
             <h4 class="card-title"></h4>
-            <Link className='btn btn-primary' to={"/AdminHome/NoticeTable"}>E-Library</Link>       
+            <Link className='btn btn-primary' to={"/AdminHome/ViewLibararyItems"}>E-Library</Link>       
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { useState,useEffect } from 'react'
 import LibraryService from '../Service/LibraryService';
 import LibararyItemForm from './LibararyItemForm';
 import Swal from "sweetalert2";
+import { useNavigate, Link } from "react-router-dom";
 
 function ViewLibraryItems() {
   const [pdfs, setPdfs] = useState()
@@ -36,14 +37,27 @@ function ViewLibraryItems() {
     <div className='shadow card w-75 mx-auto text-center p-3 mt-5 bg-light'>
     <h1>Library Resources</h1>
 
+    
+    <Link className="btn btn-primary w-25 mt-3"
+               to={"/AdminHome/addLibararyItemForm"}>Add Announcement</Link>
+               
+
     <div>
-      <div className="container">
       
 
-    </div>
-      <div className='container p-2 mt-4 mb-4'>
+      
+
+    
+    
+      <div className=' p-2 mt-4 mb-4'>
+      
+      
         <div className='row'>
+          
+          
         <div className='shadow card mx-auto w-75'>
+
+        
 
               <table class="table table-striped">
                   <thead className='table-primary'>
