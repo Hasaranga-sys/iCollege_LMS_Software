@@ -28,7 +28,7 @@ const LoginForm = (params) => {
         } else if (res.data.role == "admin") {
           console.log("true:admin");
           // nav("/AdminHome")
-          nav("/users");
+          nav("/AdminHome");
         }
       })
       .catch((err) => {
