@@ -18,6 +18,7 @@ app.use("/Lecture", LectureRouter);
 //app.use("/resource",resour )
 app.use(cors());
 app.use("/pdf", require("./Router/LibraryItemRouter"));
+app.use("/lecture", require("./Router/LectureRouter"))
 
 mongoose
   .connect(

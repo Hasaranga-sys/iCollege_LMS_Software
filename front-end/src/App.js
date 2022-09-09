@@ -16,8 +16,7 @@ import UserList from "./Components/UserManagement/UserList";
 import LibararyItemForm from "./Components/Admin/LibararyItemForm";
 import AddLecture from "./Components/Lecture/AddLecture";
 import LectureHome from "./Components/Lecture/LectureHome";
-import ViewLecture from "./Components/Lecture/ViewLecture";
-import GetLectureById from "./Components/Lecture/GetLectureById";
+import ViewLectureT from "./Components/Lecture/ViewLectureT";
 
 function App() {
   return (
@@ -66,19 +65,16 @@ function App() {
 
             <Route path="/StudentHome" element={<StudentHome />} exact />
             <Route
-              path="/StudenHome/noticeView"
-              element={<ViewNotice />}
+              path="/LectureHome/AddLecture"
+              element={<AddLecture />}
               exact
             />
-            {/* user management */}
-            <Route path="/user/:id" element={<UserForm />} exact />
-            <Route path="/login" element={<LoginForm />} exact />
-            <Route path="/users" element={<UserList />} exact />
 
-            <Route path="/Lecture" element={<LectureHome />} exact />
-            <Route path="/Lecture/AddLecture" element={<AddLecture />} exact />
-            <Route path="/Lecture/:Id" element={<ViewLecture />} exact />
-          </Routes>
+          <Route path="/viewlecture" element={<ViewLectureT/>} exact />
+
+
+          
+        </Routes>
         </main>
       </React.Fragment>
     </div>
