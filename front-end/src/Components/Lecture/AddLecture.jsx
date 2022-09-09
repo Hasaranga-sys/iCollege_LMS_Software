@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LectureService from "../Service/LectureService";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -15,9 +15,6 @@ export default function AddLecture() {
     discription: "",
     meeting_link: "",
   });
-
-  const [year, setYear] = useState("");
-  const [semester, setSemester] = useState("");
 
   const handleChangeText = (name, value) => {
     setLecture({ ...lecture, [name]: value.target.value });
@@ -39,7 +36,7 @@ export default function AddLecture() {
 
     LectureService.createLecture(lectures)
       .then(() => {
-        navigate("/LectureHome");
+        navigate("/Lecture");
       })
       .catch((error) => {
         console.log(error);

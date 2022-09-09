@@ -16,6 +16,8 @@ import UserList from "./Components/UserManagement/UserList";
 import LibararyItemForm from "./Components/Admin/LibararyItemForm";
 import AddLecture from "./Components/Lecture/AddLecture";
 import LectureHome from "./Components/Lecture/LectureHome";
+import ViewLecture from "./Components/Lecture/ViewLecture";
+import GetLectureById from "./Components/Lecture/GetLectureById";
 
 function App() {
   return (
@@ -37,7 +39,7 @@ function App() {
             />
             <Route
               path="/AdminHome/NoticeTable/NoticeForm"
-              element={<NoticeForm/>}
+              element={<NoticeForm />}
               exact
             />
             <Route
@@ -46,24 +48,37 @@ function App() {
               exact
             />
 
-          <Route path="/AdminHome/addLibararyItemForm" element={<LibararyItemForm/>} exact/>
-          <Route path="/AdminHome/addLibararyItemForm/:id" element={<LibararyItemForm/>} exact/>
-          <Route path="/AdminHome/ViewLibararyItems" element={<ViewLibraryItems/>} exact/>
-          
-          <Route path="/StudentHome" element={<StudentHome/>} exact/>
-          <Route path="/StudenHome/noticeView" element={<ViewNotice/>} exact/>
-          {/* user management */}
-          <Route path="/user/:id" element={<UserForm/>} exact/>
-          <Route path="/login" element={<LoginForm/>} exact/>
-          <Route path="/users" element={<UserList/>} exact/>
-          <Route path="/LectureHome" element={<LectureHome />} exact />
             <Route
-              path="/LectureHome/AddLecture"
-              element={<AddLecture />}
+              path="/AdminHome/addLibararyItemForm"
+              element={<LibararyItemForm />}
               exact
             />
-          
-        </Routes>
+            <Route
+              path="/AdminHome/addLibararyItemForm/:id"
+              element={<LibararyItemForm />}
+              exact
+            />
+            <Route
+              path="/AdminHome/ViewLibararyItems"
+              element={<ViewLibraryItems />}
+              exact
+            />
+
+            <Route path="/StudentHome" element={<StudentHome />} exact />
+            <Route
+              path="/StudenHome/noticeView"
+              element={<ViewNotice />}
+              exact
+            />
+            {/* user management */}
+            <Route path="/user/:id" element={<UserForm />} exact />
+            <Route path="/login" element={<LoginForm />} exact />
+            <Route path="/users" element={<UserList />} exact />
+
+            <Route path="/Lecture" element={<LectureHome />} exact />
+            <Route path="/Lecture/AddLecture" element={<AddLecture />} exact />
+            <Route path="/Lecture/:Id" element={<ViewLecture />} exact />
+          </Routes>
         </main>
       </React.Fragment>
     </div>

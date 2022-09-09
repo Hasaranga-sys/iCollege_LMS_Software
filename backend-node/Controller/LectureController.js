@@ -10,7 +10,7 @@ const getAllLecture = async (req, res, next) => {
   if (!lectures) {
     return res.status(404).json({ message: "Not found" });
   }
-  return res.status(200).json({ lectures });
+  return res.status(200).json(lectures);
 };
 //add
 const addLecture = async (req, res, next) => {
@@ -47,34 +47,36 @@ const addLecture = async (req, res, next) => {
   if (!lecture) {
     return res.status(500).json({ message: "unable to add" });
   }
-  return res.status(201).json({ lecture });
+  return res.status(201).json(lecture);
 };
 //getByid
-// const getNoticeById = async(req,res,next)=>{
-//     const id = req.params.id;
-//     let notices;
-//     try {
-//         notices = await NoticeModel.findById(id);
-//     } catch (error) {
-//         console.log(error);
-//     }if(!notices){
-//         return res.status(404).json({message:"Not found"})
-//     }
-//     return res.status(200).json({notices})
-// }
-//     //delete
-// const DeleteNotice = async(req,res,next)=>{
-//     const id = req.params.id;
-//     let notices;
-//     try {
-//         notices = await NoticeModel.findByIdAndRemove(id);
-//     } catch (error) {
-//         console.log(error);
-//     } if(!notices){
-//         return res.status(404).json({message:"cannot delete"});
-//     }
-//     return res.status(200).json({message:`product ${id} deleted`});
-// }
+const getLectureById = async (req, res, next) => {
+  const id = req.params.id;
+  let lecture;
+  try {
+    lecture = await LectureModel.findById(id);
+  } catch (error) {
+    console.log(error);
+  }
+  if (!lecture) {
+    return res.status(404).json({ message: "Not found" });
+  }
+  return res.status(200).json(lecture);
+};
+//delete
+const DeleteLecture = async (req, res, next) => {
+  const id = req.params.id;
+  let lecture;
+  try {
+    lecture = await LectureModel.findByIdAndRemove(id);
+  } catch (error) {
+    console.log(error);
+  }
+  if (!lecture) {
+    return res.status(404).json({ message: "cannot delete" });
+  }
+  return res.status(200).json({ message: `product ${id} deleted` });
+};
 // //update
 // const updateNotice = async(req,res,next)=>{
 //     const id= req.params.id;
@@ -95,6 +97,6 @@ const addLecture = async (req, res, next) => {
 
 exports.addLecture = addLecture;
 // exports.updateNotice=updateNotice;
-// exports.DeleteNotice=DeleteNotice;
-// exports.getNoticeById=getNoticeById;
+exports.DeleteLecture = DeleteLecture;
+exports.getLectureById = getLectureById;
 exports.getAllLecture = getAllLecture;
