@@ -28,6 +28,10 @@ const NoticeTable = () => {
     })
   }
 
+  const addNotice = ()=>{
+    navigate("/AdminHome/NoticeTable/NoticeForm")
+  }
+
   return (
     <div>
       <div  className='shadow card w-75 text-center p-3 mt-5 mb-5'
@@ -40,14 +44,14 @@ const NoticeTable = () => {
       <div className='container p-1 mt-4 mb-4'>
         
         <div className='row'>
-        <div className='shadow card mx-auto w-75'>
-      <button>ds</button>
+        <div className='shadow card mx-auto w-100'>
+      <button className=' w-25 mt-2 btn btn-primary' type='button' onClick={()=>addNotice()}>Add Announcement</button>
 
               <table class="table table-striped mt-3">
                   <thead className='table-primary'>
                     <tr>
                       <th scope="col">Faculty</th>
-                      <th scope="col">Module</th>
+                      <th scope="col">Date</th>
                       <th scope="col">Topic</th>
                       <th scope="col">Notice</th>
                       <th scope="col">Action</th>
@@ -59,7 +63,7 @@ const NoticeTable = () => {
                       {notices?.map((note)=>
                       <tr key={note.id}>
                         <td>{note.faculty}</td>
-                        <td>{note.module}</td>
+                        <td>{note.date}</td>
                         <td>{note.topic}</td>
                         <td>{note.notice}</td>
                         <td><Link className='btn btn-info' to={`/AdminHome/NoticeTable/NoticeForm/${note._id}`}>Update</Link></td>

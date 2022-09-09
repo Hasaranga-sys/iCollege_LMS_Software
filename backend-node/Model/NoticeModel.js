@@ -6,7 +6,7 @@ const NoticeSchema = new Schema({
         type:String,
        
     },
-    module:{
+    date:{
         type:String,
        
     },

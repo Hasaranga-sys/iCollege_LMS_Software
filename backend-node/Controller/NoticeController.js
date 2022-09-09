@@ -13,11 +13,11 @@ const getAllNotices = async(req,res,next)=>{
 }
     //add
 const addNotice = async(req,res,next)=>{
-    const {faculty,module,topic,notice} =req.body;
+    const {faculty,date,topic,notice} =req.body;
     let notices;
     try {
         notices = new NoticeModel({
-            faculty,module,topic,notice
+            faculty,date,topic,notice
         });
         await notices.save();
     } catch (error) {
@@ -56,11 +56,11 @@ const DeleteNotice = async(req,res,next)=>{
 //update
 const updateNotice = async(req,res,next)=>{
     const id= req.params.id;
-    const {faculty,module,topic,notice}=req.body;
+    const {faculty,date,topic,notice}=req.body;
     let notices;
     try {
         notices = await NoticeModel.findByIdAndUpdate(id,{
-            faculty,module,topic,notice
+            faculty,date,topic,notice
         })    
         notices = await notices.save()
     } catch (error) {
