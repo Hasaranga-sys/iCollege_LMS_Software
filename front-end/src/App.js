@@ -37,7 +37,7 @@ function App() {
             />
             <Route
               path="/AdminHome/NoticeTable/NoticeForm"
-              element={<NoticeForm />}
+              element={<NoticeForm/>}
               exact
             />
             <Route
