@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import NoticeService from '../Service/NoticeService'
@@ -14,6 +14,14 @@ const NoticeForm = () => {
     
     const {_id}=useParams();
     const navigate=useNavigate();
+
+    useEffect(()=>{
+        if(_id){
+            NoticeService.getNoticeById(_id).then(response=>{
+                console.log(response.data.notices.faculty);
+            })
+        }
+    },[])
 
 
     const submitNotice = (e) =>{
