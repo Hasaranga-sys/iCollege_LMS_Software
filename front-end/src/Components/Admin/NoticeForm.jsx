@@ -2,15 +2,19 @@ import React from 'react'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import NoticeService from '../Service/NoticeService'
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css';
 
 const NoticeForm = () => {
     const [faculty, setFaculty] = useState("")
     const [date,setDate] = useState("")
     const [topic,setTopic] = useState("")
     const [notice,setNotice] = useState("")
+    const [calander, setCalander] = useState(new Date())
     
     const {_id}=useParams();
     const navigate=useNavigate();
+
 
     const submitNotice = (e) =>{
         e.preventDefault();
@@ -34,7 +38,7 @@ const NoticeForm = () => {
        <div className='row'>
        <div class="card  text-bg-white shadow-lg mb-3 mt-5 text-center" style={{maxWidth:900, marginLeft:180, borderRadius:30}}>  
             <div class="card-body">
-                <h5 class="card-title">Add Notice</h5>
+                <h2 class="card-title mt-1">Add Notice</h2>
                 <form onSubmit={submitNotice}>
                     <div>
                         <div className="row w-50  mx-auto mt-5">
@@ -86,6 +90,7 @@ const NoticeForm = () => {
                                 placeholder="Add Topic..."
                                 type="text"
                                 value={topic}
+                                minLength="5"
                                 onChange={(e) => {setTopic(e.target.value);}}
                                 required
                             />
@@ -101,12 +106,13 @@ const NoticeForm = () => {
                                 placeholder="Add notice...."
                                 type="text"
                                 value={notice}
+                                minLength="5"
                                 onChange={(e) => {setNotice(e.target.value);}}
                                 required
                             />
                         </div>
 
-                        <div className="row w-50 mx-auto mt-3 mb-4 ">
+                        <div className="row w-50 mx-auto mt-3 mb-4 " style={{borderRadius:30}}>
                             <input
                                 className="btn btn-primary mt-4 mx-auto shadow-lg"
                                 type="submit"
@@ -122,8 +128,9 @@ const NoticeForm = () => {
                 </form>
             </div>
             </div> 
-            <div class="card  text-bg-white shadow-lg mb-3 mt-5 text-center" style={{maxWidth:350, marginLeft:50}}>
-                dsa</div> 
+            <div class="card  text-bg-white shadow-lg mb-3 mt-5 text-center p-4" style={{maxWidth:350, marginLeft:50}}>
+                <Calendar setCalander={setCalander}
+                value={calander}></Calendar></div> 
             </div>
                        
     </div>
