@@ -18,10 +18,6 @@ const LectureSchema = new Schema({
     type: String,
     required: true,
   },
-  lecture: {
-    type: String,
-    required: true,
-  },
   date: {
     type: String,
     required: true,
@@ -35,6 +31,10 @@ const LectureSchema = new Schema({
     required: true,
   },
   meeting_link: {
+    type: String,
+    required: true,
+  },
+  pdf: {
     type: String,
     required: true,
   },

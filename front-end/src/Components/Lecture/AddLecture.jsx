@@ -15,7 +15,7 @@ export default function AddLecture() {
   const [discription, setDiscription] = useState("");
   const [meeting_link, setMeeting_link] = useState("");
   const [year, setYear] = useState("");
-  const [lecture, setLecture] = useState("");
+  // const [lecture, setLecture] = useState("");
   const [pdf, setPdf] = useState("");
 
   const clickSubmit = async (e)=>{
@@ -31,7 +31,7 @@ export default function AddLecture() {
       data.append("time",time);
       data.append("meeting_link",meeting_link);
       data.append("discription",discription);
-      data.append("lecture",lecture);
+      // data.append("lecture",lecture);
       
       for (var x = 0; x < pdf.length; x++) {
         data.append("uploaded_Image", pdf[x]);
@@ -51,11 +51,11 @@ export default function AddLecture() {
         setTime("");
         setDiscription("");
         setMeeting_link("");
-        setLecture("")
+        // setLecture("")
         setPdf(null);
 
       
-        history("/AdminHome/ViewLibararyItems");
+        history("/viewlectures");
       }
 
 
@@ -149,8 +149,8 @@ export default function AddLecture() {
                         name="topic"
                         className="form-control"
                         title="Name should only contain lowercase or uppercase letters. e.g. john"
-                        value={lecture}
-                          onChange={(e) => setLecture(e.target.value)}
+                        value={topic}
+                          onChange={(e) => setTopic(e.target.value)}
                       />
                     </div>
                   </div>

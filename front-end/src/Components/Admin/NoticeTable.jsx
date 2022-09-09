@@ -33,18 +33,19 @@ const NoticeTable = () => {
   }
 
   return (
-    <div>
+    <div className="p-3">
       <div
-        className="shadow card w-75 text-center p-3 mt-5 mb-5"
-        style={{ marginLeft: 80, borderRadius: 30 }}
+        className="shadow card w-100 text-center p-3 mt-5 mb-5"
+        style={{borderRadius: 30 }}
       >
         <h1>Announcements</h1>
 
         <div>
           <div className="container p-1 mt-4 mb-4">
             <div className="row">
-              <div className="shadow card mx-auto w-75">
-                <button>ds</button>
+              <div className="shadow card mx-auto w-100">
+              <Link className="btn btn-primary w-25 mt-3"
+               to={"/AdminHome/NoticeTable/NoticeForm"}>Add Announcement</Link>
 
                 <table class="table table-striped mt-3">
                   <thead className="table-primary">

@@ -30,7 +30,7 @@ const ViewLectureT = () => {
   return (
     <div>
         <div className='shadow card w-75 mx-auto text-center p-3 mt-5 bg-light'>
-    <h1>Library Resources</h1>
+    <h1>Lecture Info</h1>
 
     <div>
       <div className="container">
@@ -71,7 +71,7 @@ const ViewLectureT = () => {
                         <td>{pdf.lecture}</td>
                         <td>{pdf.topic}</td>
                         <td>{pdf.subject}</td>
-                        <td>{ <a href={pdf.pdf} download>{pdf.subject}</a>}</td>
+                        <td>{ <a href={pdf.pdf} download>{pdf.topic}</a>}</td>
                         <td>
                              <button className="btn btn-danger"onClick={() => {deleteClicked(pdf._id);}}>delete</button>
                         </td>

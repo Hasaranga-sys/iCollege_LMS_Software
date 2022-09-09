@@ -70,7 +70,7 @@ router.post("/", upload.array('uploaded_Image', 10), async(req,res)=>{
         time  :req.body.time,
         discription  :req.body.discription,
         meeting_link  :req.body.meeting_link,
-        lecture  :req.body.lecture,
+        
         // avatar:img.secure_url,
         pdf : pdff.secure_url,
         // cloudinary_id_img: img.public_id,

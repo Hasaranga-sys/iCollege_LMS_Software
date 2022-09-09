@@ -27,50 +27,33 @@ function App() {
         </header>
         <main>
           <Routes>
-            <Route path="/" element={<Home />} exact />
+            <Route path="/" element={<LoginForm/>} exact />
 
             {/* admin */}
             <Route path="/AdminHome" element={<AdminHome />} exact />
-            <Route
-              path="/AdminHome/NoticeTable"
-              element={<NoticeTable />}
-              exact
-            />
-            <Route
-              path="/AdminHome/NoticeTable/NoticeForm"
-              element={<NoticeForm />}
-              exact
-            />
-            <Route
-              path="/AdminHome/NoticeTable/NoticeForm/:_id"
-              element={<NoticeForm />}
-              exact
-            />
+            <Route path="/AdminHome/NoticeTable" element={<NoticeTable />} exact/>
+            <Route path="/AdminHome/NoticeTable/NoticeForm" element={<NoticeForm />} exact/>
+            <Route path="/AdminHome/NoticeTable/NoticeForm/:_id" element={<NoticeForm />} exact/>
 
-            <Route
-              path="/AdminHome/addLibararyItemForm"
-              element={<LibararyItemForm />}
-              exact
-            />
-            <Route
-              path="/AdminHome/addLibararyItemForm/:id"
-              element={<LibararyItemForm />}
-              exact
-            />
-            <Route
-              path="/AdminHome/ViewLibararyItems"
-              element={<ViewLibraryItems />}
-              exact
-            />
+            <Route path="/AdminHome/addLibararyItemForm" element={<LibararyItemForm />} exact  />
+            <Route path="/AdminHome/addLibararyItemForm/:id" element={<LibararyItemForm />}  exact  />
+            <Route path="/AdminHome/ViewLibararyItems" element={<ViewLibraryItems />} exact />
 
             <Route path="/StudentHome" element={<StudentHome />} exact />
-            <Route
-              path="/LectureHome/AddLecture"
-              element={<AddLecture />}
-              exact
-            />
 
-          <Route path="/viewlecture" element={<ViewLectureT/>} exact />
+            {/* Lecture */}
+            <Route path="/LectureHome/AddLecture"  element={<AddLecture />} exact/>
+            <Route path="/viewlecture" element={<ViewLectureT/>} exact />
+
+            {/* user management */}
+            <Route path="/user/:id" element={<UserForm />} exact />
+            <Route path="/login" element={<LoginForm />} exact />
+            <Route path="/users" element={<UserList />} exact />
+
+            <Route path="/Lecture" element={<LectureHome />} exact />
+            {/* <Route path="/Lecture/AddLecture" element={<AddLecture />} exact />
+            <Route path="/Lecture/:Id" element={<ViewLectureT />} exact /> */}
+
 
 
           
