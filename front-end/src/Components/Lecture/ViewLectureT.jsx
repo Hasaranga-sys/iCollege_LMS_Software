@@ -1,16 +1,14 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
-import LibraryService from '../Service/LibraryService';
-import LibararyItemForm from './LibararyItemForm';
-import Swal from "sweetalert2";
-import { useNavigate, Link } from "react-router-dom";
 
-function ViewLibraryItems() {
-  const [pdfs, setPdfs] = useState()
+import Swal from "sweetalert2";
+
+const ViewLectureT = () => {
+    const [pdfs, setPdfs] = useState()
 
   useEffect(()=>{
     const fetchFilers = async () =>{
-      const res = await fetch(`http://localhost:5000/pdf`);
+      const res = await fetch(`http://localhost:5000/lecture`);
       const data = await res.json();
       setPdfs(data);
     };
@@ -25,45 +23,36 @@ function ViewLibraryItems() {
   // };
 
   const deleteClicked = (id) => {
-    Swal.fire(" succesfully deleted");
-    LibraryService.deleteItem(id).then((res)=>{
-      setPdfs(pdfs.filter((pdfs) => pdfs._id !== id))
-    });
+
    
   };
 
-  
   return (
-    <div className='shadow card w-75 mx-auto text-center p-3 mt-5 bg-light'>
-    <h1>Library Resources</h1>
-
-    
-    <Link style={{marginLeft:148}} className="btn btn-primary w-25 mt-3"
-               to={"/AdminHome/addLibararyItemForm"}>Add Libraray </Link>
-               
+    <div>
+        <div className='shadow card w-75 mx-auto text-center p-3 mt-5 bg-light'>
+    <h1>Lecture Info</h1>
 
     <div>
+      <div className="container">
       
 
-      
-
-    
-    
-      <div className=' p-2 mt-4 mb-4'>
-      
-      
+    </div>
+      <div className='container p-2 mt-4 mb-4'>
         <div className='row'>
-          
-          
         <div className='shadow card mx-auto w-75'>
-
-        
 
               <table class="table table-striped">
                   <thead className='table-primary'>
                     <tr>
-                      <th scope="col">Faculty</th>
+                      
                       <th scope="col">Year</th>
+                      <th scope="col">Semester</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Time</th>
+                      <th scope="col">Meeting Link</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Lecture</th>
+                      <th scope="col">Topic</th>
                       <th scope="col">Subject</th>
                       <th scope="col">Document</th>
                       <th scope="col">Actions</th>
@@ -73,10 +62,16 @@ function ViewLibraryItems() {
                     <tbody>
                       {pdfs?.map((pdf)=>
                       <tr key={pdf.id}>
-                        <td>{pdf.faculty}</td>
                         <td>{pdf.year}</td>
+                        <td>{pdf.semester}</td>
+                        <td>{pdf.date}</td>
+                        <td>{pdf.time}</td>
+                        <td>{pdf.meeting_link}</td>
+                        <td>{pdf.discription}</td>
+                        <td>{pdf.lecture}</td>
+                        <td>{pdf.topic}</td>
                         <td>{pdf.subject}</td>
-                        <td>{ <a href={pdf.pdf} download>{pdf.subject}</a>}</td>
+                        <td>{ <a href={pdf.pdf} download>{pdf.topic}</a>}</td>
                         <td>
                              <button className="btn btn-danger"onClick={() => {deleteClicked(pdf._id);}}>delete</button>
                         </td>
@@ -97,7 +92,9 @@ function ViewLibraryItems() {
 
 
 </div>
+
+    </div>
   )
 }
 
-export default ViewLibraryItems
+export default ViewLectureT

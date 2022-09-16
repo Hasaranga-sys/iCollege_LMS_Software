@@ -12,7 +12,7 @@ const LectureSchema = new Schema({
   },
   topic: {
     type: String,
-    required: true,
+    
   },
   subject: {
     type: String,
@@ -34,6 +34,16 @@ const LectureSchema = new Schema({
     type: String,
     required: true,
   },
+  pdf: {
+    type: String,
+    required: true,
+  },
+  cloudinary_id_img:{
+    type: String,
+},
+cloudinary_id_pdf:{
+    type: String,
+},
   // slide: {
   //   type: String,
   //   required: true,

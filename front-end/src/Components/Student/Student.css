@@ -1,0 +1,16 @@
+.hero-image{
+    background-image: url("https://www.chegg.com/study-101/wp-content/uploads/sites/7/2017/09/hero_study101.jpg");
+    height: 500;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.hero-text{
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}

@@ -12,12 +12,13 @@ app.use(express.json());
 app.use(cors());
 app.use("/notice", router);
 app.use("/user", userRouter);
-app.use("/lecture", LectureRouter);
+app.use("/Lecture", LectureRouter);
 
 // app.use("/libarary", libraryItemRouter);
 //app.use("/resource",resour )
 app.use(cors());
 app.use("/pdf", require("./Router/LibraryItemRouter"));
+app.use("/lecture", require("./Router/LectureRouter"))
 
 mongoose
   .connect(
