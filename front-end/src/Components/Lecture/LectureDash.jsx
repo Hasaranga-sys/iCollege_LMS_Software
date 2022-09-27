@@ -17,7 +17,7 @@ const LectureDash = () => {
           <div class="card-block">
           <img style={{height: 130, width: 130}} class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/2967/2967357.png" alt="Card image cap"/>
             <h4 class="card-title"></h4>
-            <Link className='btn btn-primary' to={"/AdminHome/NoticeTable"}>Announcements</Link>       
+            <Link className='btn btn-primary' to={"/AdminHome/NoticeTable"}>Add</Link>       
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import NoticeService from "../Service/NoticeService";
+import Swal from "sweetalert2";
 
 const NoticeTable = () => {
   const [notices, setNotices] = useState([]);
@@ -21,6 +22,11 @@ const NoticeTable = () => {
   const deleteNotice = (noticeId) => {
     NoticeService.deleteNotice(noticeId)
       .then((res) => {
+        Swal.fire(
+          "Deleted",
+          "Notice Deleted Successfully",
+          "success"
+          );
         getAllNotices();
       })
       .catch((error) => {

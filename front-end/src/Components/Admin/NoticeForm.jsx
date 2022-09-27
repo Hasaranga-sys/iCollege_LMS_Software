@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import NoticeService from '../Service/NoticeService'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
-
+import Swal from "sweetalert2";
 const NoticeForm = () => {
     const [faculty, setFaculty] = useState("")
     const [date,setDate] = useState("")
@@ -34,6 +34,11 @@ const NoticeForm = () => {
             })                      
         }else{
             NoticeService.createNotice(notices).then((response)=>{
+                Swal.fire(
+                    "Success",
+                    "Notice Added Successfully",
+                    "success"
+                    );
                 navigate("/AdminHome/NoticeTable")
             }).catch(error =>{
                 console.log(error);
@@ -114,7 +119,7 @@ const NoticeForm = () => {
                                 placeholder="Add notice...."
                                 type="text"
                                 value={notice}
-                                minLength="5"
+                                minLength="6"
                                 onChange={(e) => {setNotice(e.target.value);}}
                                 required
                             />
