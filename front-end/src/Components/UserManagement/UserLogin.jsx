@@ -29,15 +29,18 @@ const LoginForm = (params) => {
           console.log("true:admin");
           // nav("/AdminHome")
           nav("/AdminHome");
+        } else if (res.data.role == "lecture") {
+          console.log("true:lecture");
+          // nav("/AdminHome")
+          // nav("/users");
         }
       })
       .catch((err) => {
         Swal.fire({
-          icon: 'error',
-          title: 'Login Failed',
-          text: 'User Name OR Password In correct!',
-          
-        })
+          icon: "error",
+          title: "Login Failed",
+          text: "User Name OR Password In correct!",
+        });
         console.log("failed");
       });
     // nav("/students")
@@ -53,7 +56,9 @@ const LoginForm = (params) => {
       <div className="shadow card col-md-6 offset-md-3 offset-md-3">
         <div className="card-body">
           <div>
-            <center><h1>Login</h1></center>
+            <center>
+              <h1>Login</h1>
+            </center>
           </div>
 
           <form onSubmit={submitClicked}>

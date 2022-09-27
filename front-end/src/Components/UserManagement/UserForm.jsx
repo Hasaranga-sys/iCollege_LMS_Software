@@ -112,7 +112,9 @@ const UserForm = (params) => {
       <div className="shadow card col-md-8 offset-md-2 offset-md-2">
         <div className="card-body">
           <div>
-            <center><h1>{status} User</h1></center>
+            <center>
+              <h1>{status} User</h1>
+            </center>
           </div>
           <form onSubmit={submitClicked}>
             <br></br>
@@ -204,8 +206,8 @@ const UserForm = (params) => {
                 </label>
                 <div className="col-sm-8">
                   <input
-                    minlength="5"
-                    maxlength="5"
+                    minlength="7"
+                    maxlength="7"
                     type="text"
                     className="form-control"
                     value={regNumber}
