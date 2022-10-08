@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 const NoticeTable = () => {
   const [notices, setNotices] = useState([]);
+  const [search, setSearch] = useState("")
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,9 +51,17 @@ const NoticeTable = () => {
           <div className="container p-1 mt-4 mb-4">
             <div className="row">
               <div className="shadow card mx-auto w-100">
-              <Link className="btn btn-primary w-25 mt-3"
-               to={"/AdminHome/NoticeTable/NoticeForm"}>Add Announcement</Link>
+              <div className=" container row  mx-1">
 
+                <Link className="btn btn-primary w-25 mt-3"
+               to={"/AdminHome/NoticeTable/NoticeForm"}>Add Announcement</Link>
+                 
+           <input type="text" placeholder="Search By Notice" className="form-control mt-3"
+             style={{width: "17%",marginLeft:570}} onChange={(e) => {setSearch(e.target.value); }} />
+
+            <input type="date" placeholder="Search By Notice" className="form-control mt-3 mx-2 "
+             style={{width: "12%"}} onChange={(e) => {setSearch(e.target.value); }} />
+    </div>
                 <table class="table table-striped mt-3">
                   <thead className="table-primary">
                     <tr>
@@ -65,7 +74,17 @@ const NoticeTable = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {notices?.map((note) => (
+                    {notices?.filter((value) => {
+            if (search === "") {
+              return value;
+            } else if (
+              //value.id.toString(includes(search))
+              value.date.toLowerCase().includes(search.toLowerCase()) || value.topic.toLowerCase().includes(search.toLowerCase())
+            ) {
+              return value;
+            }
+            return 0;
+}).map((note) => (
                       <tr key={note.id}>
                         <td>{note.faculty}</td>
                         <td>{note.date}</td>

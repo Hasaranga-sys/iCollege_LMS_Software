@@ -16,7 +16,7 @@ class NoticeService{
         return axios.put(URL + '/' + noticeId,notice);
     }
     getNoticeById(_id){
-        return axios.get(URL + '/' + _id).then((res)=>res.data)
+        return axios.get(URL + '/' + _id).then((resopnse)=>resopnse.data)
     }
 }
 export default new NoticeService();

@@ -83,9 +83,9 @@ const StudentHome = () => {
       
       <div className='row'>
       <ViewNotice/>
-
+{/* 
         <div class="card  text-bg-white shadow-lg mb-3 mt-5 text-center p-4" style={{maxWidth:350, marginLeft:50}}>
-                </div> 
+                </div>  */}
       
       </div>
       {/* <Link to="/StudenHome/noticeView">
