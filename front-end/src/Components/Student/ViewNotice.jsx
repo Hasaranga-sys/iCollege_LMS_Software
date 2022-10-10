@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 
 const ViewNotice = () => {
   const [notices, setNotices] = useState([]);
+  const [search, setSearch] = useState("")
+  const [searchD, setSearchD] = useState("")
 
   useEffect(() => {
     getAllNotices();
@@ -22,10 +24,27 @@ const ViewNotice = () => {
       <div className="card text-bg-white w-75 shadow-lg mb-5 mt-5"
        style={{marginLeft:50,borderRadius: 30}}>
        <h2 class="card-title mx-auto mt-3">Notice</h2>
-      
+
+    <div className=" container row">
+       <input type="text" placeholder="Search By Notice" className="form-control mx-5 mt-3"
+             style={{width: "30%" }} onChange={(e) => {setSearch(e.target.value); }} />
+
+        <input type="date" placeholder="Search By Notice" className="form-control mt-3"
+             style={{width: "20%" , marginLeft:"39%"}} onChange={(e) => {setSearch(e.target.value); }} />
+    </div>
        <div className="mt-2 mb-5">
         {
-          notices?.map((note)=><div className="card w-85 mx-5 mt-2 mb-2 shadow-lg" key={note.id}>
+          notices?.filter((value) => {
+            if (search === "") {
+              return value;
+            } else if (
+              //value.id.toString(includes(search))
+              value.date.toLowerCase().includes(search.toLowerCase()) || value.topic.toLowerCase().includes(search.toLowerCase())
+            ) {
+              return value;
+            }
+            return 0;
+}).map((note)=><div className="card w-85 mx-5 mt-2 mb-2 shadow-lg" key={note.id}>
             
           <div className="card-body">        
            <div className='row'>

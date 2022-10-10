@@ -3,9 +3,12 @@ import { useState,useEffect } from 'react'
 import LibraryService from '../Service/LibraryService';
 import LibararyItemForm from './LibararyItemForm';
 import Swal from "sweetalert2";
+import { useNavigate, Link } from "react-router-dom";
+import { Row } from 'react-bootstrap';
 
 function ViewLibraryItems() {
-  const [pdfs, setPdfs] = useState()
+  const [pdfs, setPdfs] = useState();
+  const [search, setSearch] = useState("");
 
   useEffect(()=>{
     const fetchFilers = async () =>{
@@ -36,14 +39,44 @@ function ViewLibraryItems() {
     <div className='shadow card w-75 mx-auto text-center p-3 mt-5 bg-light'>
     <h1>Library Resources</h1>
 
+    <Row>
+    <Link style={{marginLeft:20}} className="btn btn-primary w-25 mt-3"
+               to={"/AdminHome/addLibararyItemForm"}>Add Libraray </Link>
+
+<input type="text" placeholder="search by " className="form-control" style={{
+                         marginTop:20, marginBottom:5,marginLeft:200, width:"20%"}}
+                         onChange={
+                             (e)=>{
+                                setSearch(e.target.value)}}/>
+                                {/* <i className="search icon"></i> */}
+               
+               </Row>
+
+        
+
+    
+
+         
+               
+               
+
     <div>
-      <div className="container">
       
 
-    </div>
-      <div className='container p-2 mt-4 mb-4'>
+      
+
+  
+      <div className=' p-2 mt-4 mb-4'>
+        
+      
+      <br/>
+      
         <div className='row'>
+          
+          
         <div className='shadow card mx-auto w-75'>
+
+        
 
               <table class="table table-striped">
                   <thead className='table-primary'>
@@ -57,7 +90,23 @@ function ViewLibraryItems() {
                     </tr>
                     </thead>
                     <tbody>
-                      {pdfs?.map((pdf)=>
+
+
+                    { pdfs?.filter((value)=>
+                                {
+                                    if(search===""){
+                                        return value
+                                    }else if(
+                                        //  value.pid.toString(includes(search)) ||
+                                         value.faculty.toLowerCase().includes(search.toLowerCase())
+                                    ){
+                                        return value
+                                    }
+                                    return 0;
+                                })       
+
+
+                                .map((pdf)=>
                       <tr key={pdf.id}>
                         <td>{pdf.faculty}</td>
                         <td>{pdf.year}</td>

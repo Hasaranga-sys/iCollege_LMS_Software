@@ -19,6 +19,8 @@ import LectureHome from "./Components/Lecture/LectureHome";
 import ViewLecture from "./Components/Lecture/ViewLecture";
 import GetLectureById from "./Components/Lecture/GetLectureById";
 import LectureDash from "./Components/Lecture/LectureDash";
+import ViewLectureT from "./Components/Lecture/ViewLectureT";
+import StudentViewLibraryItem from "./Components/Student/StudentViewLibraryItem";
 
 function App() {
   return (
@@ -32,7 +34,7 @@ function App() {
             <Route path="/" element={<LoginForm />} exact />
 
             {/* admin */}
-            <Route path="/LectureHome" element={<AdminHome />} exact />
+            <Route path="/AdminHome" element={<AdminHome />} exact />
             <Route
               path="/AdminHome/NoticeTable"
               element={<NoticeTable />}
@@ -66,6 +68,11 @@ function App() {
             />
 
             <Route path="/StudentHome" element={<StudentHome />} exact />
+            <Route
+              path="/StudentHome/viewLibrarayItem"
+              element={<StudentViewLibraryItem />}
+              exact
+            />
 
             {/* Lecture */}
             <Route
@@ -73,14 +80,14 @@ function App() {
               element={<AddLecture />}
               exact
             />
-            {/* <Route path="/viewlecture" element={<ViewLectureT />} exact /> */}
+            <Route path="/viewlecture" element={<ViewLectureT />} exact />
 
             {/* user management */}
             <Route path="/user/:id" element={<UserForm />} exact />
             <Route path="/login" element={<LoginForm />} exact />
             <Route path="/users" element={<UserList />} exact />
 
-            <Route path="/Lecture" element={<LectureHome />} exact />
+            {/* <Route path="/Lecture" element={<LectureHome />} exact /> */}
             {/* <Route path="/Lecture/AddLecture" element={<AddLecture />} exact />
             <Route path="/Lecture/:Id" element={<ViewLectureT />} exact /> */}
 

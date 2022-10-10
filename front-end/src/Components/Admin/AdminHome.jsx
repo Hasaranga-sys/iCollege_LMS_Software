@@ -9,7 +9,7 @@ const AdminHome = () => {
     >
       <div className=" card border ">
         <h2 style={{ borderRadius: 30, textAlign: "center" }}>
-          Lecture Home Page
+          Admin Dashboard
         </h2>
 
         <div class="py-5 ">
@@ -21,15 +21,15 @@ const AdminHome = () => {
                     <img
                       style={{ height: 130, width: 130 }}
                       class="card-img-top"
-                      src="https://cdn-icons-png.flaticon.com/512/2641/2641310.png"
+                      src="https://cdn-icons-png.flaticon.com/512/2967/2967357.png"
                       alt="Card image cap"
                     />
                     <h4 class="card-title"></h4>
                     <Link
                       className="btn btn-primary"
-                      to={"/Lecture/AddLecture"}
+                      to={"/AdminHome/NoticeTable"}
                     >
-                      Add Lectures
+                      Announcements
                     </Link>
                   </div>
                 </div>
@@ -45,8 +45,31 @@ const AdminHome = () => {
                       alt="Card image cap"
                     />
                     <h4 class="card-title"></h4>
-                    <Link className="btn btn-primary" to={"/Lecture"}>
-                      Lecture schedule
+                    <Link
+                      className="btn btn-primary"
+                      to={"/AdminHome/ViewLibararyItems"}
+                    >
+                      E-Library
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3 mx-auto ">
+                <div style={{ height: 190 }} class="card text-center shadow-lg">
+                  <div class="card-block">
+                    <img
+                      style={{ height: 130, width: 130 }}
+                      class="card-img-top"
+                      src="https://cdn-icons-png.flaticon.com/512/476/476863.png"
+                      alt="Card image cap"
+                    />
+                    <h4 class="card-title"></h4>
+                    <Link
+                      className="btn btn-primary"
+                      to={"/AdminHome/NoticeTable"}
+                    >
+                      User Management
                     </Link>
                   </div>
                 </div>

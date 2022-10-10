@@ -30,9 +30,9 @@ const LoginForm = (params) => {
           // nav("/AdminHome")
           nav("/AdminHome");
         } else if (res.data.role == "lecture") {
-          console.log("true:admin");
+          console.log("true:lecture");
           // nav("/AdminHome")
-          nav("/LectureHome");
+          // nav("/users");
         }
       })
       .catch((err) => {

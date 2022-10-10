@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import NoticeService from '../Service/NoticeService'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
-
+import Swal from "sweetalert2";
 const NoticeForm = () => {
     const [faculty, setFaculty] = useState("")
     const [date,setDate] = useState("")
@@ -14,6 +14,17 @@ const NoticeForm = () => {
     
     const {_id}=useParams();
     const navigate=useNavigate();
+
+    useEffect(()=>{
+        if(_id){
+            NoticeService.getNoticeById(_id).then(response=>{
+                setTopic(response.notices.topic);
+                setFaculty(response.notices.faculty);
+                setDate(response.notices.date);
+                setNotice(response.notices.notice);
+            })
+        }
+    },[])
 
 
     const submitNotice = (e) =>{
@@ -26,6 +37,11 @@ const NoticeForm = () => {
             })                      
         }else{
             NoticeService.createNotice(notices).then((response)=>{
+                Swal.fire(
+                    "Success",
+                    "Notice Added Successfully",
+                    "success"
+                    );
                 navigate("/AdminHome/NoticeTable")
             }).catch(error =>{
                 console.log(error);
@@ -46,11 +62,11 @@ const NoticeForm = () => {
 
                             <select class="form-select w-75"
                                     aria-label="Default select example"
-                                    value={faculty.value}
+                                    value={faculty.value  }
                                     required
                                     placeholder='SelectFaculty..'
                                     onChange={(e) => {setFaculty(e.target.value);}}>
-                                    <option value="">select Faculty</option>
+                                    <option value=""> </option>
                                     <option value="Faculty of Computing">Faculty of Computing</option>
                                     <option value="Faculty of Business">Faculty of Business</option>
                                     <option value="Faculty of Engineering">Faculty of Engineering</option>
@@ -106,7 +122,7 @@ const NoticeForm = () => {
                                 placeholder="Add notice...."
                                 type="text"
                                 value={notice}
-                                minLength="5"
+                                minLength="6"
                                 onChange={(e) => {setNotice(e.target.value);}}
                                 required
                             />

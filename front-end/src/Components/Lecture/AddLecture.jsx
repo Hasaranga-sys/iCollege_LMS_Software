@@ -5,44 +5,59 @@ import swal from "sweetalert2";
 
 export default function AddLecture() {
   const mystyle = { backgroundColor: "#FAFAFA" };
-  const navigate = useNavigate();
-  const [lecture, setLecture] = useState({
-    year: "",
-    semester: "",
-    topic: "",
-    subject: "",
-    date: "",
-    time: "",
-    discription: "",
-    meeting_link: "",
-  });
+  const history = useNavigate();
 
-  const handleChangeText = (name, value) => {
-    setLecture({ ...lecture, [name]: value.target.value });
-    console.log(lecture);
-  };
+  const [semester, setSemester] = useState("");
+  const [topic, setTopic] = useState("");
+  const [subject, setSubject] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [discription, setDiscription] = useState("");
+  const [meeting_link, setMeeting_link] = useState("");
+  const [year, setYear] = useState("");
+  // const [lecture, setLecture] = useState("");
+  const [pdf, setPdf] = useState("");
 
-  const addLecture = (e) => {
-    e.preventDefault();
-    const lectures = {
-      year: lecture.year,
-      semester: lecture.semester,
-      topic: lecture.topic,
-      subject: lecture.subject,
-      date: lecture.date,
-      time: lecture.time,
-      discription: lecture.discription,
-      meeting_link: lecture.meeting_link,
-    };
+  const clickSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const data = new FormData();
 
-    LectureService.createLecture(lectures)
-      .then(() => {
-        swal.fire(` succesfully added`);
-        navigate("/Lecture");
-      })
-      .catch((error) => {
-        console.log(error);
+      data.append("year", year);
+      data.append("subject", subject);
+      data.append("semester", semester);
+      data.append("topic", topic);
+      data.append("date", date);
+      data.append("time", time);
+      data.append("meeting_link", meeting_link);
+      data.append("discription", discription);
+      // data.append("lecture",lecture);
+
+      for (var x = 0; x < pdf.length; x++) {
+        data.append("uploaded_Image", pdf[x]);
+      }
+
+      const res = await fetch(`http://localhost:5000/lecture`, {
+        method: "POST",
+        body: data,
       });
+      if (res.ok) {
+        setYear("");
+        setSubject("");
+        setSemester("");
+        setTopic("");
+        setDate("");
+        setTime("");
+        setDiscription("");
+        setMeeting_link("");
+        // setLecture("")
+        setPdf(null);
+
+        history("/viewlectures");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -56,7 +71,7 @@ export default function AddLecture() {
             >
               <h3 style={{ paddingTop: 15, paddingLeft: 20 }}>ADD LECTURES</h3>
               <div className="card-body">
-                <form onSubmit={addLecture}>
+                <form onSubmit={clickSubmit}>
                   <div className="row form-group pb-4">
                     <div className="col-lg-3 col-md-6">
                       <label> Year and semester: </label>
@@ -67,7 +82,8 @@ export default function AddLecture() {
                           name="year"
                           className="form-control"
                           required
-                          onChange={(val) => handleChangeText("year", val)}
+                          value={year}
+                          onChange={(e) => setYear(e.target.value)}
                         >
                           <option selected>Select year</option>
                           <option value="1st Year">1st Year</option>
@@ -76,12 +92,13 @@ export default function AddLecture() {
                           <option value="4th Year">4th Year</option>
                         </select>
                       </div>
+
                       <div className=" col-lg-6">
                         <select
                           name="semester"
                           className="form-control"
-                          required
-                          onChange={(val) => handleChangeText("semester", val)}
+                          value={semester}
+                          onChange={(e) => setSemester(e.target.value)}
                         >
                           <option selected>Select Semester</option>
                           <option value="1st Semester">1st Semester</option>
@@ -110,9 +127,9 @@ export default function AddLecture() {
                         placeholder="Enter subject"
                         name="subject"
                         className="form-control"
-                        title="Subject must be required"
-                        required
-                        onChange={(val) => handleChangeText("subject", val)}
+                        title="Name should only contain lowercase or uppercase letters. e.g. john"
+                        value={subject}
+                        onChange={(e) => setSubject(e.target.value)}
                       />
                     </div>
                   </div>
@@ -125,9 +142,9 @@ export default function AddLecture() {
                         placeholder="Enter Topic"
                         name="topic"
                         className="form-control"
-                        title="Topic must be required"
-                        required
-                        onChange={(val) => handleChangeText("topic", val)}
+                        title="Name should only contain lowercase or uppercase letters. e.g. john"
+                        value={topic}
+                        onChange={(e) => setTopic(e.target.value)}
                       />
                     </div>
                   </div>
@@ -141,9 +158,9 @@ export default function AddLecture() {
                           placeholder="Enter date"
                           type="date"
                           className="form-control"
-                          title="Data must be required"
-                          required
-                          onChange={(val) => handleChangeText("date", val)}
+                          title="Name should only contain lowercase or uppercase letters. e.g. john"
+                          value={date}
+                          onChange={(e) => setDate(e.target.value)}
                         />
                       </div>
                       <div className=" col-lg-6">
@@ -151,9 +168,9 @@ export default function AddLecture() {
                           placeholder="Enter time"
                           type="time"
                           className="form-control"
-                          title="Time must be required"
-                          required
-                          onChange={(val) => handleChangeText("time", val)}
+                          title="Name should only contain lowercase or uppercase letters. e.g. john"
+                          value={time}
+                          onChange={(e) => setTime(e.target.value)}
                         />
                       </div>
                     </div>
@@ -168,7 +185,8 @@ export default function AddLecture() {
                         name="firstName"
                         className="form-control"
                         title="Name should only contain lowercase or uppercase letters. e.g. john"
-                        onChange={(val) => handleChangeText("discription", val)}
+                        value={discription}
+                        onChange={(e) => setDiscription(e.target.value)}
                       />
                     </div>
                   </div>
@@ -181,11 +199,9 @@ export default function AddLecture() {
                         placeholder="Meeting Link"
                         name="firstName"
                         className="form-control"
-                        title="Link must be required"
-                        required
-                        onChange={(val) =>
-                          handleChangeText("meeting_link", val)
-                        }
+                        title="Name should only contain lowercase or uppercase letters. e.g. john"
+                        value={meeting_link}
+                        onChange={(e) => setMeeting_link(e.target.value)}
                       />
                     </div>
                   </div>
@@ -196,10 +212,13 @@ export default function AddLecture() {
                     <div className="col-lg-9 col-md-7">
                       <input
                         type="file"
-                        placeholder="First Name"
-                        name="firstName"
+                        multiple
+                        required
+                        filename="uploaded_Image"
                         className="form-control"
-                        title="Name should only contain lowercase or uppercase letters. e.g. john"
+                        onChange={(e) => {
+                          setPdf(e.target.files);
+                        }}
                       />
                     </div>
                   </div>
@@ -214,12 +233,18 @@ export default function AddLecture() {
                         name="firstName"
                         className="form-control"
                         title="Name should only contain lowercase or uppercase letters. e.g. john"
+                        value={year}
+                          onChange={(e) => setYear(e.target.value)}
                       />
                     </div>
                   </div> */}
 
                   <div>
-                    <button className="btn btn-success" type="submit">
+                    <button type="submit" className="btn btn-primary">
+                      Submit
+                    </button>
+
+                    {/* <button className="btn btn-success" type="submit">
                       Save
                     </button>
                     <button
@@ -228,7 +253,7 @@ export default function AddLecture() {
                       onClick={() => navigate("/Lecture")}
                     >
                       Cancel
-                    </button>
+                    </button> */}
                   </div>
                 </form>
               </div>
