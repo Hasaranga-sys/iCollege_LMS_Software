@@ -24,7 +24,7 @@ export default function LectureHome() {
       setShow(true);
     });
   };
-
+  //moda hasa
   const deleteLecture = async (id) => {
     await LectureService.deleteLecture(id)
       .then((res) => {
