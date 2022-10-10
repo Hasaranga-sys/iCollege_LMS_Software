@@ -6,5 +6,5 @@
 }
 
 .grid > div {
-  flex-basis: calc(50% - 40px);
+  flex-basis: calc(30% - 20px);
 }

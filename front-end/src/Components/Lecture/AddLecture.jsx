@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LectureService from "../Service/LectureService";
 import { useNavigate, useParams } from "react-router-dom";
+import swal from "sweetalert2";
 
 export default function AddLecture() {
   const mystyle = { backgroundColor: "#FAFAFA" };
@@ -36,6 +37,7 @@ export default function AddLecture() {
 
     LectureService.createLecture(lectures)
       .then(() => {
+        swal.fire(` succesfully added`);
         navigate("/Lecture");
       })
       .catch((error) => {
@@ -78,6 +80,7 @@ export default function AddLecture() {
                         <select
                           name="semester"
                           className="form-control"
+                          required
                           onChange={(val) => handleChangeText("semester", val)}
                         >
                           <option selected>Select Semester</option>
@@ -107,7 +110,8 @@ export default function AddLecture() {
                         placeholder="Enter subject"
                         name="subject"
                         className="form-control"
-                        title="Name should only contain lowercase or uppercase letters. e.g. john"
+                        title="Subject must be required"
+                        required
                         onChange={(val) => handleChangeText("subject", val)}
                       />
                     </div>
@@ -121,7 +125,8 @@ export default function AddLecture() {
                         placeholder="Enter Topic"
                         name="topic"
                         className="form-control"
-                        title="Name should only contain lowercase or uppercase letters. e.g. john"
+                        title="Topic must be required"
+                        required
                         onChange={(val) => handleChangeText("topic", val)}
                       />
                     </div>
@@ -136,7 +141,8 @@ export default function AddLecture() {
                           placeholder="Enter date"
                           type="date"
                           className="form-control"
-                          title="Name should only contain lowercase or uppercase letters. e.g. john"
+                          title="Data must be required"
+                          required
                           onChange={(val) => handleChangeText("date", val)}
                         />
                       </div>
@@ -145,7 +151,8 @@ export default function AddLecture() {
                           placeholder="Enter time"
                           type="time"
                           className="form-control"
-                          title="Name should only contain lowercase or uppercase letters. e.g. john"
+                          title="Time must be required"
+                          required
                           onChange={(val) => handleChangeText("time", val)}
                         />
                       </div>
@@ -174,7 +181,8 @@ export default function AddLecture() {
                         placeholder="Meeting Link"
                         name="firstName"
                         className="form-control"
-                        title="Name should only contain lowercase or uppercase letters. e.g. john"
+                        title="Link must be required"
+                        required
                         onChange={(val) =>
                           handleChangeText("meeting_link", val)
                         }
@@ -195,7 +203,7 @@ export default function AddLecture() {
                       />
                     </div>
                   </div>
-                  <div className="row form-group pb-4">
+                  {/* <div className="row form-group pb-4">
                     <div className="col-lg-3 col-md-5">
                       <label> Tutorial: </label>
                     </div>
@@ -208,7 +216,7 @@ export default function AddLecture() {
                         title="Name should only contain lowercase or uppercase letters. e.g. john"
                       />
                     </div>
-                  </div>
+                  </div> */}
 
                   <div>
                     <button className="btn btn-success" type="submit">
@@ -217,7 +225,7 @@ export default function AddLecture() {
                     <button
                       className="btn btn-danger"
                       style={{ marginLeft: "10px" }}
-                      onClick={() => navigate("/LectureHome")}
+                      onClick={() => navigate("/Lecture")}
                     >
                       Cancel
                     </button>

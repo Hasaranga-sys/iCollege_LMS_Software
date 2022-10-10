@@ -18,6 +18,7 @@ import AddLecture from "./Components/Lecture/AddLecture";
 import LectureHome from "./Components/Lecture/LectureHome";
 import ViewLecture from "./Components/Lecture/ViewLecture";
 import GetLectureById from "./Components/Lecture/GetLectureById";
+import LectureDash from "./Components/Lecture/LectureDash";
 
 function App() {
   return (
@@ -28,10 +29,10 @@ function App() {
         </header>
         <main>
           <Routes>
-            <Route path="/" element={<Home />} exact />
+            <Route path="/" element={<LoginForm />} exact />
 
             {/* admin */}
-            <Route path="/AdminHome" element={<AdminHome />} exact />
+            <Route path="/LectureHome" element={<AdminHome />} exact />
             <Route
               path="/AdminHome/NoticeTable"
               element={<NoticeTable />}
@@ -65,19 +66,28 @@ function App() {
             />
 
             <Route path="/StudentHome" element={<StudentHome />} exact />
+
+            {/* Lecture */}
             <Route
-              path="/StudenHome/noticeView"
-              element={<ViewNotice />}
+              path="/LectureHome/AddLecture"
+              element={<AddLecture />}
               exact
             />
+            {/* <Route path="/viewlecture" element={<ViewLectureT />} exact /> */}
+
             {/* user management */}
             <Route path="/user/:id" element={<UserForm />} exact />
             <Route path="/login" element={<LoginForm />} exact />
             <Route path="/users" element={<UserList />} exact />
 
             <Route path="/Lecture" element={<LectureHome />} exact />
+            {/* <Route path="/Lecture/AddLecture" element={<AddLecture />} exact />
+            <Route path="/Lecture/:Id" element={<ViewLectureT />} exact /> */}
+
+            <Route path="/Lecture" element={<LectureHome />} exact />
             <Route path="/Lecture/AddLecture" element={<AddLecture />} exact />
             <Route path="/Lecture/:Id" element={<ViewLecture />} exact />
+            <Route path="/LectureHome" element={<LectureDash />} exact />
           </Routes>
         </main>
       </React.Fragment>
