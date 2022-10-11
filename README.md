@@ -12,8 +12,8 @@
 |Memeber 03|ITXXXXXX|user|
 |Memeber 04|ITXXXXXX|user|
 
-##Project Description
+## Project Description
 perpose of the app
 
-##Technologies
+## Technologies
 used rechnologies
