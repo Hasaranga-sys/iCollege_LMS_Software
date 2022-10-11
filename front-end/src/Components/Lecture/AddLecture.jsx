@@ -37,7 +37,7 @@ export default function AddLecture() {
         data.append("uploaded_Image", pdf[x]);
       }
 
-      const res = await fetch(`http://localhost:5000/lecture`, {
+      const res = await fetch(`http://localhost:5000/Lecture`, {
         method: "POST",
         body: data,
       });
