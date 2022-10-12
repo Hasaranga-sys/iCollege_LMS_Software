@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import LectureService from "../Service/LectureService";
 import { useNavigate, useParams } from "react-router-dom";
-
+import swal from "sweetalert2";
 
 export default function AddLecture() {
   const mystyle = { backgroundColor: "#FAFAFA" };
   const history = useNavigate();
-  
+
   const [semester, setSemester] = useState("");
   const [topic, setTopic] = useState("");
   const [subject, setSubject] = useState("");
@@ -18,31 +18,30 @@ export default function AddLecture() {
   // const [lecture, setLecture] = useState("");
   const [pdf, setPdf] = useState("");
 
-  const clickSubmit = async (e)=>{
+  const clickSubmit = async (e) => {
     try {
       e.preventDefault();
       const data = new FormData();
-      
+
       data.append("year", year);
-      data.append("subject",subject);
-      data.append("semester",semester);
-      data.append("topic",topic);
-      data.append("date",date);
-      data.append("time",time);
-      data.append("meeting_link",meeting_link);
-      data.append("discription",discription);
+      data.append("subject", subject);
+      data.append("semester", semester);
+      data.append("topic", topic);
+      data.append("date", date);
+      data.append("time", time);
+      data.append("meeting_link", meeting_link);
+      data.append("discription", discription);
       // data.append("lecture",lecture);
-      
+
       for (var x = 0; x < pdf.length; x++) {
         data.append("uploaded_Image", pdf[x]);
       }
 
-      const res = await fetch(`http://localhost:5000/lecture`, {
+      const res = await fetch(`http://localhost:5000/Lecture`, {
         method: "POST",
         body: data,
       });
       if (res.ok) {
-       
         setYear("");
         setSubject("");
         setSemester("");
@@ -54,16 +53,12 @@ export default function AddLecture() {
         // setLecture("")
         setPdf(null);
 
-      
         history("/viewlectures");
       }
-
-
     } catch (error) {
       console.log(error);
     }
-  }
-
+  };
 
   return (
     <div>
@@ -79,7 +74,6 @@ export default function AddLecture() {
                 <form onSubmit={clickSubmit}>
                   <div className="row form-group pb-4">
                     <div className="col-lg-3 col-md-6">
-
                       <label> Year and semester: </label>
                     </div>
                     <div className="row col-lg-9 col-md-7">
@@ -135,7 +129,7 @@ export default function AddLecture() {
                         className="form-control"
                         title="Name should only contain lowercase or uppercase letters. e.g. john"
                         value={subject}
-                          onChange={(e) => setSubject(e.target.value)}
+                        onChange={(e) => setSubject(e.target.value)}
                       />
                     </div>
                   </div>
@@ -150,7 +144,7 @@ export default function AddLecture() {
                         className="form-control"
                         title="Name should only contain lowercase or uppercase letters. e.g. john"
                         value={topic}
-                          onChange={(e) => setTopic(e.target.value)}
+                        onChange={(e) => setTopic(e.target.value)}
                       />
                     </div>
                   </div>
@@ -192,7 +186,7 @@ export default function AddLecture() {
                         className="form-control"
                         title="Name should only contain lowercase or uppercase letters. e.g. john"
                         value={discription}
-                          onChange={(e) => setDiscription(e.target.value)}
+                        onChange={(e) => setDiscription(e.target.value)}
                       />
                     </div>
                   </div>
@@ -216,15 +210,16 @@ export default function AddLecture() {
                       <label> Lecture slide: </label>
                     </div>
                     <div className="col-lg-9 col-md-7">
-                    <input
-                  type="file"
-                  multiple
-                  required
-                  filename="uploaded_Image"
-                  className="form-control"
-                  
-                  onChange={(e) =>{setPdf(e.target.files);}}
-                />
+                      <input
+                        type="file"
+                        multiple
+                        required
+                        filename="uploaded_Image"
+                        className="form-control"
+                        onChange={(e) => {
+                          setPdf(e.target.files);
+                        }}
+                      />
                     </div>
                   </div>
                   {/* <div className="row form-group pb-4">
@@ -245,11 +240,9 @@ export default function AddLecture() {
                   </div> */}
 
                   <div>
-
-                  <button type="submit" className="btn btn-primary">
-                        Submit
-                      </button>
-                    
+                    <button type="submit" className="btn btn-primary">
+                      Submit
+                    </button>
 
                     {/* <button className="btn btn-success" type="submit">
                       Save
@@ -257,7 +250,7 @@ export default function AddLecture() {
                     <button
                       className="btn btn-danger"
                       style={{ marginLeft: "10px" }}
-                      onClick={() => navigate("/LectureHome")}
+                      onClick={() => navigate("/Lecture")}
                     >
                       Cancel
                     </button> */}

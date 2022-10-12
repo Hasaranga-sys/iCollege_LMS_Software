@@ -70,6 +70,8 @@ const LibararyItemForm = () => {
       for (var x = 0; x < pdf.length; x++) {
         data.append("uploaded_Image", pdf[x]);
       }
+      Swal.fire(" succesfull.");
+      history("/AdminHome/ViewLibararyItems");
       
       const res = await fetch(`http://localhost:5000/pdf`, {
         method: "POST",
@@ -135,9 +137,10 @@ const LibararyItemForm = () => {
                     value={faculty}
                     required="required"
                   > */}
-                    <option selected>Choose...</option>
-                    <option value="se">se</option>
-                    <option value="it">it</option>
+                    <option value="">Choose...</option>
+                    <option value="Faculty of Computing">Faculty of Computing</option>
+                    <option value="Faculty of Business">Faculty of Business</option>
+                    <option value="Faculty of Engineering">Faculty of Engineering</option>
                   </select>
                 </div>
               </div>
@@ -165,7 +168,7 @@ const LibararyItemForm = () => {
                     value={year}
                     required="required"
                   >
-                    <option selected>Choose...</option>
+                    <option value="">Choose...</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -194,9 +197,11 @@ const LibararyItemForm = () => {
                     // value={subject}
                     required="required"
                   >
-                    <option selected>Choose...</option>
-                    <option value="11">sub1</option>
-                    <option value="22">sub2</option>
+                    <option value="">Choose...</option>
+                    <option value="AF-SE3040">AF-SE3040</option>
+                    <option value="OOP-SE3060">OOP-SE3060</option>
+                    <option value="DS-SE3070">DS-SE3070</option>
+                    <option value="MAD-SE3090">MAD-SE3090</option>
 
                     {/* {subjectList.map((t)=>(
                       <option key={t._id} value={t.subject}>{t.subject}</option>
