@@ -25,12 +25,12 @@ addition to that he/she be able to access the E-Library
 
 
 ## Technologies
-*ReactJs
-*NodeJs
-*ExpressJs
-*MongoDB
-*Cloudinary
-*CSS
-*Bootstrap
-*Sonarcube
+* ReactJs
+* NodeJs
+* ExpressJs
+* MongoDB
+* Cloudinary
+* CSS
+* Bootstrap
+* Sonarcube
 *selenium
