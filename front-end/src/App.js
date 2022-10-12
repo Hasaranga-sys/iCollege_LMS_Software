@@ -17,6 +17,7 @@ import LibararyItemForm from "./Components/Admin/LibararyItemForm";
 import AddLecture from "./Components/Lecture/AddLecture";
 import LectureHome from "./Components/Lecture/LectureHome";
 import ViewLectureT from "./Components/Lecture/ViewLectureT";
+import AnnouncemntViewPro from "./Components/Admin/AnnouncemntViewPro";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/AdminHome/NoticeTable" element={<NoticeTable />} exact/>
             <Route path="/AdminHome/NoticeTable/NoticeForm" element={<NoticeForm />} exact/>
             <Route path="/AdminHome/NoticeTable/NoticeForm/:_id" element={<NoticeForm />} exact/>
+            <Route path="/annvp/:_id" element={<AnnouncemntViewPro/>} exact/>
 
             <Route path="/AdminHome/addLibararyItemForm" element={<LibararyItemForm />} exact  />
             <Route path="/AdminHome/addLibararyItemForm/:id" element={<LibararyItemForm />}  exact  />

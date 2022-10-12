@@ -66,7 +66,7 @@ const NoticeForm = () => {
                                     required
                                     placeholder='SelectFaculty..'
                                     onChange={(e) => {setFaculty(e.target.value);}}>
-                                    <option value=""> </option>
+                                    <option value="s">Select fac </option>
                                     <option value="Faculty of Computing">Faculty of Computing</option>
                                     <option value="Faculty of Business">Faculty of Business</option>
                                     <option value="Faculty of Engineering">Faculty of Engineering</option>
