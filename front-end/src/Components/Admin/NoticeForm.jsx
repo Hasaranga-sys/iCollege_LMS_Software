@@ -6,7 +6,7 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import Swal from "sweetalert2";
 const NoticeForm = () => {
-    const [faculty, setFaculty] = useState("")
+    const [faculty, setFaculty] = useState([])
     const [date,setDate] = useState("")
     const [topic,setTopic] = useState("")
     const [notice,setNotice] = useState("")
@@ -62,7 +62,7 @@ const NoticeForm = () => {
 
                             <select class="form-select w-75"
                                     aria-label="Default select example"
-                                    value={faculty.value  }
+                                    value={faculty}
                                     required
                                     placeholder='SelectFaculty..'
                                     onChange={(e) => {setFaculty(e.target.value);}}>

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import NoticeService from "../Service/NoticeService";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
+import '../Student/Student.css'
 
 const ViewNotice = () => {
   const [notices, setNotices] = useState([]);
@@ -21,9 +22,9 @@ const ViewNotice = () => {
   return (
     <div>
     
-      <div className="card text-bg-white w-75 shadow-lg mb-5 mt-5"
-       style={{marginLeft:50,borderRadius: 30}}>
-       <h2 class="card-title mx-auto mt-3">Notice</h2>
+      <div className="card text-bg-white shadow-lg mb-5 mt-5 note-container"
+       >
+       <h2 class="card-title mx-auto mt-3">Announcements</h2>
 
     <div className=" container row">
        <input type="text" placeholder="Search By Notice" className="form-control mx-5 mt-3"
@@ -48,7 +49,7 @@ const ViewNotice = () => {
             
           <div className="card-body">        
            <div className='row'>
-           <div className='col-sm-2'>
+           <div className='border bg-warning rounded-2 col-sm-2'>
             <h4>
               <Moment format='YYYY MMM DD'>
                {note.date}
@@ -56,7 +57,7 @@ const ViewNotice = () => {
               </h4>
               </div>
              <div className='col-sm-10 '>
-               <h5 className="card-title bg-#0d6efd">{note.topic}</h5>  
+               <h5 className="card-title ">{note.topic}</h5>  
                <div className='col-sm-10 '>
                 <p className="card-text">{note.notice}</p>
              </div>        

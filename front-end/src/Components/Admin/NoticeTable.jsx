@@ -124,15 +124,7 @@ const NoticeTable = () => {
                             <i class="fa fa-print" aria-hidden="true"></i>
                           </Link>
                         </td>
-                        <td>
-                          <Link
-                            className="btn btn-warning"
-                            to={`/annvp/${note._id}`}
-                          >
-                            Select &nbsp;
-                            <i class="fa fa-print" aria-hidden="true"></i>
-                          </Link>
-                        </td>
+                        
                         <td>
                           <button
                             type="button"
