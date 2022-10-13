@@ -13,7 +13,6 @@ const LibararyItemForm = () => {
 
   //const [subjectList, setSubjectList] = useState([]);
 
-
   useEffect(() => {
     console.log("hiii");
 
@@ -21,14 +20,10 @@ const LibararyItemForm = () => {
     //   setSubjectList(res.data);
     // })
 
-    
     // selectFaculty();
     // console.log("fac",faculty);
+  }, []);
 
-    
-  }, [])
-
-  
   //console.log(subjectList);
 
   const title = () => {
@@ -40,7 +35,7 @@ const LibararyItemForm = () => {
   };
 
   // const selectFaculty = (e) => {
-   
+
   //   console.log("fac",faculty);
   //   console.log("e",e.target.value);
 
@@ -57,22 +52,20 @@ const LibararyItemForm = () => {
   //   })
   // }
 
-
   const clickSubmit = async (e) => {
-
     try {
       e.preventDefault();
       const data = new FormData();
       data.append("faculty", faculty);
       data.append("year", year);
-      data.append("subject",subject);
+      data.append("subject", subject);
 
       for (var x = 0; x < pdf.length; x++) {
         data.append("uploaded_Image", pdf[x]);
       }
       Swal.fire(" succesfull.");
       history("/AdminHome/ViewLibararyItems");
-      
+
       const res = await fetch(`http://localhost:5000/pdf`, {
         method: "POST",
         body: data,
@@ -91,27 +84,23 @@ const LibararyItemForm = () => {
     }
   };
 
-
   return (
-    <div >
-      <div className="container">
-      <br />
-      <br />
-      <br />
-      <br />
-      <div className="shadow card col-md-6 offset-md-3 offset-md-3">
-      
-        <div className="card-body">
-          <div><center>{title()}</center></div>
-          <br />
-          <br />
-          <form onSubmit={clickSubmit} encType="multipart/form-data">
-            <div className="row">
-              <div className="col">
-                <div className="form-group">
-                  <label>Faculty</label>
+    <div>
+      <div className="shadow card w-50 mx-auto text-center p-3 mt-5 mb-5">
+        <div>
+          <div className="card-body">
+            <div>
+              <center>{title()}</center>
+            </div>
+            <br />
+            <br />
+            <form onSubmit={clickSubmit} encType="multipart/form-data">
+              <div className="row">
+                <div className="col">
+                  <div className="form-group">
+                    <label>Faculty</label>
 
-                  {/* <input
+                    {/* <input
                   type="text"
                   placeholder="Group ID"
                   value={faculty}
@@ -120,16 +109,15 @@ const LibararyItemForm = () => {
                   className="form-control"
                 /> */}
 
-                <select
-                    className="form-control"
-                    id="exampleFormControlSelect1"
-                     onChange={(e) => setFaculty(e.target.value)}
-                    //onChange={(e) => setFaculty(e.target.value)}
-                    value={faculty}
-                    required="required"
-                  > 
-
-                  {/* <select
+                    <select
+                      className="form-control"
+                      id="exampleFormControlSelect1"
+                      onChange={(e) => setFaculty(e.target.value)}
+                      //onChange={(e) => setFaculty(e.target.value)}
+                      value={faculty}
+                      required="required"
+                    >
+                      {/* <select
                     className="form-control"
                     id="exampleFormControlSelect1"
                     // onChange={selectCategory}
@@ -137,22 +125,28 @@ const LibararyItemForm = () => {
                     value={faculty}
                     required="required"
                   > */}
-                    <option value="">Choose...</option>
-                    <option value="Faculty of Computing">Faculty of Computing</option>
-                    <option value="Faculty of Business">Faculty of Business</option>
-                    <option value="Faculty of Engineering">Faculty of Engineering</option>
-                  </select>
+                      <option value="">Choose...</option>
+                      <option value="Faculty of Computing">
+                        Faculty of Computing
+                      </option>
+                      <option value="Faculty of Business">
+                        Faculty of Busines
+                      </option>
+                      <option value="Faculty of Engineering">
+                        Faculty of Engineering
+                      </option>
+                    </select>
+                  </div>
                 </div>
-              </div>
-              <br />
-              <br />
-              <br />
-              <br />
-              <div className="col">
-                <div className="form-group">
-                  <label>Year</label>
+                <br />
+                <br />
+                <br />
+                <br />
+                <div className="col">
+                  <div className="form-group">
+                    <label>Year</label>
 
-                  {/* <input
+                    {/* <input
                   type="text"
                   placeholder="Group ID"
                   required
@@ -161,27 +155,26 @@ const LibararyItemForm = () => {
                   className="form-control"
                 /> */}
 
-                  <select
-                    className="form-control"
-                    id="exampleFormControlSelect1"
-                    onChange={(e) => setYear(e.target.value)}
-                    value={year}
-                    required="required"
-                  >
-                    <option value="">Choose...</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                  </select>
-
+                    <select
+                      className="form-control"
+                      id="exampleFormControlSelect1"
+                      onChange={(e) => setYear(e.target.value)}
+                      value={year}
+                      required="required"
+                    >
+                      <option value="">Choose...</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
-              <div className="col">
-                <div className="form-group">
-                  <label>Subject</label>
+                <div className="col">
+                  <div className="form-group">
+                    <label>Subject</label>
 
-                  {/* <input
+                    {/* <input
                   type="text"
                   placeholder="Group ID"
                   required
@@ -190,56 +183,54 @@ const LibararyItemForm = () => {
                   className="form-control"
                 /> */}
 
-                  <select
-                    className="form-control"
-                    id="exampleFormControlSelect1"
-                    onChange={(e) => setsubject(e.target.value)}
-                    // value={subject}
-                    required="required"
-                  >
-                    <option value="">Choose...</option>
-                    <option value="AF-SE3040">AF-SE3040</option>
-                    <option value="OOP-SE3060">OOP-SE3060</option>
-                    <option value="DS-SE3070">DS-SE3070</option>
-                    <option value="MAD-SE3090">MAD-SE3090</option>
+                    <select
+                      className="form-control"
+                      id="exampleFormControlSelect1"
+                      onChange={(e) => setsubject(e.target.value)}
+                      // value={subject}
+                      required="required"
+                    >
+                      <option value="">Choose...</option>
+                      <option value="AF-SE3040">AF-SE3040</option>
+                      <option value="OOP-SE3060">OOP-SE3060</option>
+                      <option value="DS-SE3070">DS-SE3070</option>
+                      <option value="MAD-SE3090">MAD-SE3090</option>
 
-                    {/* {subjectList.map((t)=>(
+                      {/* {subjectList.map((t)=>(
                       <option key={t._id} value={t.subject}>{t.subject}</option>
                     ))} */}
-                  </select>
+                    </select>
+                  </div>
                 </div>
               </div>
-            </div>
 
-
-            <div className="form-group">
-              <label>File</label>
               <div className="form-group">
-                <input
-                  type="file"
-                  multiple
-                  required
-                  filename="uploaded_Image"
-                  className="form-control"
-                  
-                  onChange={(e) =>{setPdf(e.target.files);}}
-                />
+                <label>File</label>
+                <div className="form-group">
+                  <input
+                    type="file"
+                    multiple
+                    required
+                    filename="uploaded_Image"
+                    className="form-control"
+                    onChange={(e) => {
+                      setPdf(e.target.files);
+                    }}
+                  />
+                </div>
               </div>
-            </div>
 
-
-            <br />
-            <br />
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
-          </form>
+              <br />
+              <br />
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-   
-    
-    </div>)
-}
+  );
+};
 
-export default LibararyItemForm
+export default LibararyItemForm;
