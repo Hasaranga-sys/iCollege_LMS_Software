@@ -5,6 +5,7 @@ import swal from "sweetalert2";
 
 export default function AddLecture() {
   const mystyle = { backgroundColor: "#FAFAFA" };
+  const navigate = useNavigate();
   const history = useNavigate();
 
   const [semester, setSemester] = useState("");
@@ -18,11 +19,14 @@ export default function AddLecture() {
   // const [lecture, setLecture] = useState("");
   const [pdf, setPdf] = useState("");
 
+  const cancelButton = async () => {
+    navigate("/Lecture");
+  };
+
   const clickSubmit = async (e) => {
     try {
       e.preventDefault();
       const data = new FormData();
-
       data.append("year", year);
       data.append("subject", subject);
       data.append("semester", semester);
@@ -53,7 +57,7 @@ export default function AddLecture() {
         // setLecture("")
         setPdf(null);
 
-        history("/viewlectures");
+        navigate("/Lecture");
       }
     } catch (error) {
       console.log(error);
@@ -244,16 +248,13 @@ export default function AddLecture() {
                       Submit
                     </button>
 
-                    {/* <button className="btn btn-success" type="submit">
-                      Save
-                    </button>
                     <button
                       className="btn btn-danger"
                       style={{ marginLeft: "10px" }}
-                      onClick={() => navigate("/Lecture")}
+                      onClick={() => cancelButton()}
                     >
                       Cancel
-                    </button> */}
+                    </button>
                   </div>
                 </form>
               </div>

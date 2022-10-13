@@ -149,10 +149,18 @@ export default function LectureHome() {
                     <br></br>
                   </div>
                 </div>
+                <Modal.Footer>
+                  <Button
+                    variant="success"
+                    size="sm"
+                    onClick={() => navigate(`/UpdateLecture/${row._id}`)}
+                  >
+                    Update
+                  </Button>
+                </Modal.Footer>
               </div>
             ))}
           </Modal.Body>
-          <Modal.Footer></Modal.Footer>
         </Modal>
       </div>
       <div className="container grid offset-md-1 offset-md-1">
@@ -228,6 +236,7 @@ export default function LectureHome() {
                           className="mx-1"
                           variant="info"
                           size="sm"
+                          block
                           onClick={() => getLecturesByid(row._id)}
                         >
                           More
@@ -236,6 +245,7 @@ export default function LectureHome() {
                           className="mx-1"
                           variant="danger"
                           size="sm"
+                          block
                           onClick={() => deleteLecture(row._id)}
                         >
                           Delete
