@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import { Link } from "react-router-dom";
 import UserServices from "../Service/UserServices";
 import Swal from "sweetalert2";
 import print from "print-js";
@@ -113,16 +114,20 @@ const UserList = () => {
                   >
                     Add User
                   </button>
+                  {/* <Link
+                    className="btn btn-primary mt-3 p-2"
+                    style={{ width: 190 }}
+                    to={"/user/-1"}
+                  >
+                    Add User &nbsp;
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                  </Link> */}
+
                   <input
                     type="text"
                     placeholder="search"
-                    className="form-control"
-                    style={{
-                      marginLeft: "1%",
-                      marginTop: 20,
-                      marginBottom: 20,
-                      width: "40%",
-                    }}
+                    className="form-control
+                    mt-3 admin-srchbr1"
                     onChange={(e) => {
                       setSearch(e.target.value);
                     }}
@@ -140,21 +145,36 @@ const UserList = () => {
                     <option value="lecture">Lectures</option>
                     <option value="student">Students</option>
                   </select>
-                  {/* <button type="button" className="btn btn-success mt-3 admin-cad" onClick={() =>print({
-                            printable: notices, header: 'User Details',
-                            properties:
-                            [
-                            {field: 'faculty', displayName:'Employee ID'},
-                            {field: 'date', displayName:'Email'},
-                            {field: 'topic', displayName:'Name'},
-                            {field: 'notice', displayName:'NIC'},
-                           
+
+                  <button
+                    type="button"
+                    className="btn btn-success mt-3 admin-cad"
+                    onClick={() =>
+                      print({
+                        printable: user,
+                        header: "User Details",
+                        properties: [
+                          {
+                            field: "regNumber",
+                            displayName: "Regitsteration ID",
+                          },
+                          { field: "lastName", displayName: "Last Name" },
+                          { field: "initials", displayName: "Initials" },
+                          {
+                            field: "mobileNumber",
+                            displayName: "Mobile number",
+                          },
+                          { field: "email", displayName: "Email" },
+                          { field: "faculty", displayName: "Faculty" },
+                          { field: "role", displayName: "Role" },
                         ],
-                            type:'json'
-                            })}> 
-                            print Details
-                            &nbsp;
-                            <i class="fa fa-print" aria-hidden="true"></i> </button> */}
+                        type: "json",
+                      })
+                    }
+                  >
+                    print Details &nbsp;
+                    <i class="fa fa-print" aria-hidden="true"></i>{" "}
+                  </button>
                 </div>
 
                 <table class="table table-striped mt-3">
