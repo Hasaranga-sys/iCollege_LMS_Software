@@ -4,11 +4,15 @@ import UserServices from "../Service/UserServices";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
+import { useContext } from "react";
+import { AuthContext } from "./AuthContext";
+
 const LoginForm = (params) => {
   const [regNumber, setregNumber] = useState("");
   const [password, setpassword] = useState("");
   const nav = useNavigate();
-
+  const { userDetails, setUserDetails, isAuthenticated, setIsAuthenticated } =
+    useContext(AuthContext);
   useEffect(() => {}, []);
 
   const submitClicked = (e) => {
@@ -27,6 +31,8 @@ const LoginForm = (params) => {
           nav("/StudentHome");
         } else if (res.data.role == "admin") {
           console.log("true:admin");
+          setUserDetails(res.data);
+          setIsAuthenticated(true);
           // nav("/AdminHome")
           nav("/AdminHome");
         } else if (res.data.role == "lecture") {

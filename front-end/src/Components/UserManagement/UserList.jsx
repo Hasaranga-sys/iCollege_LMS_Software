@@ -6,6 +6,8 @@ import UserServices from "../Service/UserServices";
 import Swal from "sweetalert2";
 import print from "print-js";
 import "../Admin/Admin.css";
+import { useContext } from "react";
+import { AuthContext } from "./AuthContext";
 
 const UserList = () => {
   const [user, setUser] = useState([]);
@@ -14,12 +16,16 @@ const UserList = () => {
   const [adminFilter, setAdminFilter] = useState("");
   const [category, setCategory] = useState("");
   const navigate = useNavigate();
+  const { userDetails, setUserDetails, isAuthenticated, setIsAuthenticated } =
+    useContext(AuthContext);
 
   useEffect(() => {
     UserServices.getAllUsers().then((res) => {
       setUser(res.data);
     });
-  });
+    console.log(userDetails);
+    console.log(isAuthenticated);
+  }, []);
 
   const AddStudent = (e) => {
     e.preventDefault();
@@ -94,7 +100,17 @@ const UserList = () => {
     //     </div>
     //   </div>
     // </div>
+
     <div className="p-3">
+      <button
+        className="btn btn-warning"
+        onClick={() => {
+          setUserDetails(null);
+          setIsAuthenticated(false);
+        }}
+      >
+        log out
+      </button>
       <div
         className="shadow card w-100 text-center p-3 mt-5 mb-5"
         style={{ borderRadius: 30 }}
@@ -173,11 +189,11 @@ const UserList = () => {
                     }
                   >
                     print Details &nbsp;
-                    <i class="fa fa-print" aria-hidden="true"></i>{" "}
+                    <i className="fa fa-print" aria-hidden="true"></i>{" "}
                   </button>
                 </div>
 
-                <table class="table table-striped mt-3">
+                <table className="table table-striped mt-3">
                   <thead className="table-primary">
                     <tr>
                       <th scope="col"> Reg Number</th>
