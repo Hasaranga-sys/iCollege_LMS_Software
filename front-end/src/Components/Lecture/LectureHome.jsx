@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import LectureService from "../Service/LectureService";
 import swal from "sweetalert2";
-
 import Modal from "react-bootstrap/Modal";
 import "./grid.css";
 import { useNavigate, useParams } from "react-router-dom";
@@ -13,14 +12,13 @@ export default function LectureHome() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [search, setSearch] = React.useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const getLecturesByid = (id) => {
     LectureService.getLectureById(id).then((res) => {
       setGetLectureByid([res.data]);
-      console.log([res.date]);
+      console.log(res.data);
       setShow(true);
     });
   };
@@ -258,68 +256,6 @@ export default function LectureHome() {
             </Card>
           ))}
       </div>
-      {/* <div className="shadow card w-75 mx-auto text-center p-3 mt-5 bg-light">
-      <h1>Lecture Info</h1>
-
-      <div>
-        <div className="container"></div>
-        <div className="container p-2 mt-4 mb-4">
-          <div className="row">
-            <div className="shadow card mx-auto w-75">
-              <table class="table table-striped">
-                <thead className="table-primary">
-                  <tr>
-                    <th scope="col">Year</th>
-                    <th scope="col">Semester</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Meeting Link</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Lecture</th>
-                    <th scope="col">Topic</th>
-                    <th scope="col">Subject</th>
-                    <th scope="col">Document</th>
-                    <th scope="col">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {lectureList?.map((row) => (
-                    <tr>
-                      <td>{row.year}</td>
-                      <td>{row.semester}</td>
-                      <td>{row.date}</td>
-                      <td>{row.time}</td>
-                      <td>{row.meeting_link}</td>
-                      <td>{row.discription}</td>
-                      <td>{row.lecture}</td>
-                      <td>{row.topic}</td>
-                      <td>{row.subject}</td>
-                      <td>
-                        {
-                          <a href={row.pdf} download>
-                            {row.topic}
-                          </a>
-                        }
-                      </td>
-                      <td>
-                        <button
-                          className="btn btn-danger"
-                          onClick={() => {
-                            deleteClicked(row._id);
-                          }}
-                        >
-                          delete
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> */}
     </div>
   );
 }
