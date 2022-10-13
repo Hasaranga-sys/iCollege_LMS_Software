@@ -23,6 +23,7 @@ import ViewLectureT from "./Components/Lecture/ViewLectureT";
 import StudentViewLibraryItem from "./Components/Student/StudentViewLibraryItem";
 import UpdateLectures from "./Components/Lecture/UpdateLectures";
 import LectureAdminHome from "./Components/Lecture/LectureAdminHome";
+import AnnouncemntViewPro from "./Components/Admin/AnnouncemntViewPro";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
               element={<NoticeForm />}
               exact
             />
+            <Route path="/annvp/:_id" element={<AnnouncemntViewPro />} exact />
 
             <Route
               path="/AdminHome/addLibararyItemForm"

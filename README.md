@@ -15,7 +15,22 @@ iCollege_LMS_Software
 |Tharupathi M.A.U|IT20135102|udulaTharupathi99|
 
 ## Project Description
-perpose of the app
+This system is an E- Learning System built to manage academic operations in the university. There 
+are three main users in this system Student, System Admin and Lecturer. Students Can register and 
+manage their profiles, view announcements and also manage their Lectures and study materials, in 
+addition to that they can access to the E-library
+System Admin can manage announcements, User details and able to manage E-library. Lecturers can 
+register and edit their profile, and also Lecturers can manage Class details, Study materials. In 
+addition to that he/she be able to access the E-Library
+
 
 ## Technologies
-used rechnologies
+* ReactJs
+* NodeJs
+* ExpressJs
+* MongoDB
+* Cloudinary
+* CSS
+* Bootstrap
+* Sonarcube
+*selenium

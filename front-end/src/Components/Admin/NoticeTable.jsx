@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import NoticeService from "../Service/NoticeService";
 import Swal from "sweetalert2";
+import print from 'print-js'
+import "../Admin/Admin.css"
 
 const NoticeTable = () => {
   const [notices, setNotices] = useState([]);
@@ -49,18 +51,41 @@ const NoticeTable = () => {
 
         <div>
           <div className="container p-1 mt-4 mb-4">
-            <div className="row">
+            <div className="row ">
               <div className="shadow card mx-auto w-100">
-              <div className=" container row  mx-1">
+              <div className=" container  d-flex flex-row">
 
-                <Link className="btn btn-primary w-25 mt-3"
-               to={"/AdminHome/NoticeTable/NoticeForm"}>Add Announcement</Link>
+                <Link className="btn btn-primary mt-3 p-2"
+                 style={{width:190}}
+               to={"/AdminHome/NoticeTable/NoticeForm"}>Add Announcement &nbsp;
+               <i class="fa fa-plus-circle" aria-hidden="true"></i></Link>
                  
-           <input type="text" placeholder="Search By Notice" className="form-control mt-3"
-             style={{width: "17%",marginLeft:570}} onChange={(e) => {setSearch(e.target.value); }} />
+                    
+           <input type="text" placeholder="Search By Notice" className="form-control
+            mt-3 admin-srchbr1"onChange={(e) => {setSearch(e.target.value); }} />
 
-            <input type="date" placeholder="Search By Notice" className="form-control mt-3 mx-2 "
-             style={{width: "12%"}} onChange={(e) => {setSearch(e.target.value); }} />
+            <input type="date" placeholder="Search By Notice" className="form-control mt-3 admin-srchbr-date "
+          
+              onChange={(e) => {setSearch(e.target.value); }} />
+             
+             <button type="button" className="btn btn-success mt-3 admin-cad" onClick={() =>print({
+                            printable: notices, header: 'Announcement Details',
+                            properties:
+                            [
+                            {field: 'faculty', displayName:'Employee ID'},
+                            {field: 'date', displayName:'Email'},
+                            {field: 'topic', displayName:'Name'},
+                            {field: 'notice', displayName:'NIC'},
+                           
+                        ],
+                            type:'json'
+                            })}> 
+                            print Details
+                            &nbsp;
+                            <i class="fa fa-print" aria-hidden="true"></i> </button>
+                        
+                    
+                    
     </div>
                 <table class="table table-striped mt-3">
                   <thead className="table-primary">
@@ -92,21 +117,24 @@ const NoticeTable = () => {
                         <td>{note.notice}</td>
                         <td>
                           <Link
-                            className="btn btn-info"
+                            className="btn btn-warning"
                             to={`/AdminHome/NoticeTable/NoticeForm/${note._id}`}
                           >
-                            Update
+                            Update &nbsp;
+                            <i class="fa fa-print" aria-hidden="true"></i>
                           </Link>
                         </td>
+                        
                         <td>
                           <button
                             type="button"
                             onClick={() => deleteNotice(note._id)}
                             class="btn btn-danger"
-                          >
-                            Delete
+                          > Delete &nbsp;
+                            <i class="fa fa-trash" aria-hidden="true"></i> 
+                            
                           </button>
-                        </td>
+                        </td> 
                       </tr>
                     ))}
                   </tbody>
