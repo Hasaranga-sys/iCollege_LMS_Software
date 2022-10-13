@@ -2,12 +2,16 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import UserServices from "../Service/UserServices";
+import Swal from "sweetalert2";
+import print from "print-js";
+import "../Admin/Admin.css";
 
 const UserList = () => {
   const [user, setUser] = useState([]);
   const [search, setSearch] = useState("");
   const [checked, setChecked] = React.useState(false);
   const [adminFilter, setAdminFilter] = useState("");
+  const [category, setCategory] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -101,7 +105,14 @@ const UserList = () => {
             <div className="row">
               <div className="shadow card mx-auto w-100">
                 <br></br>
-                <div>
+                <div className=" container  d-flex flex-row">
+                  <button
+                    className="btn btn-primary mt-3 p-2"
+                    style={{ width: 190 }}
+                    onClick={AddStudent}
+                  >
+                    Add User
+                  </button>
                   <input
                     type="text"
                     placeholder="search"
@@ -116,6 +127,34 @@ const UserList = () => {
                       setSearch(e.target.value);
                     }}
                   />
+
+                  <select
+                    className="form-control
+                  mt-3 admin-srchbr1"
+                    onChange={(e) => setSearch(e.target.value)}
+                    // value={category}
+                    // name="User_Category"
+                  >
+                    <option value="">Select Category </option>
+                    <option value="admin">Admin</option>
+                    <option value="lecture">Lectures</option>
+                    <option value="student">Students</option>
+                  </select>
+                  {/* <button type="button" className="btn btn-success mt-3 admin-cad" onClick={() =>print({
+                            printable: notices, header: 'User Details',
+                            properties:
+                            [
+                            {field: 'faculty', displayName:'Employee ID'},
+                            {field: 'date', displayName:'Email'},
+                            {field: 'topic', displayName:'Name'},
+                            {field: 'notice', displayName:'NIC'},
+                           
+                        ],
+                            type:'json'
+                            })}> 
+                            print Details
+                            &nbsp;
+                            <i class="fa fa-print" aria-hidden="true"></i> </button> */}
                 </div>
 
                 <table class="table table-striped mt-3">
@@ -135,16 +174,12 @@ const UserList = () => {
                   <tbody>
                     {user
                       .filter((val) => {
-                        // if (
-                        //   search === "" &&
-                        //   val.role.toLowerCase().includes(adminFilter)
-                        // ) {
-                        //   // return val;
-                        if (search === "") {
-                          return val;
-                        } else if (
+                        // if (search === "") {
+                        //   return val;
+                        // } else
+                        if (
                           search === "" &&
-                          val.role.toLowerCase().includes(adminFilter)
+                          val.role.toLowerCase().includes(category)
                         ) {
                           return val;
                         } else if (
@@ -220,12 +255,12 @@ const UserList = () => {
                   <p>Is "My Value" checked? {checked.toString()}</p>
                 </div> */}
 
-                <button
+                {/* <button
                   className="btn btn-primary w-25 mt-3"
                   onClick={AddStudent}
                 >
                   Add User
-                </button>
+                </button> */}
                 <br></br>
               </div>
             </div>
