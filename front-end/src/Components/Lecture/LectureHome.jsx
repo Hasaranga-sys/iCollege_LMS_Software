@@ -5,6 +5,9 @@ import swal from "sweetalert2";
 import Modal from "react-bootstrap/Modal";
 import "./grid.css";
 import { useNavigate, useParams } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../UserManagement/AuthContext";
+import UserServices from "../Service/UserServices";
 
 export default function LectureHome() {
   const [lectureList, setLectureList] = useState([]);
@@ -14,6 +17,10 @@ export default function LectureHome() {
   const [search, setSearch] = React.useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [lastName, setlastName] = useState("");
+  const [initials, setinitials] = useState("");
+  const { userDetails, setUserDetails, isAuthenticated, setIsAuthenticated } =
+    useContext(AuthContext);
 
   const getLecturesByid = (id) => {
     LectureService.getLectureById(id).then((res) => {
@@ -40,8 +47,13 @@ export default function LectureHome() {
         setLectureList(res.data);
         console.log(res.data);
       });
+      console.log(userDetails);
+      console.log(isAuthenticated);
     };
-
+    UserServices.getUser(userDetails.userID).then((Response) => {
+      setlastName(Response.data.lastName);
+      setinitials(Response.data.initials);
+    });
     getLectures();
   }, []);
 
@@ -52,6 +64,7 @@ export default function LectureHome() {
   return (
     <div>
       <div className="container">
+        {lastName}+{initials}
         <h3 className="p-4">Lecture Schedule</h3>
         <div className="d-flex justify-content-end">
           <Button variant="info">
@@ -63,7 +76,6 @@ export default function LectureHome() {
             </a>
           </Button>
         </div>
-
         <div className="row  col-lg-3 col-md-2">
           <div className="col-lg-6">
             <select
