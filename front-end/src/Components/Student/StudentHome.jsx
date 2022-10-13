@@ -8,10 +8,14 @@ import "../Student/Student.css"
 const StudentHome = () => {
   return (
     <div>
-      <div className='hero-image' style={{height:250}}>
+
+
+
+
+      <div className='hero-image' style={{height:750}}>
         
         <div className='hero-text'>
-          <h1>iCollege</h1>
+          {/* <h1>iCollege</h1> */}
           
         </div>
         
@@ -74,7 +78,7 @@ const StudentHome = () => {
     </div>
     <div class="row">
         <div class="col-lg-3 col-sm-6">
-            <a href="http://www.uiuxstream.com/dashboard-user-profile-page-design-using-bootstrap-4/">uiuxstream</a>
+            
         </div>
     </div>
 </div>

@@ -49,6 +49,7 @@ const addLecture = async (req, res, next) => {
   }
   return res.status(201).json(lecture);
 };
+
 //getByid
 const getLectureById = async (req, res, next) => {
   const id = req.params.id;

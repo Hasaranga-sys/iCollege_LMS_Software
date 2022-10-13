@@ -65,7 +65,10 @@ const AdminHome = () => {
                       alt="Card image cap"
                     />
                     <h4 class="card-title"></h4>
-                    <Link className="btn btn-primary" to={"/users"}>
+                    <Link
+                      className="btn btn-primary"
+                      to={"/AdminHome/NoticeTable"}
+                    >
                       User Management
                     </Link>
                   </div>
