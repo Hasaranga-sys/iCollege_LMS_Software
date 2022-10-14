@@ -27,7 +27,7 @@ const NoticeTable = () => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success', 
-        
+
         cancelButton: 'btn btn-danger'
       },
       buttonsStyling: false
@@ -78,7 +78,7 @@ const NoticeTable = () => {
   return (
     <div className="p-3">
       <div
-        className=" boxnotice card text-center p-3 mt-5"
+        className=" boxnotice card text-center p-3 mt-1"
        
       >
         <h1>Announcements</h1>
@@ -155,7 +155,7 @@ const NoticeTable = () => {
                             to={`/AdminHome/NoticeTable/NoticeForm/${note._id}`}
                           >
                             Update &nbsp;
-                            <i class="bi bi-gear"></i>
+                            <i class="fa fa-cog" aria-hidden="true"></i>
                           </Link>
                         </td>
                         
