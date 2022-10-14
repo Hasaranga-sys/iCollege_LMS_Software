@@ -52,19 +52,7 @@ body{
     padding-bottom: 30px;
     text-decoration: none;
   }
-  .sub{
-    margin: 40px auto;
-    display: block;
-    padding: 5px 5px;
-    width: 180px;
-    height: 40px;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    border-radius: 40px;
-    text-align: center;
-    font-size: 14px;
-    color: white;
-    background-image: linear-gradient(to bottom right, #9734ff, #3c00f5);
-    box-shadow: 0 20px 50px -10px blue;
+  .adminNotice-table{
+
+    box-shadow: 0 10px 30px -10px blue;
   }
