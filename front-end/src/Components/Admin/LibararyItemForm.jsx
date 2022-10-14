@@ -260,6 +260,9 @@ const LibararyItemForm = () => {
                   File:
                 </strong>
                 <div className="form-group">
+                  <a href={pdf} download>
+                    {subject}
+                  </a>
                   <input
                     type="file"
                     multiple
@@ -269,7 +272,7 @@ const LibararyItemForm = () => {
                     onChange={(e) => {
                       setPdf(e.target.files);
                     }}
-                    // value={pdf}
+                    //value={pdf}
                   />
                 </div>
               </div>
