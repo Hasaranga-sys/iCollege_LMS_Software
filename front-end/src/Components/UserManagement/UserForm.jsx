@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import UserServices from "../Service/UserServices.js";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import '../UserManagement/Register.css'
 
 const UserForm = (params) => {
   const [status, setstatus] = useState("");
@@ -104,16 +105,16 @@ const UserForm = (params) => {
   };
   // console.log(user)
   return (
-    <div className="container">
+    <div className="container mb-5">
       <br />
       <br />
       <br />
       <br />
-      <div className="shadow card col-md-8 offset-md-2 offset-md-2">
+      <div className=" boxmr shadow card col-md-8 offset-md-2 offset-md-2 mb-5">
         <div className="card-body">
           <div>
             <center>
-              <h1>{status} User</h1>
+              <h1 className="fontreg">{status} User</h1>
             </center>
           </div>
           <form onSubmit={submitClicked}>
@@ -136,7 +137,7 @@ const UserForm = (params) => {
             <br></br>
             <div className="form-group row">
               <label className="col-sm-3 col-form-label">Initials : </label>
-              <div className="col-sm-8">
+              <div className="col-sm-8 ">
                 <input
                   type="text"
                   className="form-control"
@@ -170,7 +171,7 @@ const UserForm = (params) => {
             </div>
             <br></br>
             <div className="form-group row">
-              <label className="col-sm-3 col-form-label">email : </label>
+              <label className="col-sm-3 col-form-label">Email : </label>
               <div className="col-sm-8">
                 <input
                   type="email"

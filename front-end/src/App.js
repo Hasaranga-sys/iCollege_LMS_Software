@@ -87,6 +87,8 @@ function App() {
             <Route path="/LectureHome" element={<LectureDash />} exact />
           </Routes>
         </main>
+        
+        
       </React.Fragment>
     </div>
   );

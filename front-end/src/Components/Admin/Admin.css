@@ -1,8 +1,13 @@
- .admin-cad {
+ .admin-cad {  
     margin-left:auto;
-
     width:4cm;
  }
+ .admin-wcad{
+   border-radius: 43px;
+background: linear-gradient(145deg, #faf9f9, #f0f0f0);
+box-shadow:  23px 23px 25px #7b7b7b;
+ }
+
  
  .admin-srchbr1{
     width: 5cm;
