@@ -126,11 +126,11 @@ const LoginForm = (params) => {
     //   </div>
     // </div>
     <div>
-    <div class="box mt-5">
+    <div class="boxlog mt-5">
       <h1>Sign In</h1>
       
       <form onSubmit={submitClicked}>
-      <div class="input">
+      <div class="inputlog">
         
           <input type="text"
                   name="email" 
