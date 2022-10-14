@@ -12,7 +12,7 @@ const PDF = require('../Model/LibraryItemModel')
 
 
 // router.get("/", LibraryItemController.getAllItem);
-// router.get("/:id", LibraryItemController.getItemById);
+ router.get("/:id", LibraryItemController.getItemById);
 // router.post("/add", LibraryItemController.addItem);
 // router.delete("/:id", LibraryItemController.deleteItem);
 
@@ -113,6 +113,46 @@ router.delete("/:id",async(req,res)=>{
       }
       return res.status(200).json({ message: `topic ${id} deleted` });
 })
+
+
+// update
+router.put("/:id", upload.array("uploaded_Image", 10), async (req, res) => {
+    const id = req.params.id;
+    try {
+      console.log(req.files.length);
+      console.log("Files", fileInArray);
+      // let img;
+  
+      let pdff;
+  
+      for (let i = 0; i < fileInArray.length; i++) {
+        let fileext = fileInArray[i][0].split(".")[1];
+        console.log(path.resolve(__dirname, "../uploads"));
+        // if(fileext=='jpg' || fileext=='png' || fileext=='jpeg')
+        // img = await cloudinary.uploader.upload(`${path.resolve(__dirname, "../uploads")}/${fileInArray[i][0]}`);
+  
+        if (fileext == "pdf")
+          pdff = await cloudinary.uploader.upload(
+            `${path.resolve(__dirname, "../uploads")}/${fileInArray[i][0]}`,
+            { pages: true }
+          );
+      }
+      let pdf = await PDF.findByIdAndUpdate(id, {
+
+        faculty  :req.body.faculty,
+        year     :req.body.year,
+        subject  :req.body.subject,
+        // avatar:img.secure_url,
+        pdf : pdff.secure_url,
+        // cloudinary_id_img: img.public_id,
+        cloudinary_id_pdf:pdff.public_id,
+      });
+      await pdf.save();
+      res.json(pdf);
+    } catch (err) {
+      console.log(err);
+    }
+  });
 
 module.exports = router;
 

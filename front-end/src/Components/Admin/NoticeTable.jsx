@@ -23,18 +23,52 @@ const NoticeTable = () => {
   };
 
   const deleteNotice = (noticeId) => {
-    NoticeService.deleteNotice(noticeId)
-      .then((res) => {
-        Swal.fire(
-          "Deleted",
-          "Notice Deleted Successfully",
-          "success"
-          );
-        getAllNotices();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success', 
+
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+        NoticeService.deleteNotice(noticeId)
+        .then((res) => {      
+          getAllNotices();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Delete canceled',
+          'error'
+        )
+      }
+    })
+
   };
 
   const addNotice = ()=>{
@@ -44,7 +78,7 @@ const NoticeTable = () => {
   return (
     <div className="p-3">
       <div
-        className=" boxnotice card text-center p-3 mt-5"
+        className=" boxnotice card text-center p-3 mt-1"
        
       >
         <h1>Announcements</h1>
@@ -52,8 +86,8 @@ const NoticeTable = () => {
         <div>
           <div className="container p-1 mt-4 mb-4">
             <div className="row ">
-              <div className="shadow card mx-auto w-100">
-              <div className=" container  d-flex flex-row">
+              <div className="shadow-lg card mx-auto w-100">
+              <div className=" container d-flex flex-row">
 
                 <Link className="btn btn-primary mt-3 p-2"
                  style={{width:190}}
@@ -72,10 +106,10 @@ const NoticeTable = () => {
                             printable: notices, header: 'Announcement Details',
                             properties:
                             [
-                            {field: 'faculty', displayName:'Employee ID'},
-                            {field: 'date', displayName:'Email'},
-                            {field: 'topic', displayName:'Name'},
-                            {field: 'notice', displayName:'NIC'},
+                            {field: 'faculty', displayName:'Faculty'},
+                            {field: 'date', displayName:'Date'},
+                            {field: 'topic', displayName:'Topic'},
+                            {field: 'notice', displayName:'Notice'},
                            
                         ],
                             type:'json'
@@ -121,7 +155,7 @@ const NoticeTable = () => {
                             to={`/AdminHome/NoticeTable/NoticeForm/${note._id}`}
                           >
                             Update &nbsp;
-                            <i class="fa fa-print" aria-hidden="true"></i>
+                            <i class="fa fa-cog" aria-hidden="true"></i>
                           </Link>
                         </td>
                         

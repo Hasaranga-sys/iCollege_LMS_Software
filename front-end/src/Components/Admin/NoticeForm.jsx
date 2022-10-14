@@ -5,6 +5,7 @@ import NoticeService from "../Service/NoticeService";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Swal from "sweetalert2";
+import '../Admin/Admin.css'
 const NoticeForm = () => {
   const [faculty, setFaculty] = useState([]);
   const [date, setDate] = useState("");
@@ -51,7 +52,7 @@ const NoticeForm = () => {
     <div>
       <div className="row">
         <div
-          class="card  text-bg-white shadow-lg mb-3 mt-5 text-center"
+          class="card  text-bg-white adminNotice-table mb-3 mt-5 text-center"
           style={{ maxWidth: 900, marginLeft: 180, borderRadius: 30 }}
         >
           <div class="card-body">
@@ -59,7 +60,7 @@ const NoticeForm = () => {
             <form onSubmit={submitNotice}>
               <div>
                 <div className="row w-50  mx-auto mt-5">
-                  <label className="col-sm-3  col-form-label">Faculty</label>
+                  <strong className="col-sm-3  col-form-label">Faculty</strong>
 
                   <select
                     class="form-select w-75"
@@ -71,7 +72,7 @@ const NoticeForm = () => {
                       setFaculty(e.target.value);
                     }}
                   >
-                    <option value="s">Select fac </option>
+                    <option value="">Select faculty </option>
                     <option value="Faculty of Computing">
                       Faculty of Computing
                     </option>
@@ -84,12 +85,12 @@ const NoticeForm = () => {
                   </select>
                 </div>
                 <div className="row w-50  mx-auto mt-3">
-                  <label
+                  <strong
                     style={{ marginLeft: -9 }}
                     className="col-sm-3 col-form-label"
                   >
                     Date
-                  </label>
+                  </strong>
                   <input
                     name="date"
                     className="form-control w-75"
@@ -116,12 +117,12 @@ const NoticeForm = () => {
                             </select> */}
                 </div>
                 <div className="row w-50  mx-auto mt-3">
-                  <label
+                  <strong
                     style={{ marginLeft: -9 }}
                     className="col-sm-3  col-form-label"
                   >
                     Topic
-                  </label>
+                  </strong>
                   <input
                     name="topic"
                     style={{ marginLeft: 9 }}
@@ -138,12 +139,12 @@ const NoticeForm = () => {
                 </div>
 
                 <div className="row w-50  mx-auto mt-3">
-                  <label
+                  <strong
                     style={{ marginLeft: -3 }}
                     className="col-sm-3  col-form-label"
                   >
                     Notice
-                  </label>
+                  </strong>
 
                   <textarea
                     name="notice"
@@ -152,7 +153,7 @@ const NoticeForm = () => {
                     placeholder="Add notice...."
                     type="text"
                     value={notice}
-                    minLength="6"
+                    minLength="5"
                     onChange={(e) => {
                       setNotice(e.target.value);
                     }}

@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 const AdminHome = () => {
   return (
     <div
-      className="card w-75 mx-auto mt-5 bg-light p-5"
+      className="card w-75 mx-auto mt-5 bg-light p-5 shadow-lg"
       style={{ borderRadius: 30 }}
     >
-      <div className=" card border ">
+      <div className=" card border shadow-lg ">
         <h2 style={{ borderRadius: 30, textAlign: "center" }}>
           Admin Dashboard
         </h2>
 
-        <div class="py-5 ">
+        <div class="py-5">
           <div class="container">
             <div class="row mx-auto ">
               <div class="col-md-3 mx-auto">
@@ -71,6 +71,10 @@ const AdminHome = () => {
                   </div>
                 </div>
               </div>
+
+              
+
+
             </div>
 
             <br></br>

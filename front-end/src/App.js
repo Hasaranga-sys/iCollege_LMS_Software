@@ -68,6 +68,11 @@ function App() {
               exact
             />
             <Route
+              path="/AdminHome/LibararyItemForm/:id"
+              element={<LibararyItemForm />}
+              exact
+            />
+            <Route
               path="/AdminHome/ViewLibararyItems"
               element={<ViewLibraryItems />}
               exact

@@ -43,9 +43,27 @@ const UserList = () => {
         text: "Cant Delete own Accoount",
       });
     } else {
-      UserServices.deleteUser(id);
+      Swal.fire({
+        title: "Do you want to delete the user?",
+        // showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Delete",
+        // denyButtonText: `Don't save`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          Swal.fire("Deleted!", "", "success");
+          console.log(id);
+          UserServices.deleteUser(id);
+        }
+        // else if (result.isDenied) {
+        //   Swal.fire('Changes are not saved', '', 'info')
+        // }
+      });
+
+      // UserServices.deleteUser(id);
     }
-    console.log(id);
+    // console.log(id);
   };
   return (
     <div className="p-3">

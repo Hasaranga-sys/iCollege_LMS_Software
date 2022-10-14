@@ -1,7 +1,7 @@
 
   .boxmr{
-    position: absolute;
-    top: 65%;
+    position: relative;
+    top: 60%;
     left: 34%;
     margin-bottom: 5cm;
     transform: translate(-50%, -50%);

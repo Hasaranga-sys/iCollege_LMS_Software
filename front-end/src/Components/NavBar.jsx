@@ -7,19 +7,153 @@ import { AuthContext } from "./UserManagement/AuthContext";
 import UserServices from "./Service/UserServices";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
-  const { userDetails, setUserDetails, isAuthenticated, setIsAuthenticated } =
-    useContext(AuthContext);
-  const [lastName, setlastName] = useState("");
-  const [initials, setinitials] = useState("");
+  const {
+    userDetails,
+    setUserDetails,
+    isAuthenticated,
+    setIsAuthenticated,
+    userName,
+    setUserName,
+  } = useContext(AuthContext);
+  const [navbar, setNavbar] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    UserServices.getUser(userDetails.userID).then((Response) => {
-      setlastName(Response.data.lastName);
-      setinitials(Response.data.initials);
-    });
+    // if (isAuthenticated) {
+    //   console.log("true un awelawa");
+    //   // setNavbar(AuthenticatedNavBar());
+    // } else {
+    //   console.log("dan false");
+    //   // setNavbar(null);
+    // }
+    // console.log(isAuthenticated);
   });
+
+  const AuthenticatedNavBar = () => {
+    return (
+      <>
+        <nav>
+          <div class="nav-mobile">
+            <a id="nav-toggle" href="#!">
+              <span></span>
+            </a>
+          </div>
+          <ul class="nav-list">
+            {userDetails.role == "admin" ? (
+              <>
+                <li>
+                  <a
+                    onClick={() => {
+                      navigate("/AdminHome");
+                    }}
+                  >
+                    Admin home
+                  </a>
+                </li>
+                <li>
+                  <a
+                    onClick={() => {
+                      navigate("/AdminHome/NoticeTable");
+                    }}
+                  >
+                    Announcements
+                  </a>
+                </li>
+                <li>
+                  <a
+                    onClick={() => {
+                      navigate("/AdminHome/ViewLibararyItems");
+                    }}
+                  >
+                    E-Library
+                  </a>
+                </li>
+                <li>
+                  <a
+                    onClick={() => {
+                      navigate("/users");
+                    }}
+                  >
+                    User Management
+                  </a>
+                </li>
+              </>
+            ) : userDetails.role == "student" ? (
+              <>
+                <li>
+                  <a
+                    onClick={() => {
+                      navigate("/StudentHome");
+                    }}
+                  >
+                    Student Home
+                  </a>
+                </li>
+              </>
+            ) : userDetails.role == "lecture" ? (
+              <>
+                <li>
+                  <a
+                    onClick={() => {
+                      navigate("/Lecture");
+                    }}
+                  >
+                    Lecture Home
+                  </a>
+                </li>
+              </>
+            ) : null}
+
+            <li>
+              <a href="#!">Hello {userName}</a>
+            </li>
+            <li>
+              <a
+                href="/"
+                onClick={() => {
+                  setUserDetails(null);
+                  setIsAuthenticated(false);
+                  setUserName(null);
+                }}
+              >
+                Logout
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </>
+    );
+  };
+  const unAuthenticatedNavBar = () => {
+    return (
+      <>
+        <nav>
+          <div class="nav-mobile">
+            <a id="nav-toggle" href="#!">
+              <span></span>
+            </a>
+          </div>
+          <ul class="nav-list">
+            <li>
+              <a
+                href="/"
+                onClick={() => {
+                  setUserDetails(null);
+                  setIsAuthenticated(false);
+                  setUserName(null);
+                }}
+              >
+                log in
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </>
+    );
+  };
   // user role eka ganna one nm (userDetails.role) eken enawa
   return (
     <div>
@@ -28,51 +162,9 @@ const NavBar = () => {
           <div class="brand">
             <a href="#!">iCollege</a>
           </div>
-          <nav>
-            <div class="nav-mobile">
-              <a id="nav-toggle" href="#!">
-                <span></span>
-              </a>
-            </div>
-            <ul class="nav-list">
-              {/* <!-- Setting the links to #! will ensure that no action takes place on click. --> */}
-              <li>
-                <a href="#!">Home</a>
-              </li>
-              <li>
-                <a href="#!">About</a>
-              </li>
-              {/* <li><a href="#!">Services</a>
-          <ul class="nav-dropdown">
-            <li><a href="#!">Web Design</a></li>
-            <li><a href="#!">Web Development</a></li>
-            <li><a href="#!">Graphic Design</a></li>
-          </ul>
-        </li> */}
-              <li>
-                <a href="#!">Pricing</a>
-              </li>
-              <li>
-                <a href="#!">Contact</a>
-              </li>
-              <li>
-                <a href="#!">
-                  HI {lastName}.{initials}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  onClick={() => {
-                    setUserDetails(null);
-                    setIsAuthenticated(false);
-                  }}
-                >
-                  Logout
-                </a>
-              </li>
-            </ul>
-          </nav>
+          {!isAuthenticated ? unAuthenticatedNavBar() : AuthenticatedNavBar()}
+          {/* {!isAuthenticated ? AuthenticatedNavBar() : unAuthenticatedNavBar()} */}
+          {/* {navbar} */}
         </div>
       </section>
     </div>
