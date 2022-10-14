@@ -8,7 +8,7 @@ import Foot from "../Foot";
 const StudentHome = () => {
   return (
     <div>
-      <div className="hero-image" style={{ height: 750 }}>
+      <div className="hero-image" style={{ height: 650 }}>
         <div className="hero-text">{/* <h1>iCollege</h1> */}</div>
       </div>
 

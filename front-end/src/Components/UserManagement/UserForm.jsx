@@ -122,12 +122,25 @@ const UserForm = (params) => {
   };
   // console.log(user)
   return (
-    <div className="container mb-5">
+    <div className="container ">
       <br />
       <br />
       <br />
       <br />
-      <div className=" boxmr shadow card col-md-8 offset-md-2 offset-md-2 mb-5">
+      <br />
+      <br />
+      <br />
+      <br /><br />
+      <br />
+      <br />
+      <br /><br />
+      <br />
+      <br />
+      <br />
+      <br />
+      
+      
+      <div className=" boxmr shadow card col-md-8 offset-md-2 offset-md-2">
         <div className="card-body">
           <div>
             <center>

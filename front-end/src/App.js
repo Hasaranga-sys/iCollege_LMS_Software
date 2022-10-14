@@ -24,7 +24,6 @@ import StudentViewLibraryItem from "./Components/Student/StudentViewLibraryItem"
 import UpdateLectures from "./Components/Lecture/UpdateLectures";
 import LectureAdminHome from "./Components/Lecture/LectureAdminHome";
 import AnnouncemntViewPro from "./Components/Admin/AnnouncemntViewPro";
-import Foot from "./Components/Foot";
 
 function App() {
   return (
@@ -111,9 +110,8 @@ function App() {
               exact
             />
           </Routes>
-          
         </main>
-     
+        
         
       </React.Fragment>
     </div>

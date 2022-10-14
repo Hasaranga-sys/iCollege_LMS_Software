@@ -26,7 +26,8 @@ const NoticeTable = () => {
 
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'btn btn-success',
+        confirmButton: 'btn btn-success', 
+        
         cancelButton: 'btn btn-danger'
       },
       buttonsStyling: false
@@ -41,7 +42,7 @@ const NoticeTable = () => {
       cancelButtonText: 'No, cancel!',
       reverseButtons: true
     }).then((result) => {
-      
+
       if (result.isConfirmed) {
         NoticeService.deleteNotice(noticeId)
         .then((res) => {      
@@ -62,7 +63,7 @@ const NoticeTable = () => {
       ) {
         swalWithBootstrapButtons.fire(
           'Cancelled',
-          'Your imaginary file is safe :)',
+          'Delete canceled',
           'error'
         )
       }
@@ -85,7 +86,7 @@ const NoticeTable = () => {
         <div>
           <div className="container p-1 mt-4 mb-4">
             <div className="row ">
-              <div className="adminNotice-table card mx-auto w-100">
+              <div className="shadow-lg card mx-auto w-100">
               <div className=" container d-flex flex-row">
 
                 <Link className="btn btn-primary mt-3 p-2"
@@ -154,7 +155,7 @@ const NoticeTable = () => {
                             to={`/AdminHome/NoticeTable/NoticeForm/${note._id}`}
                           >
                             Update &nbsp;
-                            <i class="fa fa-print" aria-hidden="true"></i>
+                            <i class="bi bi-gear"></i>
                           </Link>
                         </td>
                         

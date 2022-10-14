@@ -32,7 +32,7 @@ nav ul li a {
 }
 nav ul li a:hover {
   background: #f2f2f2;
-  color: #fb5958;
+  color: #6858fb;
 }
 nav ul li a:not(:only-child):after {
   padding-left: 4px;
@@ -149,7 +149,7 @@ nav ul li ul li a {
 
 .brand {
   position: absolute;
-  padding-left: 20px;
+  padding-left: -500px;
   float: left;
   line-height: 70px;
   

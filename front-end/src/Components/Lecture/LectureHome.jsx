@@ -4,7 +4,7 @@ import LectureService from "../Service/LectureService";
 import swal from "sweetalert2";
 import Modal from "react-bootstrap/Modal";
 import "./grid.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams,Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../UserManagement/AuthContext";
 import UserServices from "../Service/UserServices";
@@ -65,16 +65,17 @@ export default function LectureHome() {
     <div>
       <div className="lecture-hero-image" style={{ height: 350 }}></div>
       <div className="container">
-        {lastName}+{initials}
+        
         <h3 className="p-4">Lecture Schedule</h3>
         <div className="d-flex justify-content-end">
           <Button variant="info">
-            <a
+            <Link
               style={{ textDecoration: "none", color: "black" }}
-              href="/LectureHome/AddLecture"
+              to={"/LectureHome/AddLecture"}
+              
             >
               Add Lecture
-            </a>
+            </Link>
           </Button>
         </div>
         <div className="row  col-lg-3 col-md-2">

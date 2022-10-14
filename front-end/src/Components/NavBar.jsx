@@ -50,7 +50,7 @@ const NavBar = () => {
                       navigate("/AdminHome");
                     }}
                   >
-                    admin home
+                    Admin home
                   </a>
                 </li>
                 <li>
@@ -90,13 +90,13 @@ const NavBar = () => {
             ) : userDetails.role == "lecture" ? (
               <>
                 <li>
-                  <a href="#!">lecture Home</a>
+                  <a href="#!">Lecture Home</a>
                 </li>
               </>
             ) : null}
 
             <li>
-              <a href="#!">HI {userName}</a>
+              <a href="#!">Hello {userName}</a>
             </li>
             <li>
               <a

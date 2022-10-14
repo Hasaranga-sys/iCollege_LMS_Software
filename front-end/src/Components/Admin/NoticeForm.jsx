@@ -72,7 +72,7 @@ const NoticeForm = () => {
                       setFaculty(e.target.value);
                     }}
                   >
-                    <option value="s">Select faculty </option>
+                    <option value="">Select faculty </option>
                     <option value="Faculty of Computing">
                       Faculty of Computing
                     </option>
@@ -153,7 +153,7 @@ const NoticeForm = () => {
                     placeholder="Add notice...."
                     type="text"
                     value={notice}
-                    minLength="6"
+                    minLength="5"
                     onChange={(e) => {
                       setNotice(e.target.value);
                     }}
