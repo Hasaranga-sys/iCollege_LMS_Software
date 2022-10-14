@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import UserServices from "../Service/UserServices";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import '../UserManagement/Login.css'
+import "../UserManagement/Login.css";
 import NavBar from "../NavBar";
 
 import { useContext } from "react";
@@ -13,8 +13,14 @@ const LoginForm = (params) => {
   const [regNumber, setregNumber] = useState("");
   const [password, setpassword] = useState("");
   const nav = useNavigate();
-  const { userDetails, setUserDetails, isAuthenticated, setIsAuthenticated } =
-    useContext(AuthContext);
+  const {
+    userDetails,
+    setUserDetails,
+    isAuthenticated,
+    setIsAuthenticated,
+    userName,
+    setUserName,
+  } = useContext(AuthContext);
   useEffect(() => {}, []);
 
   const submitClicked = (e) => {
@@ -32,17 +38,20 @@ const LoginForm = (params) => {
           console.log("true:student");
           setUserDetails(res.data);
           setIsAuthenticated(true);
+          usernamesetter(res.data);
           nav("/StudentHome");
         } else if (res.data.role == "admin") {
           console.log("true:admin");
           setUserDetails(res.data);
           setIsAuthenticated(true);
+          usernamesetter(res.data);
           // nav("/AdminHome")
           nav("/AdminHome");
         } else if (res.data.role == "lecture") {
           console.log("true:lecture");
           setUserDetails(res.data);
           setIsAuthenticated(true);
+          usernamesetter(res.data);
           // nav("/AdminHome")
           nav("/Lecture");
         }
@@ -58,6 +67,14 @@ const LoginForm = (params) => {
     // nav("/students")
 
     console.log(loginTemplate);
+  };
+
+  const usernamesetter = (e) => {
+    // console.log(e.userID);
+    UserServices.getUser(e.userID).then((Response) => {
+      setUserName(Response.data.lastName);
+      // console.log(Response.data.lastName);
+    });
   };
   return (
     // <div className="container">
@@ -126,43 +143,40 @@ const LoginForm = (params) => {
     //   </div>
     // </div>
     <div>
-    <div class="boxlog mt-5">
-      <h1>Sign In</h1>
-      
-      <form onSubmit={submitClicked}>
-      <div class="inputlog">
-        
-          <input type="text"
-                  name="email" 
-                  placeholder="Registration number"
-                  onChange={(e) => {setregNumber(e.target.value);}}
-                  required/>
+      <div class="boxlog mt-5">
+        <h1>Sign In</h1>
 
-          <input type="password" 
-                  name="password"
-                  placeholder="Password"
-                  onChange={(e) => {setpassword(e.target.value);}}
-                  required/>
+        <form onSubmit={submitClicked}>
+          <div class="inputlog">
+            <input
+              type="text"
+              name="email"
+              placeholder="Registration number"
+              onChange={(e) => {
+                setregNumber(e.target.value);
+              }}
+              required
+            />
+
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={(e) => {
+                setpassword(e.target.value);
+              }}
+              required
+            />
+          </div>
+
+          <input type="submit" value="Sign in" className="sub " />
+        </form>
+
+        <p>
+          Don't have an accunt? <a href="/user/-1"> Create Account</a>
+        </p>
       </div>
-
-    
-
-      <input
-                type="submit"
-                value="Sign in"
-                className="sub "
-              />
-      
-      </form>
-      
-      
-      <p>Don't have an accunt? <a href="/user/-1"> Create Account</a></p>
-      
     </div>
-    
-    </div>
-  
-    
   );
 };
 export default LoginForm;
