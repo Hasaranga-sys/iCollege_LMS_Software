@@ -14,7 +14,8 @@ class LibraryService{
         //return axios.put(URL + '/' + noticeId);
     }
     getItemById(id){
-        //return axios.get(URL + '/' + _id).then((res)=>res.data)
+        return axios.get(`http://localhost:5000/pdf/${id}`);
     }
+   
 }
 export default new LibraryService();

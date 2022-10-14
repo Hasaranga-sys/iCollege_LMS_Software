@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import LibraryService from "../Service/LibraryService";
 import SubjectService from "../Service/SubjectService";
 
 const LibararyItemForm = () => {
@@ -22,9 +23,19 @@ const LibararyItemForm = () => {
 
     // selectFaculty();
     // console.log("fac",faculty);
+
+    if (id) {
+      LibraryService.getItemById(id).then((res) => {
+        console.log(res);
+        setFaculty(res.data.pdf.faculty);
+        setYear(res.data.pdf.year);
+        setsubject(res.data.pdf.subject);
+        setPdf(res.data.pdf.pdf);
+      });
+    }
   }, []);
 
-  //console.log(subjectList);
+  console.log("p", pdf);
 
   const title = () => {
     if (id) {
@@ -63,21 +74,35 @@ const LibararyItemForm = () => {
       for (var x = 0; x < pdf.length; x++) {
         data.append("uploaded_Image", pdf[x]);
       }
-      Swal.fire(" succesfull.");
-      history("/AdminHome/ViewLibararyItems");
 
-      const res = await fetch(`http://localhost:5000/pdf`, {
-        method: "POST",
-        body: data,
-      });
-      if (res.ok) {
-        setFaculty("");
-        setYear("");
-        setsubject("");
-        setPdf(null);
+      if (id) {
+        const res = await fetch(`http://localhost:5000/pdf/${id}`, {
+          method: "PUT",
+          body: data,
+        });
+        if (res.ok) {
+          setFaculty("");
+          setYear("");
+          setsubject("");
+          setPdf(null);
 
-        Swal.fire(" succesfull.");
-        history("/AdminHome/ViewLibararyItems");
+          Swal.fire(" succesfull update");
+          history("/AdminHome/ViewLibararyItems");
+        }
+      } else {
+        const res = await fetch(`http://localhost:5000/pdf`, {
+          method: "POST",
+          body: data,
+        });
+        if (res.ok) {
+          setFaculty("");
+          setYear("");
+          setsubject("");
+          setPdf(null);
+
+          Swal.fire(" succesfull.");
+          history("/AdminHome/ViewLibararyItems");
+        }
       }
     } catch (error) {
       console.log(error);
@@ -208,7 +233,7 @@ const LibararyItemForm = () => {
                       className="form-control"
                       id="exampleFormControlSelect1"
                       onChange={(e) => setsubject(e.target.value)}
-                      // value={subject}
+                      value={subject}
                       required="required"
                     >
                       <option value="">Choose...</option>
@@ -244,6 +269,7 @@ const LibararyItemForm = () => {
                     onChange={(e) => {
                       setPdf(e.target.files);
                     }}
+                    // value={pdf}
                   />
                 </div>
               </div>
