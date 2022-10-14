@@ -84,13 +84,25 @@ const NavBar = () => {
             ) : userDetails.role == "student" ? (
               <>
                 <li>
-                  <a href="#!">Student Home</a>
+                  <a
+                    onClick={() => {
+                      navigate("/StudentHome");
+                    }}
+                  >
+                    Student Home
+                  </a>
                 </li>
               </>
             ) : userDetails.role == "lecture" ? (
               <>
                 <li>
-                  <a href="#!">Lecture Home</a>
+                  <a
+                    onClick={() => {
+                      navigate("/Lecture");
+                    }}
+                  >
+                    Lecture Home
+                  </a>
                 </li>
               </>
             ) : null}
