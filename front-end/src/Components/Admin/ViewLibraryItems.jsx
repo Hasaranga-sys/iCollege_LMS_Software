@@ -35,6 +35,12 @@ function ViewLibraryItems() {
     });
   };
 
+  //
+  const updateClicked = (id) => {
+    console.log(id);
+    navigate(`/AdminHome/updateLibararyItemForm/${id}`);
+  };
+
   const add = (e) => {
     e.preventDefault();
     navigate("/AdminHome/addLibararyItemForm");
@@ -169,6 +175,15 @@ function ViewLibraryItems() {
                                 }
                               </td>
                               <td>
+                                <button
+                                  className="btn btn-success"
+                                  onClick={() => {
+                                    updateClicked(pdf._id);
+                                  }}
+                                  style={{ marginRight: 10 }}
+                                >
+                                  delete
+                                </button>
                                 <button
                                   className="btn btn-danger"
                                   onClick={() => {
