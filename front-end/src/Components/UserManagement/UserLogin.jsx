@@ -6,11 +6,15 @@ import Swal from "sweetalert2";
 import '../UserManagement/Login.css'
 import NavBar from "../NavBar";
 
+import { useContext } from "react";
+import { AuthContext } from "./AuthContext";
+
 const LoginForm = (params) => {
   const [regNumber, setregNumber] = useState("");
   const [password, setpassword] = useState("");
   const nav = useNavigate();
-
+  const { userDetails, setUserDetails, isAuthenticated, setIsAuthenticated } =
+    useContext(AuthContext);
   useEffect(() => {}, []);
 
   const submitClicked = (e) => {
@@ -26,15 +30,21 @@ const LoginForm = (params) => {
         console.log(res.data);
         if (res.data.role == "student") {
           console.log("true:student");
+          setUserDetails(res.data);
+          setIsAuthenticated(true);
           nav("/StudentHome");
         } else if (res.data.role == "admin") {
           console.log("true:admin");
+          setUserDetails(res.data);
+          setIsAuthenticated(true);
           // nav("/AdminHome")
           nav("/AdminHome");
         } else if (res.data.role == "lecture") {
           console.log("true:lecture");
+          setUserDetails(res.data);
+          setIsAuthenticated(true);
           // nav("/AdminHome")
-          // nav("/users");
+          nav("/Lecture");
         }
       })
       .catch((err) => {

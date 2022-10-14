@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import LectureService from "../Service/LectureService";
 import swal from "sweetalert2";
-
 import Modal from "react-bootstrap/Modal";
 import "./grid.css";
 import { useNavigate, useParams } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../UserManagement/AuthContext";
+import UserServices from "../Service/UserServices";
 
 export default function LectureHome() {
   const [lectureList, setLectureList] = useState([]);
@@ -13,14 +15,17 @@ export default function LectureHome() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [search, setSearch] = React.useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [lastName, setlastName] = useState("");
+  const [initials, setinitials] = useState("");
+  const { userDetails, setUserDetails, isAuthenticated, setIsAuthenticated } =
+    useContext(AuthContext);
 
   const getLecturesByid = (id) => {
     LectureService.getLectureById(id).then((res) => {
       setGetLectureByid([res.data]);
-      console.log([res.date]);
+      console.log(res.data);
       setShow(true);
     });
   };
@@ -42,8 +47,13 @@ export default function LectureHome() {
         setLectureList(res.data);
         console.log(res.data);
       });
+      console.log(userDetails);
+      console.log(isAuthenticated);
     };
-
+    UserServices.getUser(userDetails.userID).then((Response) => {
+      setlastName(Response.data.lastName);
+      setinitials(Response.data.initials);
+    });
     getLectures();
   }, []);
 
@@ -54,6 +64,7 @@ export default function LectureHome() {
   return (
     <div>
       <div className="container">
+        {lastName}+{initials}
         <h3 className="p-4">Lecture Schedule</h3>
         <div className="d-flex justify-content-end">
           <Button variant="info">
@@ -65,7 +76,6 @@ export default function LectureHome() {
             </a>
           </Button>
         </div>
-
         <div className="row  col-lg-3 col-md-2">
           <div className="col-lg-6">
             <select
@@ -149,10 +159,18 @@ export default function LectureHome() {
                     <br></br>
                   </div>
                 </div>
+                <Modal.Footer>
+                  <Button
+                    variant="success"
+                    size="sm"
+                    onClick={() => navigate(`/UpdateLecture/${row._id}`)}
+                  >
+                    Update
+                  </Button>
+                </Modal.Footer>
               </div>
             ))}
           </Modal.Body>
-          <Modal.Footer></Modal.Footer>
         </Modal>
       </div>
       <div className="container grid offset-md-1 offset-md-1">
@@ -228,6 +246,7 @@ export default function LectureHome() {
                           className="mx-1"
                           variant="info"
                           size="sm"
+                          block
                           onClick={() => getLecturesByid(row._id)}
                         >
                           More
@@ -236,6 +255,7 @@ export default function LectureHome() {
                           className="mx-1"
                           variant="danger"
                           size="sm"
+                          block
                           onClick={() => deleteLecture(row._id)}
                         >
                           Delete
@@ -248,68 +268,6 @@ export default function LectureHome() {
             </Card>
           ))}
       </div>
-      {/* <div className="shadow card w-75 mx-auto text-center p-3 mt-5 bg-light">
-      <h1>Lecture Info</h1>
-
-      <div>
-        <div className="container"></div>
-        <div className="container p-2 mt-4 mb-4">
-          <div className="row">
-            <div className="shadow card mx-auto w-75">
-              <table class="table table-striped">
-                <thead className="table-primary">
-                  <tr>
-                    <th scope="col">Year</th>
-                    <th scope="col">Semester</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Meeting Link</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Lecture</th>
-                    <th scope="col">Topic</th>
-                    <th scope="col">Subject</th>
-                    <th scope="col">Document</th>
-                    <th scope="col">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {lectureList?.map((row) => (
-                    <tr>
-                      <td>{row.year}</td>
-                      <td>{row.semester}</td>
-                      <td>{row.date}</td>
-                      <td>{row.time}</td>
-                      <td>{row.meeting_link}</td>
-                      <td>{row.discription}</td>
-                      <td>{row.lecture}</td>
-                      <td>{row.topic}</td>
-                      <td>{row.subject}</td>
-                      <td>
-                        {
-                          <a href={row.pdf} download>
-                            {row.topic}
-                          </a>
-                        }
-                      </td>
-                      <td>
-                        <button
-                          className="btn btn-danger"
-                          onClick={() => {
-                            deleteClicked(row._id);
-                          }}
-                        >
-                          delete
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> */}
     </div>
   );
 }

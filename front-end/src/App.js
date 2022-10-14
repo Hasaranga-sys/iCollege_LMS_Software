@@ -21,6 +21,8 @@ import GetLectureById from "./Components/Lecture/GetLectureById";
 import LectureDash from "./Components/Lecture/LectureDash";
 import ViewLectureT from "./Components/Lecture/ViewLectureT";
 import StudentViewLibraryItem from "./Components/Student/StudentViewLibraryItem";
+import UpdateLectures from "./Components/Lecture/UpdateLectures";
+import LectureAdminHome from "./Components/Lecture/LectureAdminHome";
 import AnnouncemntViewPro from "./Components/Admin/AnnouncemntViewPro";
 
 function App() {
@@ -36,10 +38,22 @@ function App() {
 
             {/* admin */}
             <Route path="/AdminHome" element={<AdminHome />} exact />
-            <Route path="/AdminHome/NoticeTable" element={<NoticeTable />} exact/>
-            <Route path="/AdminHome/NoticeTable/NoticeForm" element={<NoticeForm />} exact/>
-            <Route path="/AdminHome/NoticeTable/NoticeForm/:_id" element={<NoticeForm />} exact/>
-            <Route path="/annvp/:_id" element={<AnnouncemntViewPro/>} exact/>
+            <Route
+              path="/AdminHome/NoticeTable"
+              element={<NoticeTable />}
+              exact
+            />
+            <Route
+              path="/AdminHome/NoticeTable/NoticeForm"
+              element={<NoticeForm />}
+              exact
+            />
+            <Route
+              path="/AdminHome/NoticeTable/NoticeForm/:_id"
+              element={<NoticeForm />}
+              exact
+            />
+            <Route path="/annvp/:_id" element={<AnnouncemntViewPro />} exact />
 
             <Route
               path="/AdminHome/addLibararyItemForm"
@@ -83,8 +97,18 @@ function App() {
 
             <Route path="/Lecture" element={<LectureHome />} exact />
             <Route path="/Lecture/AddLecture" element={<AddLecture />} exact />
-            <Route path="/Lecture/:Id" element={<ViewLecture />} exact />
+            <Route path="/Lecture/:id" element={<ViewLecture />} exact />
+            <Route
+              path="/UpdateLecture/:id"
+              element={<UpdateLectures />}
+              exact
+            />
             <Route path="/LectureHome" element={<LectureDash />} exact />
+            <Route
+              path="/AdminHome/LectureDetails"
+              element={<LectureAdminHome />}
+              exact
+            />
           </Routes>
         </main>
         

@@ -6,8 +6,8 @@ import Modal from "react-bootstrap/Modal";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function ViewLecture(params) {
-  const { Id } = useParams();
-  console.log(Id);
+  const { id } = useParams();
+  console.log(id);
   const [show, setShow] = useState(false);
   const [getLectureByid, setGetLectureByid] = useState([]);
 
@@ -24,7 +24,7 @@ export default function ViewLecture(params) {
 
   useEffect(() => {
     const getAllLecture = () => {
-      LectureService.getLectureById(Id).then((res) => {
+      LectureService.getLectureById(id).then((res) => {
         setGetLectureByid([res.data]);
         console.log([res.data]);
         setShow(true);
@@ -39,7 +39,7 @@ export default function ViewLecture(params) {
       <div>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>{Id}</Modal.Title>
+            <Modal.Title>{id}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {getLectureByid.map((row) => (

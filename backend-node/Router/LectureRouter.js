@@ -115,7 +115,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 // router.get("/", LectureController.getAllLecture);
-// router.post("/", LectureController.addLecture);
+// router.post("/", LecuteContoller.addLecture);
 router.get("/:id", LecuteContoller.getLectureById);
 // router.put("/:id",LectureController.updateNotice);
 // router.delete("/:id", LectureController.DeleteLecture);

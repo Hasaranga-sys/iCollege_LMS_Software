@@ -5,6 +5,7 @@ import swal from "sweetalert2";
 
 export default function AddLecture() {
   const mystyle = { backgroundColor: "#FAFAFA" };
+  const navigate = useNavigate();
   const history = useNavigate();
 
   const [semester, setSemester] = useState("");
@@ -18,11 +19,14 @@ export default function AddLecture() {
   // const [lecture, setLecture] = useState("");
   const [pdf, setPdf] = useState("");
 
+  const cancelButton = async () => {
+    navigate("/Lecture");
+  };
+
   const clickSubmit = async (e) => {
     try {
       e.preventDefault();
       const data = new FormData();
-
       data.append("year", year);
       data.append("subject", subject);
       data.append("semester", semester);
@@ -53,7 +57,7 @@ export default function AddLecture() {
         // setLecture("")
         setPdf(null);
 
-        history("/viewlectures");
+        navigate("/Lecture");
       }
     } catch (error) {
       console.log(error);
@@ -62,201 +66,169 @@ export default function AddLecture() {
 
   return (
     <div>
-      <div>
-        <div className="container pt-5">
-          <div className="row">
-            <div
-              className="card col-md-6 offset-md-3 offset-md-3"
-              style={mystyle}
-            >
-              <h3 style={{ paddingTop: 15, paddingLeft: 20 }}>ADD LECTURES</h3>
-              <div className="card-body">
-                <form onSubmit={clickSubmit}>
-                  <div className="row form-group pb-4">
-                    <div className="col-lg-3 col-md-6">
-                      <label> Year and semester: </label>
-                    </div>
-                    <div className="row col-lg-9 col-md-7">
-                      <div className="col-lg-6">
-                        <select
-                          name="year"
-                          className="form-control"
-                          required
-                          value={year}
-                          onChange={(e) => setYear(e.target.value)}
-                        >
-                          <option selected>Select year</option>
-                          <option value="1st Year">1st Year</option>
-                          <option value="2nd Year">2nd Year</option>
-                          <option value="3rd Year">3rd Year</option>
-                          <option value="4th Year">4th Year</option>
-                        </select>
-                      </div>
-
-                      <div className=" col-lg-6">
-                        <select
-                          name="semester"
-                          className="form-control"
-                          value={semester}
-                          onChange={(e) => setSemester(e.target.value)}
-                        >
-                          <option selected>Select Semester</option>
-                          <option value="1st Semester">1st Semester</option>
-                          <option value="2nd Semester">2nd Semester</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    {/* <input
-                        placeholder="First Name"
-                        name="firstName"
+      <div className="container pt-5">
+        <div className="row">
+          <div
+            className="card col-md-6 offset-md-3 offset-md-3"
+            style={mystyle}
+          >
+            <h3 style={{ paddingTop: 15, paddingLeft: 20 }}>ADD LECTURES</h3>
+            <div className="card-body">
+              <form onSubmit={clickSubmit}>
+                <div className="row form-group pb-4">
+                  <div className="col-lg-3 col-md-6">
+                    <label> Year and semester: </label>
+                  </div>
+                  <div className="row col-lg-9 col-md-7">
+                    <div className="col-lg-6">
+                      <select
+                        name="year"
                         className="form-control"
-                        title="Name should only contain lowercase or uppercase letters. e.g. john"
                         required
-                        onChange={(val) =>
-                          handleChangeText("staff_service_id", val)
-                        }
-                      /> */}
-                  </div>
-                  <div className="row form-group pb-4">
-                    <div className="col-lg-3 col-md-5">
-                      <label> Subject: </label>
-                    </div>
-                    <div className="col-lg-9 col-md-7">
-                      <input
-                        placeholder="Enter subject"
-                        name="subject"
-                        className="form-control"
-                        title="Name should only contain lowercase or uppercase letters. e.g. john"
-                        value={subject}
-                        onChange={(e) => setSubject(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                  <div className="row form-group pb-4">
-                    <div className="col-lg-3 col-md-5">
-                      <label> Lecture topic: </label>
-                    </div>
-                    <div className="col-lg-9 col-md-7">
-                      <input
-                        placeholder="Enter Topic"
-                        name="topic"
-                        className="form-control"
-                        title="Name should only contain lowercase or uppercase letters. e.g. john"
-                        value={topic}
-                        onChange={(e) => setTopic(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                  <div className="row form-group pb-4">
-                    <div className="col-lg-3 col-md-5">
-                      <label> Date and time: </label>
-                    </div>
-                    <div className="row col-lg-9 col-md-7">
-                      <div className="col-lg-6">
-                        <input
-                          placeholder="Enter date"
-                          type="date"
-                          className="form-control"
-                          title="Name should only contain lowercase or uppercase letters. e.g. john"
-                          value={date}
-                          onChange={(e) => setDate(e.target.value)}
-                        />
-                      </div>
-                      <div className=" col-lg-6">
-                        <input
-                          placeholder="Enter time"
-                          type="time"
-                          className="form-control"
-                          title="Name should only contain lowercase or uppercase letters. e.g. john"
-                          value={time}
-                          onChange={(e) => setTime(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row form-group pb-4">
-                    <div className="col-lg-3 col-md-5">
-                      <label> Discription: </label>
-                    </div>
-                    <div className="col-lg-9 col-md-7">
-                      <input
-                        placeholder="Enter Discription"
-                        name="firstName"
-                        className="form-control"
-                        title="Name should only contain lowercase or uppercase letters. e.g. john"
-                        value={discription}
-                        onChange={(e) => setDiscription(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                  <div className="row form-group pb-4">
-                    <div className="col-lg-3 col-md-5">
-                      <label> Meeting link: </label>
-                    </div>
-                    <div className="col-lg-9 col-md-7">
-                      <input
-                        placeholder="Meeting Link"
-                        name="firstName"
-                        className="form-control"
-                        title="Name should only contain lowercase or uppercase letters. e.g. john"
-                        value={meeting_link}
-                        onChange={(e) => setMeeting_link(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                  <div className="row form-group pb-4">
-                    <div className="col-lg-3 col-md-5">
-                      <label> Lecture slide: </label>
-                    </div>
-                    <div className="col-lg-9 col-md-7">
-                      <input
-                        type="file"
-                        multiple
-                        required
-                        filename="uploaded_Image"
-                        className="form-control"
-                        onChange={(e) => {
-                          setPdf(e.target.files);
-                        }}
-                      />
-                    </div>
-                  </div>
-                  {/* <div className="row form-group pb-4">
-                    <div className="col-lg-3 col-md-5">
-                      <label> Tutorial: </label>
-                    </div>
-                    <div className="col-lg-9 col-md-7">
-                      <input
-                        type="file"
-                        placeholder="First Name"
-                        name="firstName"
-                        className="form-control"
-                        title="Name should only contain lowercase or uppercase letters. e.g. john"
                         value={year}
-                          onChange={(e) => setYear(e.target.value)}
+                        onChange={(e) => setYear(e.target.value)}
+                      >
+                        <option selected>Select year</option>
+                        <option value="1st Year">1st Year</option>
+                        <option value="2nd Year">2nd Year</option>
+                        <option value="3rd Year">3rd Year</option>
+                        <option value="4th Year">4th Year</option>
+                      </select>
+                    </div>
+
+                    <div className=" col-lg-6">
+                      <select
+                        name="semester"
+                        className="form-control"
+                        value={semester}
+                        onChange={(e) => setSemester(e.target.value)}
+                      >
+                        <option selected>Select Semester</option>
+                        <option value="1st Semester">1st Semester</option>
+                        <option value="2nd Semester">2nd Semester</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div className="row form-group pb-4">
+                  <div className="col-lg-3 col-md-5">
+                    <label> Subject: </label>
+                  </div>
+                  <div className="col-lg-9 col-md-7">
+                    <input
+                      placeholder="Enter subject"
+                      name="subject"
+                      className="form-control"
+                      title="Name should only contain lowercase or uppercase letters. e.g. john"
+                      value={subject}
+                      onChange={(e) => setSubject(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="row form-group pb-4">
+                  <div className="col-lg-3 col-md-5">
+                    <label> Lecture topic: </label>
+                  </div>
+                  <div className="col-lg-9 col-md-7">
+                    <input
+                      placeholder="Enter Topic"
+                      name="topic"
+                      className="form-control"
+                      title="Name should only contain lowercase or uppercase letters. e.g. john"
+                      value={topic}
+                      onChange={(e) => setTopic(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="row form-group pb-4">
+                  <div className="col-lg-3 col-md-5">
+                    <label> Date and time: </label>
+                  </div>
+                  <div className="row col-lg-9 col-md-7">
+                    <div className="col-lg-6">
+                      <input
+                        placeholder="Enter date"
+                        type="date"
+                        className="form-control"
+                        title="Name should only contain lowercase or uppercase letters. e.g. john"
+                        value={date}
+                        onChange={(e) => setDate(e.target.value)}
                       />
                     </div>
-                  </div> */}
-
-                  <div>
-                    <button type="submit" className="btn btn-primary">
-                      Submit
-                    </button>
-
-                    {/* <button className="btn btn-success" type="submit">
-                      Save
-                    </button>
-                    <button
-                      className="btn btn-danger"
-                      style={{ marginLeft: "10px" }}
-                      onClick={() => navigate("/Lecture")}
-                    >
-                      Cancel
-                    </button> */}
+                    <div className=" col-lg-6">
+                      <input
+                        placeholder="Enter time"
+                        type="time"
+                        className="form-control"
+                        title="Name should only contain lowercase or uppercase letters. e.g. john"
+                        value={time}
+                        onChange={(e) => setTime(e.target.value)}
+                      />
+                    </div>
                   </div>
-                </form>
-              </div>
+                </div>
+                <div className="row form-group pb-4">
+                  <div className="col-lg-3 col-md-5">
+                    <label> Discription: </label>
+                  </div>
+                  <div className="col-lg-9 col-md-7">
+                    <input
+                      placeholder="Enter Discription"
+                      name="firstName"
+                      className="form-control"
+                      title="Name should only contain lowercase or uppercase letters. e.g. john"
+                      value={discription}
+                      onChange={(e) => setDiscription(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="row form-group pb-4">
+                  <div className="col-lg-3 col-md-5">
+                    <label> Meeting link: </label>
+                  </div>
+                  <div className="col-lg-9 col-md-7">
+                    <input
+                      placeholder="Meeting Link"
+                      name="firstName"
+                      className="form-control"
+                      title="Name should only contain lowercase or uppercase letters. e.g. john"
+                      value={meeting_link}
+                      onChange={(e) => setMeeting_link(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="row form-group pb-4">
+                  <div className="col-lg-3 col-md-5">
+                    <label> Lecture slide: </label>
+                  </div>
+                  <div className="col-lg-9 col-md-7">
+                    <input
+                      type="file"
+                      multiple
+                      required
+                      filename="uploaded_Image"
+                      className="form-control"
+                      onChange={(e) => {
+                        setPdf(e.target.files);
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <button type="submit" className="btn btn-primary">
+                    Submit
+                  </button>
+
+                  <button
+                    className="btn btn-danger"
+                    style={{ marginLeft: "10px" }}
+                    onClick={() => cancelButton()}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
