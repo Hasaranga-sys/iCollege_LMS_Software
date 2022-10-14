@@ -63,6 +63,7 @@ export default function LectureHome() {
 
   return (
     <div>
+      <div className="lecture-hero-image" style={{ height: 350 }}></div>
       <div className="container">
         {lastName}+{initials}
         <h3 className="p-4">Lecture Schedule</h3>
@@ -105,168 +106,192 @@ export default function LectureHome() {
             </select>
           </div>
         </div>
-      </div>
-
-      <div>
-        <Modal size="lg" show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Lecture Info</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            {getLectureByid.map((row) => (
-              <div>
-                <div className="row">
-                  <div className="col-10">
-                    <strong style={{ display: "inline-block", width: "200px" }}>
-                      Subject:
-                    </strong>
-                    {row.subject} <br></br>
-                    <strong style={{ display: "inline-block", width: "200px" }}>
-                      Topic:
-                    </strong>
-                    {row.topic} <br></br>
-                    <strong style={{ display: "inline-block", width: "200px" }}>
-                      Date:
-                    </strong>
-                    {row.date} <br></br>
-                    <strong style={{ display: "inline-block", width: "200px" }}>
-                      Time:
-                    </strong>
-                    {row.time} <br></br>
-                    <strong style={{ display: "inline-block", width: "200px" }}>
-                      Discription:
-                    </strong>
-                    <div style={{ display: "inline-block", width: "400px" }}>
-                      {row.discription}
-                    </div>
-                    <br></br>
-                    <strong style={{ display: "inline-block", width: "200px" }}>
-                      Lecture slide:
-                    </strong>
-                    {
-                      <a href={row.pdf} download>
-                        {row.Subject}
-                        {row.topic}
-                      </a>
-                    }{" "}
-                    <br></br>
-                    <strong style={{ display: "inline-block", width: "200px" }}>
-                      Meeting Link:
-                    </strong>
-                    <div style={{ display: "inline-block", width: "400px" }}>
-                      <a href={row.meeting_link}>{row.meeting_link}</a>
-                    </div>
-                    <br></br>
-                  </div>
-                </div>
-                <Modal.Footer>
-                  <Button
-                    variant="success"
-                    size="sm"
-                    onClick={() => navigate(`/UpdateLecture/${row._id}`)}
-                  >
-                    Update
-                  </Button>
-                </Modal.Footer>
-              </div>
-            ))}
-          </Modal.Body>
-        </Modal>
-      </div>
-      <div className="container grid offset-md-1 offset-md-1">
-        {lectureList
-          ?.filter((row) => {
-            if (search == "") {
-              return row;
-            } else if (
-              row.year
-                .toString()
-                .toLowerCase()
-                .includes(search.toString().toLowerCase()) ||
-              row.semester
-                .toString()
-                .toLowerCase()
-                .includes(search.toString().toLowerCase())
-            ) {
-              return row;
-            }
-            return 0;
-          })
-          .map((row) => (
-            <Card className="m-3 box box-shadow" style={{ width: "18rem" }}>
-              <Card.Header>
-                <div className="row">
-                  <div
-                    style={{
-                      display: "inline-block",
-                      width: "250px",
-                      fontSize: "20px",
-                    }}
-                  >
-                    Subject:&emsp;{row.subject}
-                  </div>
-                  <div style={{ display: "inline-block", width: "250px" }}>
-                    {row.year} {row.semester}
-                  </div>
-                </div>
-              </Card.Header>
-              <Card.Body>
-                <Card.Text>
+        <div>
+          <Modal size="lg" show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Lecture Info</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {getLectureByid.map((row) => (
+                <div>
                   <div className="row">
                     <div className="col-10">
                       <strong
-                        style={{
-                          display: "inline-block",
-                          width: "100px",
-                        }}
+                        style={{ display: "inline-block", width: "200px" }}
+                      >
+                        Subject:
+                      </strong>
+                      {row.subject} <br></br>
+                      <strong
+                        style={{ display: "inline-block", width: "200px" }}
                       >
                         Topic:
                       </strong>
                       {row.topic} <br></br>
                       <strong
-                        style={{ display: "inline-block", width: "100px" }}
+                        style={{ display: "inline-block", width: "200px" }}
                       >
                         Date:
                       </strong>
                       {row.date} <br></br>
                       <strong
-                        style={{ display: "inline-block", width: "100px" }}
+                        style={{ display: "inline-block", width: "200px" }}
                       >
                         Time:
                       </strong>
                       {row.time} <br></br>
-                    </div>
-
-                    <div
-                      className="row "
-                      style={{ display: "flex", justifyContent: "right" }}
-                    >
-                      <div className="col-auto">
-                        <Button
-                          className="mx-1"
-                          variant="info"
-                          size="sm"
-                          block
-                          onClick={() => getLecturesByid(row._id)}
-                        >
-                          More
-                        </Button>
-                        <Button
-                          className="mx-1"
-                          variant="danger"
-                          size="sm"
-                          block
-                          onClick={() => deleteLecture(row._id)}
-                        >
-                          Delete
-                        </Button>
+                      <strong
+                        style={{ display: "inline-block", width: "200px" }}
+                      >
+                        Discription:
+                      </strong>
+                      <div style={{ display: "inline-block", width: "400px" }}>
+                        {row.discription}
                       </div>
+                      <br></br>
+                      <strong
+                        style={{ display: "inline-block", width: "200px" }}
+                      >
+                        Lecture slide:
+                      </strong>
+                      {
+                        <a href={row.pdf} download>
+                          {row.Subject}
+                          {row.topic}
+                        </a>
+                      }{" "}
+                      <br></br>
+                      <strong
+                        style={{ display: "inline-block", width: "200px" }}
+                      >
+                        Meeting Link:
+                      </strong>
+                      <div style={{ display: "inline-block", width: "400px" }}>
+                        <a href={row.meeting_link}>{row.meeting_link}</a>
+                      </div>
+                      <br></br>
                     </div>
                   </div>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          ))}
+                  <Modal.Footer>
+                    <Button
+                      variant="success"
+                      size="sm"
+                      onClick={() => navigate(`/UpdateLecture/${row._id}`)}
+                    >
+                      Update
+                    </Button>
+                  </Modal.Footer>
+                </div>
+              ))}
+            </Modal.Body>
+          </Modal>
+        </div>
+        <div className="container grid">
+          {lectureList
+            ?.filter((row) => {
+              if (search == "") {
+                return row;
+              } else if (
+                row.year
+                  .toString()
+                  .toLowerCase()
+                  .includes(search.toString().toLowerCase()) ||
+                row.semester
+                  .toString()
+                  .toLowerCase()
+                  .includes(search.toString().toLowerCase())
+              ) {
+                return row;
+              }
+              return 0;
+            })
+            .map((row) => (
+              <Card className="shadow m-3 box" style={{ width: "18rem" }}>
+                <Card.Body>
+                  <Card.Text>
+                    <div
+                      className="row"
+                      style={{
+                        borderBottom: "1px solid #B0BEC5",
+                        color: "#a0a0a0",
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: "inline-block",
+                          width: "250px",
+                          fontSize: "23px",
+
+                          fontWeight: "500",
+                        }}
+                      >
+                        Subject:&emsp;{row.subject}
+                      </div>
+
+                      <div
+                        style={{
+                          display: "inline-block",
+                          width: "250px",
+                        }}
+                      >
+                        {row.year} {row.semester}
+                      </div>
+                    </div>
+                    <div
+                      className="row"
+                      style={{ marginLeft: "10px", marginTop: "10px" }}
+                    >
+                      <div className="col-10">
+                        <div
+                          style={{
+                            display: "inline-block",
+                            width: "70px",
+                          }}
+                        >
+                          Topic:
+                        </div>
+                        {row.topic} <br></br>
+                        <div style={{ display: "inline-block", width: "70px" }}>
+                          Date:
+                        </div>
+                        {row.date} <br></br>
+                        <div style={{ display: "inline-block", width: "70px" }}>
+                          Time:
+                        </div>
+                        {row.time} <br></br>
+                      </div>
+
+                      <div
+                        className="row "
+                        style={{ display: "flex", justifyContent: "right" }}
+                      >
+                        <div className="col-auto">
+                          <Button
+                            className="mx-1"
+                            variant="info"
+                            size="sm"
+                            block
+                            onClick={() => getLecturesByid(row._id)}
+                          >
+                            More
+                          </Button>
+                          <Button
+                            className="mx-1"
+                            variant="danger"
+                            size="sm"
+                            block
+                            onClick={() => deleteLecture(row._id)}
+                          >
+                            Delete
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            ))}
+        </div>
       </div>
     </div>
   );
