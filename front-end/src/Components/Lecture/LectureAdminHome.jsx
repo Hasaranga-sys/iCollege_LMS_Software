@@ -16,72 +16,62 @@ export default function LectureAdminHome() {
   }, []);
 
   return (
-    <div className="container">
-      <div className="card-body">
-        {/* <button onClick={AddStudent}>Add student</button> */}
-        <h1>User list</h1>
-        <table class="table table-hover">
-          <thead>
-            <tr className="table-active">
-              <th scope="col">
-                <em> Lectures Info</em>
-              </th>
-              <th scope="col">
-                <em>Date & Time</em>
-              </th>
-              <th scope="col">
-                <em>Discription</em>
-              </th>
-              <th scope="col">
-                <em>Grade</em>
-              </th>
-              <th scope="col">
-                <em>Lecture Slide</em>
-              </th>
-              <th scope="col">
-                <em>Meeting Link</em>
-              </th>
+    <div>
+      <div className="card mx-5">
+        <div className="card-body">
+          {/* <button onClick={AddStudent}>Add student</button> */}
+          <h1>User list</h1>
 
-              <th scope="col"> </th>
-            </tr>
-          </thead>
-          <tbody>
-            {lectureList.map((lecture) => (
-              <tr key={lecture._id}>
-                <td>
-                  <div>
-                    <strong>Subject:</strong> {lecture.subject}
-                    <br></br>
-                    <strong>Topic: </strong>
-                    {lecture.topic}
-                  </div>
-                </td>
-                <td style={{ width: "15%" }}>
-                  <div>
-                    <strong>Time:</strong> {lecture.time}
-                    <br></br>
-                    <strong>Date: </strong>
-                    {lecture.date}
-                  </div>
-                </td>
+          <table class="table table-striped mt-3">
+            <thead className="table-primary">
+              <tr>
+                <th scope="col">Lectures Info</th>
+                <th scope="col">Date & Time</th>
+                <th scope="col">Discription</th>
+                <th scope="col">Grade</th>
+                <th scope="col">Lecture Slide</th>
+                <th scope="col">Meeting Link</th>
 
-                <td style={{ width: "20%" }}>{lecture.discription}</td>
-                <td>
-                  {lecture.year}
-                  <br></br> {lecture.semester}
-                </td>
-                <td style={{ width: "15%" }}>
-                  <a href={lecture.pdf} download>
-                    {lecture.subject}_{lecture.topic}
-                  </a>
-                </td>
-                <td style={{ width: "15%" }}>
-                  <a href={lecture.meeting_link}>
-                    {lecture.topic}_{lecture.date}_{lecture.time}
-                  </a>
-                </td>
+                <th scope="col"> </th>
+              </tr>
+            </thead>
+            <tbody>
+              {lectureList.map((lecture) => (
+                <tr key={lecture._id}>
+                  <td>
+                    <div>
+                      <strong>Subject:</strong> {lecture.subject}
+                      <br></br>
+                      <strong>Topic: </strong>
+                      {lecture.topic}
+                    </div>
+                  </td>
+                  <td style={{ width: "15%" }}>
+                    <div>
+                      <strong>Time:</strong> {lecture.time}
+                      <br></br>
+                      <strong>Date: </strong>
+                      {lecture.date}
+                    </div>
+                  </td>
 
-                {/* <td>
+                  <td style={{ width: "20%" }}>{lecture.discription}</td>
+                  <td>
+                    {lecture.year}
+                    <br></br> {lecture.semester}
+                  </td>
+                  <td style={{ width: "15%" }}>
+                    <a href={lecture.pdf} download>
+                      {lecture.subject}_{lecture.topic}
+                    </a>
+                  </td>
+                  <td style={{ width: "15%" }}>
+                    <a href={lecture.meeting_link}>
+                      {lecture.topic}_{lecture.date}_{lecture.time}
+                    </a>
+                  </td>
+
+                  {/* <td>
                   <button
                     className="btn btn-warning"
                     // onClick={() => updteClicked(user._id)}
@@ -89,18 +79,11 @@ export default function LectureAdminHome() {
                     ✏️
                   </button>
                 </td> */}
-                <td>
-                  <button
-                    className="btn btn-success"
-                    // onClick={() => dleteClicked(user._id)}
-                  >
-                    ❌
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

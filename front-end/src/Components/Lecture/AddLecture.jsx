@@ -66,18 +66,46 @@ export default function AddLecture() {
 
   return (
     <div>
-      <div className="container pt-5">
+      <div className="container p-5">
         <div className="row">
           <div
             className="card col-md-6 offset-md-3 offset-md-3"
             style={mystyle}
           >
-            <h3 style={{ paddingTop: 15, paddingLeft: 20 }}>ADD LECTURES</h3>
+            <div className="row">
+              <div
+                className="col"
+                style={{
+                  fontSize: 30,
+                  fontWeight: 500,
+                  paddingLeft: 50,
+                  display: "block",
+                  marginTop: "auto",
+                  marginBottom: "auto",
+                  color: "#90A4AE",
+                }}
+              >
+                Add Lectures.
+                <p
+                  class="text-muted"
+                  style={{
+                    fontSize: 14,
+                    fontWeight: 400,
+                  }}
+                >
+                  The Academic Staff can schedule a lessons in hear.
+                </p>
+              </div>
+              <div
+                className="lecture-image"
+                style={{ height: "130px", width: "150px" }}
+              ></div>
+            </div>
             <div className="card-body">
               <form onSubmit={clickSubmit}>
                 <div className="row form-group pb-4">
                   <div className="col-lg-3 col-md-6">
-                    <label> Year and semester: </label>
+                    <label> Year & semester: </label>
                   </div>
                   <div className="row col-lg-9 col-md-7">
                     <div className="col-lg-6">

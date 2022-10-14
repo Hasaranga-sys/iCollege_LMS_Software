@@ -6,5 +6,21 @@
 }
 
 .grid > div {
-  flex-basis: calc(30% - 20px);
+  flex-basis: calc(30%);
+}
+.lecture-image {
+  background-image: url("../images/Typing-bro.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.lecture-hero-image {
+  background-image: url("../images/9176840_6663.jpg");
+  height: 750;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
