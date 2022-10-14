@@ -26,9 +26,12 @@ const StudentHome = () => {
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
 <div class="container">
-    <div class="row">
-        <div class="col-lg-3 col-sm-6">
-            <div class="card-box bg-blue">
+    <center>
+    <div class="row mt-5"
+    style={{marginLeft:320}}>
+        
+        <div class="col-lg-4 col-sm-6">
+            <div class="card-box bg-green">
                 <div class="inner">
                     <h3> Lectures </h3>
                     <p> Student Strength </p>
@@ -40,48 +43,22 @@ const StudentHome = () => {
             </div>
         </div>
 
-        <div class="col-lg-3 col-sm-6">
-            <div class="card-box bg-green">
+        <div class="col-lg-4 col-sm-6">
+            <div class="card-box bg-orange">
                 <div class="inner">
                     <h3> E-Library </h3>
                     <p> Today’s Collection </p>
                 </div>
                 <div class="icon">
-                    <i class="fa fa-money" aria-hidden="true"></i>
+                    <i class="fa fa-book" aria-hidden="true"></i>
                 </div>
                 <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card-box bg-orange">
-                <div class="inner">
-                    <h3> 5464 </h3>
-                    <p> New Admissions </p>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-user-plus" aria-hidden="true"></i>
-                </div>
-                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card-box bg-red">
-                <div class="inner">
-                    <h3> 723 </h3>
-                    <p> Faculty Strength </p>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-users"></i>
-                </div>
-                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
+       
     </div>
-    <div class="row">
-        <div class="col-lg-3 col-sm-6">
-            
-        </div>
-    </div>
+    </center>
+   
 </div>
 
 

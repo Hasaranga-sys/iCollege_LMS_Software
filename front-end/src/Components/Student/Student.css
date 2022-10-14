@@ -98,9 +98,14 @@ body{
       background-color: #00a65a !important;
   }
   .bg-orange {
-      background-color: #f39c12 !important;
+      background-color: #c68112 !important;
   }
   .bg-red {
       background-color: #d9534f !important;
   }
-  
+  .bg-rosegrad{
+    background-image: linear-gradient(90deg, #7950f2 5%, #f783ac 96%);
+  }
+  .bg-yellowgrad{
+    background-image: linear-gradient(90deg, #fab005 5%, #ff8787 95%);
+  }
