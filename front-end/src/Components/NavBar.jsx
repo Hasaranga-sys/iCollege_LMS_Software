@@ -19,7 +19,7 @@ const NavBar = () => {
   <section class="navigation">
   <div class="nav-container">
     <div class="brand">
-      <a href="#!">LOGO</a>
+      <a href="#!">iCollege</a>
     </div>
     <nav>
       <div class="nav-mobile">

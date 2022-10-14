@@ -44,8 +44,8 @@ const NoticeTable = () => {
   return (
     <div className="p-3">
       <div
-        className="shadow card w-100 text-center p-3 mt-5 mb-5"
-        style={{borderRadius: 30 }}
+        className="admin-wcad card w-100 text-center p-3 mt-5 mb-5"
+       
       >
         <h1>Announcements</h1>
 

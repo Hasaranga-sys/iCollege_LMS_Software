@@ -5,6 +5,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  
 }
 .hero-text{
   text-align: center;
@@ -13,20 +14,26 @@
   left: 50%;
   transform: translate(-420%,80%);
   color:#FFFFFF;
+  
 }
 
 .note-container{
-    background-color: #d9e6f9;
+    background-color:FFFFFF;
     width:85%;   
     left: 30mm;
     border-Radius: 20mm;
+    
 }
 
 
 
   /* cards */
 body{
-  background:rgb(255, 251, 251);    
+  /* background:rgb(255, 251, 251);  */
+  /* background: #e0e0e0;  */
+  background: #d9edff;
+  
+  /* background-image: linear-gradient(90deg, rgba(34, 139, 230, 0.33) 5%, rgba(59, 201, 219, 0.4) 95%); */
   }
   
   .card-box {
@@ -34,6 +41,7 @@ body{
       color: #fff;
       padding: 20px 10px 40px;
       margin: 20px 0px;
+      
   }
   .card-box:hover {
       text-decoration: none;
@@ -77,9 +85,11 @@ body{
       background: rgba(0, 0, 0, 0.1);
       width: 100%;
       text-decoration: none;
+      
   }
   .card-box:hover .card-box-footer {
       background: rgba(0, 0, 0, 0.3);
+      
   }
   .bg-blue {
       background-color: #00c0ef !important;
