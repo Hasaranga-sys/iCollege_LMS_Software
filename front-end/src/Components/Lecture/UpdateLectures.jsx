@@ -41,8 +41,8 @@ export default function UpdateLectures() {
         data.append("uploaded_Image", pdf[x]);
       }
 
-      const res = await fetch(`http://localhost:5000/Lecture`, {
-        method: "POST",
+      const res = await fetch(`http://localhost:5000/Lecture/${id}`, {
+        method: "PUT",
         body: data,
       });
       if (res.ok) {

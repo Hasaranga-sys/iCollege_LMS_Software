@@ -4,7 +4,8 @@ export const AuthContext = createContext();
 
 export default({children})=>{
     const [userDetails, setUserDetails] = useState([]);
-    const [isAuthenticated, setIsAuthenticated] = useState("false");
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [userName, setUserName] = useState("");
     // useEffect(()=>{
         
     //     setUserDetails("user");
@@ -14,7 +15,7 @@ export default({children})=>{
     
     return(
         <div>
-            <AuthContext.Provider value={{userDetails, setUserDetails, isAuthenticated, setIsAuthenticated }}>
+            <AuthContext.Provider value={{userDetails, setUserDetails, isAuthenticated, setIsAuthenticated, userName, setUserName }}>
                 {children}
             </AuthContext.Provider>
         </div>

@@ -3,8 +3,9 @@ import { useNavigate, useParams } from "react-router";
 import UserServices from "../Service/UserServices.js";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import '../UserManagement/Register.css'
-
+import "../UserManagement/Register.css";
+import { useContext } from "react";
+import { AuthContext } from "./AuthContext.js";
 const UserForm = (params) => {
   const [status, setstatus] = useState("");
   const { id } = useParams();
@@ -17,6 +18,10 @@ const UserForm = (params) => {
   const [regNumber, setregNumber] = useState("");
   const [password, setpassword] = useState("");
   const [role, setrole] = useState("user");
+  const [regStatus1, setRegStatus1] = useState("");
+  const [regStatus2, setRegStatus2] = useState("");
+  const { userDetails, setUserDetails, isAuthenticated, setIsAuthenticated } =
+    useContext(AuthContext);
   const nav = useNavigate();
 
   useEffect(() => {
@@ -49,6 +54,13 @@ const UserForm = (params) => {
       });
       // console.log(id);
     }
+    if (isAuthenticated == true) {
+      setRegStatus1("");
+      setRegStatus2("");
+    } else {
+      setRegStatus1("Already Have An Account");
+      setRegStatus2("Log In");
+    }
   }, []);
 
   const submitClicked = (e) => {
@@ -76,7 +88,12 @@ const UserForm = (params) => {
           //     nav("/AdminHome")
           // }
           Swal.fire(" succesfull.");
-          nav("/login");
+          if (isAuthenticated) {
+            nav("/users");
+          } else {
+            nav("/login");
+          }
+          // nav("/login");
         })
         .catch((err) => {
           console.log("failed");
@@ -246,9 +263,9 @@ const UserForm = (params) => {
             <br />
             <div id="myDIV1">
               <div className="text-center">
-                Already Have An Account{" "}
+                {regStatus1}{" "}
                 <Link to="/login" className="text-center">
-                  Log In{" "}
+                  {regStatus2}{" "}
                 </Link>
               </div>
             </div>
