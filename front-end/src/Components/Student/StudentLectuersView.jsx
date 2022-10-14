@@ -3,13 +3,12 @@ import { Button, Card } from "react-bootstrap";
 import LectureService from "../Service/LectureService";
 import Swal from "sweetalert2";
 import Modal from "react-bootstrap/Modal";
-import "./grid.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../UserManagement/AuthContext";
 import UserServices from "../Service/UserServices";
 
-export default function LectureHome() {
+export default function StudentLectuersView() {
   const [lectureList, setLectureList] = useState([]);
   const [getLectureByid, setGetLectureByid] = useState([]);
   const navigate = useNavigate();
@@ -68,27 +67,12 @@ export default function LectureHome() {
   const viewlecture = (postId) => {
     navigate(`/Lecture/${postId}`);
   };
-
   return (
     <div>
-      <div className="lecture-hero-image" style={{ height: 265 }}></div>
+      <div className="student-hero-image" style={{ height: 265 }}></div>
       <div>
-        <div className="container card my-5">
+        <div className="container card my-5 ">
           <h3 className="p-4">Lecture Schedule</h3>
-
-          <div className="row">
-            <div className="d-flex justify-content-end">
-              <Button variant="info">
-                <a
-                  style={{ textDecoration: "none", color: "black" }}
-                  href="/LectureHome/AddLecture"
-                >
-                  Add Lecture &nbsp;
-                  <i class="fa fa-plus-circle" aria-hidden="true" />
-                </a>
-              </Button>
-            </div>
-          </div>
           <div>
             <Modal size="lg" show={show} onHide={handleClose}>
               <Modal.Header closeButton>
@@ -196,15 +180,6 @@ export default function LectureHome() {
                         <br></br>
                       </div>
                     </div>
-                    <Modal.Footer>
-                      <Button
-                        variant="success"
-                        size="sm"
-                        onClick={() => navigate(`/UpdateLecture/${row._id}`)}
-                      >
-                        Update
-                      </Button>
-                    </Modal.Footer>
                   </div>
                 ))}
               </Modal.Body>
@@ -343,7 +318,7 @@ export default function LectureHome() {
                           className="row"
                           style={{
                             borderBottom: "1px solid #B0BEC5",
-                            color: "#616161",
+                            color: "#a0a0a0",
                           }}
                         >
                           <div
@@ -401,7 +376,6 @@ export default function LectureHome() {
                           >
                             <div className="col-auto">
                               <Button
-                                className="mx-1"
                                 variant="info"
                                 size="sm"
                                 block
@@ -409,16 +383,6 @@ export default function LectureHome() {
                               >
                                 More&nbsp;
                                 <i class="fa-solid fa-circle-info"></i>
-                              </Button>
-                              <Button
-                                className="mx-1"
-                                variant="danger"
-                                size="sm"
-                                block
-                                onClick={() => deleteLecture(row._id)}
-                              >
-                                Delete&nbsp;
-                                <i class="fa fa-trash" aria-hidden="true" />
                               </Button>
                             </div>
                           </div>

@@ -25,6 +25,7 @@ import UpdateLectures from "./Components/Lecture/UpdateLectures";
 import LectureAdminHome from "./Components/Lecture/LectureAdminHome";
 import AnnouncemntViewPro from "./Components/Admin/AnnouncemntViewPro";
 import Foot from "./Components/Foot";
+import StudentLectuersView from "./Components/Student/StudentLectuersView";
 
 function App() {
   return (
@@ -110,11 +111,13 @@ function App() {
               element={<LectureAdminHome />}
               exact
             />
+            <Route
+              path="/StudentHome/LectureDetails"
+              element={<StudentLectuersView />}
+              exact
+            />
           </Routes>
-          
         </main>
-     
-        
       </React.Fragment>
     </div>
   );

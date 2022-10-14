@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LectureService from "../Service/LectureService";
 import { useNavigate, useParams } from "react-router-dom";
-import swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 export default function AddLecture() {
   const mystyle = { backgroundColor: "#FAFAFA" };

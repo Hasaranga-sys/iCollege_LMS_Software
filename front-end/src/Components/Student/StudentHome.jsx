@@ -28,7 +28,7 @@ const StudentHome = () => {
                 <div class="icon">
                   <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                 </div>
-                <a href="#" class="card-box-footer">
+                <a href="/StudentHome/LectureDetails" class="card-box-footer">
                   View More <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
