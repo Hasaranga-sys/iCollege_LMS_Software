@@ -20,7 +20,7 @@ const NavBar = () => {
       setinitials(Response.data.initials);
     });
   });
-
+  // user role eka ganna one nm (userDetails.role) eken enawa
   return (
     <div>
       <section class="navigation">

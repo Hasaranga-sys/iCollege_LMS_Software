@@ -49,7 +49,7 @@ const UserList = () => {
   };
   return (
     <div className="p-3">
-      <button
+      {/* <button
         className="btn btn-warning"
         onClick={() => {
           setUserDetails(null);
@@ -57,7 +57,7 @@ const UserList = () => {
         }}
       >
         log out
-      </button>
+      </button> */}
       <div
         className="shadow card w-100 text-center p-3 mt-5 mb-5"
         style={{ borderRadius: 30 }}
