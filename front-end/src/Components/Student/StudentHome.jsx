@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import hero from '../images/HERObLOB.svg'
 import ViewNotice from './ViewNotice'
 import "../Student/Student.css"
+import Foot from '../Foot'
 
 
 const StudentHome = () => {
@@ -95,7 +96,10 @@ const StudentHome = () => {
       {/* <Link to="/StudenHome/noticeView">
             <button className="btn btn-primary" variant="contained">notice view</button>
       </Link> */}
+
+  
     </div>
+    
   )
 }
 

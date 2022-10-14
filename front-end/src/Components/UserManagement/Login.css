@@ -1,8 +1,8 @@
 body{
-    padding: 0;
+    /* padding: 0;
     margin: 0;
     height: 100vh;
-    width: 100%;
+    width: 100%; */
     background-image: linear-gradient(90deg, #228be6 5%, #3bc9db 95%);
     /* background-image: linear-gradient(to bottom right, #9734ff, #3c00f5); */
     font-family: "Raleway",sans-serif;

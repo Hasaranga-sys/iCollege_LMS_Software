@@ -44,7 +44,7 @@ const NoticeTable = () => {
   return (
     <div className="p-3">
       <div
-        className="admin-wcad card w-100 text-center p-3 mt-5 mb-5"
+        className=" boxnotice card text-center p-3 mt-5"
        
       >
         <h1>Announcements</h1>

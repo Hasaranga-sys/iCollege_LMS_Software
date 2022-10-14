@@ -49,7 +49,7 @@ const ViewNotice = () => {
             
           <div className="card-body">        
            <div className='row'>
-           <div className='border bg-warning rounded-2 col-sm-2'>
+           <div className='rounded-2 col-sm-2'>
             <h4>
               <Moment format='YYYY MMM DD'>
                {note.date}
