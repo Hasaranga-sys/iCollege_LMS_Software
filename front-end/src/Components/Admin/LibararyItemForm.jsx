@@ -98,7 +98,14 @@ const LibararyItemForm = () => {
               <div className="row">
                 <div className="col">
                   <div className="form-group">
-                    <label>Faculty</label>
+                    <strong
+                      style={{
+                        display: "inline-block",
+                        width: "100px",
+                      }}
+                    >
+                      Faculty:
+                    </strong>
 
                     {/* <input
                   type="text"
@@ -144,7 +151,14 @@ const LibararyItemForm = () => {
                 <br />
                 <div className="col">
                   <div className="form-group">
-                    <label>Year</label>
+                    <strong
+                      style={{
+                        display: "inline-block",
+                        width: "100px",
+                      }}
+                    >
+                      Year:
+                    </strong>
 
                     {/* <input
                   type="text"
@@ -172,7 +186,14 @@ const LibararyItemForm = () => {
                 </div>
                 <div className="col">
                   <div className="form-group">
-                    <label>Subject</label>
+                    <strong
+                      style={{
+                        display: "inline-block",
+                        width: "100px",
+                      }}
+                    >
+                      Subject:
+                    </strong>
 
                     {/* <input
                   type="text"
@@ -205,7 +226,14 @@ const LibararyItemForm = () => {
               </div>
 
               <div className="form-group">
-                <label>File</label>
+                <strong
+                  style={{
+                    display: "inline-block",
+                    width: "100px",
+                  }}
+                >
+                  File:
+                </strong>
                 <div className="form-group">
                   <input
                     type="file"
