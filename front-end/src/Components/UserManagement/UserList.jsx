@@ -23,9 +23,9 @@ const UserList = () => {
     UserServices.getAllUsers().then((res) => {
       setUser(res.data);
     });
-    console.log(userDetails);
-    console.log(isAuthenticated);
-  }, []);
+    // console.log(userDetails);
+    // console.log(isAuthenticated);
+  });
 
   const AddStudent = (e) => {
     e.preventDefault();
@@ -36,71 +36,18 @@ const UserList = () => {
     navigate(`/user/${id}`);
   };
   const dleteClicked = (id) => {
-    UserServices.deleteUser(id);
+    if (userDetails.userID == id) {
+      Swal.fire({
+        icon: "error",
+        title: "Delete Failed",
+        text: "Cant Delete own Accoount",
+      });
+    } else {
+      UserServices.deleteUser(id);
+    }
     console.log(id);
   };
   return (
-    // <div className="container">
-    //   <br />
-    //   <br />
-    //   <div className="card-body">
-    //     {/* <button onClick={AddStudent}>Add student</button> */}
-    //     <h1>User list</h1>
-    //     <br />
-    //     <br />
-    //     <table class="table table-hover">
-    //       <thead>
-    //         <tr>
-    //           <th scope="col"> Reg Number</th>
-    //           <th scope="col">Last Name</th>
-    //           <th scope="col">Initials</th>
-    //           <th scope="col">Mobile Number</th>
-    //           <th scope="col">Email</th>
-    //           <th scope="col">Department</th>
-    //           <th scope="col"> Role</th>
-    //           <th scope="col">Update</th>
-    //           <th scope="col">Remove</th>
-    //         </tr>
-    //       </thead>
-    //       <tbody>
-    //         {user.map((user) => (
-    //           <tr key={user._id}>
-    //             <td>{user.regNumber}</td>
-    //             <td>{user.lastName}</td>
-    //             <td>{user.initials}</td>
-    //             <td>{user.mobileNumber}</td>
-    //             <td>{user.email}</td>
-    //             <td>{user.faculty}</td>
-    //             <td>{user.role}</td>
-
-    //             <td>
-    //               <button
-    //                 className="btn btn-warning"
-    //                 onClick={() => updteClicked(user._id)}
-    //               >
-    //                 Update
-    //               </button>
-    //             </td>
-    //             <td>
-    //               <button
-    //                 className="btn btn-success"
-    //                 onClick={() => dleteClicked(user._id)}
-    //               >
-    //                 Delete
-    //               </button>
-    //             </td>
-    //           </tr>
-    //         ))}
-    //       </tbody>
-    //     </table>
-    //     <div id="myDIV">
-    //       <button className="btn btn-primary" onClick={AddStudent}>
-    //         Add User
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>
-
     <div className="p-3">
       <button
         className="btn btn-warning"
@@ -268,28 +215,6 @@ const UserList = () => {
                       ))}
                   </tbody>
                 </table>
-
-                {/* <div>
-                  <label>
-                    <input
-                      type="checkbox"
-                      checked={checked}
-                      onChange={() => {
-                        setChecked(!checked);
-                        setAdminFilter("admin");
-                        setTimeout(function () {
-                          if (checked.toString() != "true") {
-                            console.log(adminFilter);
-                          }
-                          console.log("Executed after 1 second");
-                        }, 1000);
-                      }}
-                    />
-                    My Value (admin)
-                  </label>
-
-                  <p>Is "My Value" checked? {checked.toString()}</p>
-                </div> */}
 
                 {/* <button
                   className="btn btn-primary w-25 mt-3"
