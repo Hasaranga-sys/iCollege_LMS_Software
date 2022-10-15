@@ -70,15 +70,6 @@ export default function LectureAdminHome() {
                       {lecture.topic}_{lecture.date}_{lecture.time}
                     </a>
                   </td>
-
-                  {/* <td>
-                  <button
-                    className="btn btn-warning"
-                    // onClick={() => updteClicked(user._id)}
-                  >
-                    ✏️
-                  </button>
-                </td> */}
                 </tr>
               ))}
             </tbody>

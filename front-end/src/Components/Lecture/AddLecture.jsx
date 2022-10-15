@@ -58,6 +58,12 @@ export default function AddLecture() {
         setPdf(null);
 
         navigate("/Lecture");
+        Swal.fire({
+          icon: "success",
+          text: "Lecture scheduled successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     } catch (error) {
       console.log(error);
@@ -93,7 +99,7 @@ export default function AddLecture() {
                     fontWeight: 400,
                   }}
                 >
-                  The Academic Staff can schedule a lessons in hear.
+                  The Academic Staff can schedule a lessons in here.
                 </p>
               </div>
               <div
@@ -116,7 +122,7 @@ export default function AddLecture() {
                         value={year}
                         onChange={(e) => setYear(e.target.value)}
                       >
-                        <option selected>Select year</option>
+                        <option value="">Select year</option>
                         <option value="1st Year">1st Year</option>
                         <option value="2nd Year">2nd Year</option>
                         <option value="3rd Year">3rd Year</option>
@@ -129,9 +135,10 @@ export default function AddLecture() {
                         name="semester"
                         className="form-control"
                         value={semester}
+                        required
                         onChange={(e) => setSemester(e.target.value)}
                       >
-                        <option selected>Select Semester</option>
+                        <option value="">Select Semester</option>
                         <option value="1st Semester">1st Semester</option>
                         <option value="2nd Semester">2nd Semester</option>
                       </select>
@@ -147,7 +154,8 @@ export default function AddLecture() {
                       placeholder="Enter subject"
                       name="subject"
                       className="form-control"
-                      title="Name should only contain lowercase or uppercase letters. e.g. john"
+                      required
+                      title="You must have to enter subject"
                       value={subject}
                       onChange={(e) => setSubject(e.target.value)}
                     />
@@ -162,7 +170,8 @@ export default function AddLecture() {
                       placeholder="Enter Topic"
                       name="topic"
                       className="form-control"
-                      title="Name should only contain lowercase or uppercase letters. e.g. john"
+                      required
+                      title="You must have to enter Topic"
                       value={topic}
                       onChange={(e) => setTopic(e.target.value)}
                     />
@@ -178,7 +187,8 @@ export default function AddLecture() {
                         placeholder="Enter date"
                         type="date"
                         className="form-control"
-                        title="Name should only contain lowercase or uppercase letters. e.g. john"
+                        required
+                        title="You must have to enter Date"
                         value={date}
                         onChange={(e) => setDate(e.target.value)}
                       />
@@ -188,7 +198,8 @@ export default function AddLecture() {
                         placeholder="Enter time"
                         type="time"
                         className="form-control"
-                        title="Name should only contain lowercase or uppercase letters. e.g. john"
+                        required
+                        title="You must have to enter time"
                         value={time}
                         onChange={(e) => setTime(e.target.value)}
                       />
@@ -204,7 +215,8 @@ export default function AddLecture() {
                       placeholder="Enter Discription"
                       name="firstName"
                       className="form-control"
-                      title="Name should only contain lowercase or uppercase letters. e.g. john"
+                      required
+                      title="You must have to enter discription"
                       value={discription}
                       onChange={(e) => setDiscription(e.target.value)}
                     />
@@ -219,7 +231,8 @@ export default function AddLecture() {
                       placeholder="Meeting Link"
                       name="firstName"
                       className="form-control"
-                      title="Name should only contain lowercase or uppercase letters. e.g. john"
+                      required
+                      title="You must have to enter meeting link"
                       value={meeting_link}
                       onChange={(e) => setMeeting_link(e.target.value)}
                     />
@@ -234,6 +247,7 @@ export default function AddLecture() {
                       type="file"
                       multiple
                       required
+                      title="You must have to enter lecture slide"
                       filename="uploaded_Image"
                       className="form-control"
                       onChange={(e) => {

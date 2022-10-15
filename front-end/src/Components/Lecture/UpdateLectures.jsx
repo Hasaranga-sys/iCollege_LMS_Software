@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import LectureService from "../Service/LectureService";
+import Swal from "sweetalert2";
 
 export default function UpdateLectures() {
   const { id } = useParams();
@@ -58,6 +59,12 @@ export default function UpdateLectures() {
         setPdf(null);
 
         navigate("/Lecture");
+        Swal.fire({
+          icon: "success",
+          text: "Lecture scheduled successfully updated",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     } catch (error) {
       console.log(error);
@@ -80,10 +87,38 @@ export default function UpdateLectures() {
   }, []);
 
   return (
-    <div className="container pt-5">
+    <div className="container p-5">
       <div className="row">
         <div className="card col-md-6 offset-md-3 offset-md-3" style={mystyle}>
-          <h3 style={{ paddingTop: 15, paddingLeft: 20 }}>ADD LECTURES</h3>
+          <div className="row">
+            <div
+              className="col"
+              style={{
+                fontSize: 30,
+                fontWeight: 500,
+                paddingLeft: 50,
+                display: "block",
+                marginTop: "auto",
+                marginBottom: "auto",
+                color: "#90A4AE",
+              }}
+            >
+              Edit Lectures.
+              <p
+                class="text-muted"
+                style={{
+                  fontSize: 14,
+                  fontWeight: 400,
+                }}
+              >
+                The Academic Staff can schedule edit lessons in here.
+              </p>
+            </div>
+            <div
+              className="lecture-image"
+              style={{ height: "130px", width: "150px" }}
+            ></div>
+          </div>
           <div className="card-body">
             <form onSubmit={clickSubmit}>
               <div className="row form-group pb-4">

@@ -72,7 +72,7 @@ export default function StudentLectuersView() {
       <div className="student-hero-image" style={{ height: 265 }}></div>
       <div>
         <div className="container card my-5 ">
-          <h3 className="p-4">Lecture Schedule</h3>
+          <h3 className="p-4 mx-auto">Lecture Schedules</h3>
           <div>
             <Modal size="lg" show={show} onHide={handleClose}>
               <Modal.Header closeButton>
