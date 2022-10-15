@@ -34,6 +34,7 @@ const NoticeForm = () => {
 
     if (_id) {
       NoticeService.updateNotice(_id, notices).then((response) => {
+        Swal.fire("Success", "Notice Updated Successfully", "success");
         navigate("/AdminHome/NoticeTable");
       });
     } else {
