@@ -24,6 +24,8 @@ import StudentViewLibraryItem from "./Components/Student/StudentViewLibraryItem"
 import UpdateLectures from "./Components/Lecture/UpdateLectures";
 import LectureAdminHome from "./Components/Lecture/LectureAdminHome";
 import AnnouncemntViewPro from "./Components/Admin/AnnouncemntViewPro";
+import Foot from "./Components/Foot";
+import StudentLectuersView from "./Components/Student/StudentLectuersView";
 
 function App() {
   return (
@@ -61,11 +63,16 @@ function App() {
               exact
             />
             <Route
-              path="/AdminHome/addLibararyItemForm/:id"
+              path="/AdminHome/updateLibararyItemForm/:id"
               element={<LibararyItemForm />}
               exact
             />
-             <Route
+            <Route
+              path="/AdminHome/LibararyItemForm/:id"
+              element={<LibararyItemForm />}
+              exact
+            />
+            <Route
               path="/AdminHome/LibararyItemForm/:id"
               element={<LibararyItemForm />}
               exact
@@ -114,10 +121,13 @@ function App() {
               element={<LectureAdminHome />}
               exact
             />
+            <Route
+              path="/StudentHome/LectureDetails"
+              element={<StudentLectuersView />}
+              exact
+            />
           </Routes>
         </main>
-        
-        
       </React.Fragment>
     </div>
   );

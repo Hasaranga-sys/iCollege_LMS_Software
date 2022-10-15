@@ -28,9 +28,12 @@ const StudentHome = () => {
                 <div class="icon">
                   <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                 </div>
-                <a href="#" class="card-box-footer">
+                <Link
+                  class="card-box-footer"
+                  to={"/StudentHome/LectureDetails"}
+                >
                   View More <i class="fa fa-arrow-circle-right"></i>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -43,9 +46,12 @@ const StudentHome = () => {
                 <div class="icon">
                   <i class="fa fa-book" aria-hidden="true"></i>
                 </div>
-                <a href="#" class="card-box-footer">
+                <Link
+                  class="card-box-footer"
+                  to={"/StudentHome/viewLibrarayItem"}
+                >
                   View More <i class="fa fa-arrow-circle-right"></i>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -24,3 +24,12 @@
   background-size: cover;
   position: relative;
 }
+
+.student-hero-image {
+  background-image: url("../images/student-hero.jpg");
+  height: 750;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
