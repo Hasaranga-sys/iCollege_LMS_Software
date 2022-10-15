@@ -39,7 +39,7 @@ const LibararyItemForm = () => {
 
   const title = () => {
     if (id) {
-      return <h1>Update </h1>;
+      return <h1>Update Library Resources </h1>;
     } else {
       return <h1>Add Library Resources </h1>;
     }
@@ -86,7 +86,7 @@ const LibararyItemForm = () => {
           setsubject("");
           setPdf(null);
 
-          Swal.fire(" succesfull update");
+          Swal.fire(" Succesfull Update");
           history("/AdminHome/ViewLibararyItems");
         }
       } else {
@@ -100,7 +100,7 @@ const LibararyItemForm = () => {
           setsubject("");
           setPdf(null);
 
-          Swal.fire(" succesfull.");
+          Swal.fire(" Succesfull.");
           history("/AdminHome/ViewLibararyItems");
         }
       }
@@ -260,9 +260,6 @@ const LibararyItemForm = () => {
                   File:
                 </strong>
                 <div className="form-group">
-                  <a href={pdf} download>
-                    {subject}
-                  </a>
                   <input
                     type="file"
                     multiple

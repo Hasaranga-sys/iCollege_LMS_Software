@@ -29,6 +29,7 @@ function StudentViewLibraryItem() {
 
   return (
     <div>
+      <br></br>
       <center>
         <h1>Library Resources</h1>
       </center>
@@ -48,7 +49,7 @@ function StudentViewLibraryItem() {
                 <option value="Faculty of Computing">
                   Faculty of Computing
                 </option>
-                <option value="3">Faculty of Busines</option>
+                <option value="Faculty of Busines">Faculty of Busines</option>
                 <option value="Faculty of Engineering">
                   Faculty of Engineering
                 </option>
@@ -96,49 +97,53 @@ function StudentViewLibraryItem() {
                 <i class="fa fa-print" aria-hidden="true"></i>{" "}
               </button>
             </div>
-
-            {/* {items?.filter((value) => {
-              if (search === "") {
-                return value;
-              } else if (
-                //  value.pid.toString(includes(search)) ||
-                value.faculty.toLowerCase().includes(search.toLowerCase()) ||
-                value.subject.toLowerCase().includes(search.toLowerCase())
-              ) {
-                return value;
-              }
-              return 0;
-            })} */}
-          </div>
-        </div>
-      </div>
-
-      <div className="container grid offset-md-1 offset-md-1">
-        {items?.map((row) => (
-          <Card
-            className="m-3 box shadow box-shadow"
-            style={{ width: "18rem" }}
-          >
-            <Card.Header>
-              <div className="row">
-                <div
-                  style={{
-                    display: "inline-block",
-                    width: "250px",
-                    fontSize: "20px",
-                  }}
-                >
-                  faculty: &emsp; {row.faculty}
-                </div>
-                <div style={{ display: "inline-block", width: "250px" }}>
-                  Year:&emsp;{row.year}
-                </div>
-              </div>
-            </Card.Header>
-            <Card.Body>
-              <Card.Text>
-                <div className="row">
-                  {/* <div className="col-10">
+            <div className="container grid  ">
+              {items
+                ?.filter((value) => {
+                  if (search == "") {
+                    return value;
+                  } else if (
+                    //  value.pid.toString(includes(search)) ||
+                    value.faculty
+                      .toString()
+                      .toLowerCase()
+                      .includes(search.toString().toLowerCase()) ||
+                    value.subject
+                      .toString()
+                      .toLowerCase()
+                      .includes(search.toString().toLowerCase())
+                  ) {
+                    return value;
+                  }
+                  return 0;
+                })
+                .map((row) => (
+                  <Card
+                    className="m-3 box shadow box-shadow"
+                    style={{ width: "18rem" }}
+                  >
+                    <Card.Header>
+                      <div className="row">
+                        <div
+                          style={{
+                            display: "inline-block",
+                            width: "250px",
+                            fontSize: "20px",
+                          }}
+                        >
+                          Faculty: &emsp; {row.faculty}
+                        </div>
+                        <div
+                          style={{ display: "inline-block", width: "250px" }}
+                        >
+                          Year:&emsp;{row.year}
+                        </div>
+                      </div>
+                    </Card.Header>
+                    <Card.Body>
+                      <Card.Text>
+                        <div className="row">
+                          {/* <div className="col-10">
                     <strong
                       style={{
                         display: "inline-block",
@@ -149,17 +154,17 @@ function StudentViewLibraryItem() {
                     </strong>
                     {row.faculty}
                   </div> */}
-                  Subject:&emsp;{row.subject}
-                  <div
-                    className="row "
-                    style={{ display: "flex", justifyContent: "right" }}
-                  >
-                    <div className="col-auto">
-                      <a href={row.pdf} download>
-                        pdf
-                      </a>
+                          Subject:&emsp;{row.subject}
+                          <div
+                            className="row "
+                            style={{ display: "flex", justifyContent: "right" }}
+                          >
+                            <div className="col-auto">
+                              <a href={row.pdf} download>
+                                Download
+                              </a>
 
-                      {/* <Button
+                              {/* <Button
                         className="mx-1"
                         variant="info"
                         size="sm"
@@ -168,13 +173,16 @@ function StudentViewLibraryItem() {
                       >
                         Download 
                       </Button> */}
-                    </div>
-                  </div>
-                </div>
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        ))}
+                            </div>
+                          </div>
+                        </div>
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

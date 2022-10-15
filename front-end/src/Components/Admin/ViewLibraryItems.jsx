@@ -29,10 +29,24 @@ function ViewLibraryItems() {
   // };
 
   const deleteClicked = (id) => {
-    Swal.fire(" succesfully deleted");
-    LibraryService.deleteItem(id).then((res) => {
-      setPdfs(pdfs.filter((pdfs) => pdfs._id !== id));
+    Swal.fire({
+      title: "Do you want to delete ?",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Deleted!", "", "success");
+        console.log(id);
+        LibraryService.deleteItem(id).then((res) => {
+          setPdfs(pdfs.filter((pdfs) => pdfs._id !== id));
+        });
+      }
     });
+
+    // Swal.fire(" succesfully deleted");
+    // LibraryService.deleteItem(id).then((res) => {
+    //   setPdfs(pdfs.filter((pdfs) => pdfs._id !== id));
+    // });
   };
 
   //
@@ -65,7 +79,7 @@ function ViewLibraryItems() {
 
                 <input
                   type="text"
-                  placeholder="search"
+                  placeholder="Search"
                   className="form-control
                               mt-3 admin-srchbr1"
                   onChange={(e) => {
@@ -84,7 +98,7 @@ function ViewLibraryItems() {
                   <option value="Faculty of Computing">
                     Faculty of Computing
                   </option>
-                  <option value="3">Faculty of Busines</option>
+                  <option value="Faculty of Busines">Faculty of Busines</option>
                   <option value="Faculty of Engineering">
                     Faculty of Engineering
                   </option>
@@ -176,13 +190,14 @@ function ViewLibraryItems() {
                               </td>
                               <td>
                                 <button
-                                  className="btn btn-success"
+                                  className="btn btn-warning"
                                   onClick={() => {
                                     updateClicked(pdf._id);
                                   }}
                                   style={{ marginRight: 10 }}
                                 >
-                                  delete
+                                  Update &nbsp;
+                                  <i class="fa fa-cog" aria-hidden="true"></i>
                                 </button>
                                 <button
                                   className="btn btn-danger"
@@ -190,7 +205,8 @@ function ViewLibraryItems() {
                                     deleteClicked(pdf._id);
                                   }}
                                 >
-                                  delete
+                                  Delete &nbsp;
+                                  <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
                               </td>
                             </tr>
