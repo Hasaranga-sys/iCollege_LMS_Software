@@ -22,7 +22,8 @@ app.use("/pdf", require("./Router/LibraryItemRouter"));
 
 mongoose
   .connect(
-    "mongodb+srv://has:has123@icollegelms.vpl6dxd.mongodb.net/?retryWrites=true&w=majority"
+    // "mongodb+srv://has:has123@icollegelms.vpl6dxd.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://root:root@cluster0.cfjqiom.mongodb.net/"
   )
   .then(() => console.log("Connected to database"))
   .then(() => {
